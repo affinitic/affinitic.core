@@ -6,17 +6,33 @@
 
   <browser:page
       for="Products.CMFCore.interfaces.IFolderish"
-      name="folderview"
-      class=".folderview.FolderView"
+      name="zaffolderview"
+      class=".zaffolderview.ZafFolderView"
       permission="zope.Public"
-      template="templates/folderview.pt"
+      template="templates/zaffolderview.pt"
       />
 
   <browser:menuItem
       for="Products.CMFCore.interfaces.IFolderish"
       menu="plone_displayviews"
       title="Vue pour Zaf"
-      action="folderview"
+      action="zaffolderview"
+      description="Vue pour Zaf"
+      />
+
+  <browser:page
+      for="Products.CMFCore.interfaces.IFolderish"
+      name="clientfolderview"
+      class=".clientfolderview.ClientFolderView"
+      permission="zope.Public"
+      template="templates/clientfolderview.pt"
+      />
+
+  <browser:menuItem
+      for="Products.CMFCore.interfaces.IFolderish"
+      menu="plone_displayviews"
+      title="Vue pour Client"
+      action="clientfolderview"
       description="Vue pour Zaf"
       />
 
