@@ -2,6 +2,7 @@
 
     <!-- Dependencies -->
     <include package="collective.geotransform" />
+    <include package=".browser" />
 
     <include file="profiles.zcml" />
 

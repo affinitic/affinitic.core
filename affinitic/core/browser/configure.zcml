@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+  <include package="plone.app.contentmenu" />
+
+  <browser:page
+      for="Products.CMFCore.interfaces.IFolderish"
+      name="folderview"
+      class=".folderview.FolderView"
+      permission="zope.Public"
+      template="templates/folderview.pt"
+      />
+
+  <browser:menuItem
+      for="Products.CMFCore.interfaces.IFolderish"
+      menu="plone_displayviews"
+      title="Vue pour Zaf"
+      action="folderview"
+      description="Vue pour Zaf"
+      />
+
+</configure>
