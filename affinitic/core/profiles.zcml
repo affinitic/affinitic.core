@@ -3,7 +3,7 @@
 
     <genericsetup:registerProfile
         name="default"
-        title="affinitic.core"
+        title="Affinitic core"
         directory="profiles/default"
         description="Installs Affinitic core"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
