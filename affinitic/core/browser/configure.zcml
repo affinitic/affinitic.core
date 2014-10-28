@@ -20,4 +20,12 @@
       description="Vue pour Zaf"
       />
 
+  <browser:page
+      for="*"
+      name="zafview"
+      class=".zafview.ZafView"
+      permission="zope.Public"
+      template="templates/zafview.pt"
+      />
+
 </configure>
