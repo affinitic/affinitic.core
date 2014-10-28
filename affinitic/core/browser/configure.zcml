@@ -44,4 +44,12 @@
       template="templates/zafview.pt"
       />
 
+  <browser:page
+      for="*"
+      name="clientview"
+      class=".clientview.ClientView"
+      permission="zope.Public"
+      template="templates/clientview.pt"
+      />
+
 </configure>
