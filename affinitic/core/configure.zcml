@@ -1,0 +1,8 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+    <!-- Dependencies -->
+    <include package="collective.geotransform" />
+
+    <include file="profiles.zcml" />
+
+</configure>

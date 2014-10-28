@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<import-steps>
+  <import-step id="affinitic.core.default"
+               handler="affinitic.core.setuphandlers.installCore"
+               title="affinitic.core: install import step">
+  </import-step>
+</import-steps>
