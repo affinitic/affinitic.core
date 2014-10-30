@@ -15,7 +15,7 @@
 
             <section>
                 <h3>Chez Affinitic depuis</h3>
-                <span tal:replace="context/engagement_date"/>
+                <span tal:replace="python: context.engagement_date.strftime('%d-%m-%Y')"/>
             </section>
 
             <section>
