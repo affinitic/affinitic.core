@@ -4,14 +4,22 @@
     <div metal:fill-slot="content-core"
          tal:define="zafs view/getZafs">
         <tal:bcl tal:repeat="zaf zafs">
-            <a tal:attributes="href string:${zaf/absolute_url}"
-               tal:content="zaf/name" />
-            <br />
-            <span tal:replace="zaf/email"/>
-            <br />
-            <span tal:replace="zaf/fonction"/>
-            <br />
-            <img tal:attributes="src string:${zaf/absolute_url}/@@images/photo/preview"/>
+            <article class="zaf-boyz-listing">
+                <section class="zaf-boyz-short-description">
+                    <h2>
+                      <a tal:attributes="href string:${zaf/absolute_url}"
+                         tal:content="zaf/name" />
+                    </h2>
+                    <ul>
+                      <li><span tal:replace="zaf/email"/></li>
+                      <li><span tal:replace="zaf/fonction"/></li>
+                    </ul>
+                </section>
+                <section class="zaf-boyz-vignette">
+                    <img tal:attributes="src string:${zaf/absolute_url}/@@images/photo/thumb"/>
+                </section>
+                <div class="break-float"></div>
+            </article>
         </tal:bcl>
     </div>
   </body>
