@@ -4,13 +4,17 @@
     <div metal:fill-slot="content-core"
          tal:define="clients view/getClients">
         <tal:bcl tal:repeat="client clients">
-            <a tal:attributes="href string:${client/absolute_url}"
-               tal:content="client/nom" />
-            <br />
-            <span tal:replace="client/url"/>
-            <br />
-            <img tal:attributes="src string:${client/absolute_url}/@@images/capture/preview"/>
+            <article class="client-listing">
+              <a tal:attributes="href string:${client/absolute_url}"
+                 tal:content="client/nom" />
+              <br />
+              <a href=""
+                 target="_blanck"
+                 tal:attributes="href client/url">
+                  <img tal:attributes="src string:${client/absolute_url}/@@images/capture/mini"/></a>
+            </article>
         </tal:bcl>
+
     </div>
   </body>
 </html>
