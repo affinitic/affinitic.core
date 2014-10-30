@@ -13,6 +13,9 @@
                  tal:attributes="href client/url">
                   <img tal:attributes="src string:${client/absolute_url}/@@images/capture/mini"/></a>
             </article>
+            <tal:block tal:condition="repeat/client/odd">
+                <div class="break-float"></div>
+            </tal:block>
         </tal:bcl>
 
     </div>
