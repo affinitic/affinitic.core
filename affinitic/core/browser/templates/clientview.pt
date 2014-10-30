@@ -1,17 +1,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       metal:use-macro="here/main_template/macros/master">
   <body>
-    <div metal:fill-slot="content-core">
-        <a tal:attributes="href string:${context/absolute_url}"
-           tal:content="context/nom" />
-        <br />
-        <span tal:replace="context/url"/>
-        <br />
-        <span tal:replace="context/realisation_date"/>
-        <br />
-        <img tal:attributes="src string:${context/absolute_url}/@@images/capture/preview"/>
-        <br />
-        <span tal:replace="structure context/texte/output"/>
+    <div metal:fill-slot="main">
+        <article id="client-description">
+            <h1><span tal:content="context/nom" /></h1>
+
+            <section id="client-image-site-description">
+                <a href=""
+                   tal:attributes="href context/url"
+                   target="_black">
+                <img tal:attributes="src string:${context/absolute_url}/@@images/capture/preview"/></a>
+                <br />
+                <div class="float-left client-url">
+                    <span tal:replace="context/url"/>
+                </div>
+                <div class="float-right client-date">
+                    <span tal:replace="python:context.realisation_date.strftime('%d-%m-%Y')"/>
+                </div>
+                <div class="break-float"></div>
+            </section>
+
+            <section id="client-site-description">
+                <h3>Description</h3>
+                <span tal:replace="structure context/texte/output"/>
+            </section>
+        </article>
     </div>
   </body>
 </html>

@@ -2,7 +2,7 @@
       metal:use-macro="here/main_template/macros/master">
   <body>
     <div metal:fill-slot="main">
-        <article class="zaf-boyz-description">
+        <article id="zaf-boyz-description">
             <h1>
                 <span tal:content="context/name" />
             </h1>
