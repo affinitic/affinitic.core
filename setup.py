@@ -28,7 +28,6 @@ setup(name='affinitic.core',
       install_requires=[
           'setuptools',
           'plone.api',
-          'plone.app.contenttypes',
           'Plone',
           'collective.geotransform',
       ],
