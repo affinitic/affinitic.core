@@ -9,13 +9,18 @@
                     <span tal:content="client/nom" class="brun-titre" />
                 </section>
                 <section>
-                    <a href=""
-                       target="_blanck"
-                       tal:attributes="href client/url">
+                    <a tal:attributes="href string:${client/absolute_url}"
+                       >
                         <img tal:attributes="src string:${client/absolute_url}/@@images/capture/mini"/></a>
                 </section>
                 <section class="fleche-plus">
-                  <a tal:attributes="href string:${client/absolute_url}"><img src="fleche.png"></a>
+                  <a href=""
+                     alt=""
+                     title=""
+                     tal:attributes="href client/url;
+                                     alt client/url;
+                                     title client/url"
+                     target="_blanck"><img src="fleche.png"></a>
                 </section>
 
             </article>
