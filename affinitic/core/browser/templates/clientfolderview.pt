@@ -6,8 +6,7 @@
         <tal:bcl tal:repeat="client clients">
             <article class="client-listing">
                 <section>
-                    <a tal:attributes="href string:${client/absolute_url}"
-                       tal:content="client/nom" />
+                    <span tal:content="client/nom" class="brun-titre" />
                 </section>
                 <section>
                     <a href=""
@@ -15,6 +14,10 @@
                        tal:attributes="href client/url">
                         <img tal:attributes="src string:${client/absolute_url}/@@images/capture/mini"/></a>
                 </section>
+                <section class="fleche-plus">
+                  <a tal:attributes="href string:${client/absolute_url}"><img src="fleche.png"></a>
+                </section>
+
             </article>
             <tal:block tal:condition="repeat/client/odd">
                 <div class="break-float"></div>
