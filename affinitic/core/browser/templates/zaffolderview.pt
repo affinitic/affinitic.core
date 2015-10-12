@@ -11,8 +11,13 @@
                          tal:content="zaf/name" />
                     </h2>
                     <ul>
-                      <li><span tal:replace="zaf/email"/></li>
                       <li><span tal:replace="zaf/fonction"/></li>
+                      <li tal:define="email zaf/email">
+                        <a href=""
+	                       tal:attributes="href string:mailto:${email}">
+                           <span tal:replace="email"/>
+                        </a>
+                      </li>
                     </ul>
                 </section>
                 <section class="zaf-boyz-vignette">
