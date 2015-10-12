@@ -11,19 +11,34 @@
             <section>
                 <h3>Fonction</h3>
                 <span tal:replace="context/fonction"/>
-            </section>
-
-            <section>
-                <h3>Chez Affinitic depuis</h3>
-                <span tal:replace="python: context.engagement_date.strftime('%d-%m-%Y')"/>
+                <br />
+                Depuis le <span tal:replace="python: context.engagement_date.strftime('%d/%m/%Y')"/>
             </section>
 
             <section>
                 <h3>Contact</h3>
                 <ul>
-                    <li>Email :<span tal:replace="context/email"/></li>
-                    <li>GitHub : <span tal:replace="context/github"/></li>
-                    <li>Twitter : <span tal:replace="context/twitter"/></li>
+                    <li tal:define="email context/email">
+                        Email :
+	                    <a href=""
+	                       tal:attributes="href string:mailto:${email}">
+                           <span tal:replace="email"/>
+                        </a>
+                    </li>
+                    <li tal:define="account context/github">
+                        GitHub :
+	                    <a href=""
+	                       tal:attributes="href string:https://github.com/${account}">
+                           <span tal:replace="account"/>
+                        </a>
+                    </li>
+                    <li tal:define="account context/twitter">
+                        Twitter :
+	                    <a href=""
+	                       tal:attributes="href string:https://twitter.com/${account}">
+                            <span tal:replace="account"/>
+                        </a>
+                    </li>
                 </ul>
             </section>
 
