@@ -25,14 +25,16 @@
                            <span tal:replace="email"/>
                         </a>
                     </li>
-                    <li tal:define="account context/github">
+                    <li tal:define="account context/github"
+                        tal:condition="account">
                         GitHub :
 	                    <a href=""
 	                       tal:attributes="href string:https://github.com/${account}">
                            <span tal:replace="account"/>
                         </a>
                     </li>
-                    <li tal:define="account context/twitter">
+                    <li tal:define="account context/twitter"
+                        tal:condition="account">
                         Twitter :
 	                    <a href=""
 	                       tal:attributes="href string:https://twitter.com/${account}">
