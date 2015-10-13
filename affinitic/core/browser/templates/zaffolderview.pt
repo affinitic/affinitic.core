@@ -21,7 +21,9 @@
                     </ul>
                 </section>
                 <section class="zaf-boyz-vignette">
-                    <img tal:attributes="src string:${zaf/absolute_url}/@@images/photo/thumb"/>
+                    <a tal:attributes="href string:${zaf/absolute_url}">
+                        <img tal:attributes="src string:${zaf/absolute_url}/@@images/photo/thumb"/>
+                    </a>
                 </section>
                 <div class="break-float"></div>
             </article>
