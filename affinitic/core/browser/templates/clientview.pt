@@ -8,7 +8,7 @@
             <section id="client-image-site-description">
                 <a href=""
                    tal:attributes="href context/url"
-                   target="_black">
+                   target="_blank">
                 <img tal:attributes="src string:${context/absolute_url}/@@images/capture/preview"/></a>
                 <br />
                 <div class="float-left client-url">

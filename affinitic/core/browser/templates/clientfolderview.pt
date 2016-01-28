@@ -20,7 +20,7 @@
                      tal:attributes="href client/url;
                                      alt client/url;
                                      title client/url"
-                     target="_blanck"><img src="fleche.png"></a>
+                     target="_blank"><img src="fleche.png"></a>
                 </section>
 
             </article>
