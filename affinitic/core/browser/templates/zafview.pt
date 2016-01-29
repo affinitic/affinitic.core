@@ -3,9 +3,8 @@
   <body>
     <div metal:fill-slot="main">
         <article id="zaf-boyz-description">
-            <h1>
-                <span tal:content="context/name" />
-            </h1>
+            <h1 class="documentFirstHeading"
+                tal:content="context/name"></h1>
             <img tal:attributes="src string:${context/absolute_url}/@@images/photo/mini"/>
 
             <section>
@@ -45,7 +44,7 @@
             </section>
 
             <section>
-                <h3>Experience</h3>
+                <h3>Expérience</h3>
                 <span tal:replace="structure context/text/output"/>
             </section>
         </article>

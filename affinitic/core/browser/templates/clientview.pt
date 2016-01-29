@@ -3,7 +3,8 @@
   <body>
     <div metal:fill-slot="main">
         <article id="client-description">
-            <h1><span tal:content="context/nom" /></h1>
+            <h1 class="documentFirstHeading"
+                tal:content="context/nom"></h1>
 
             <section id="client-image-site-description">
                 <a href=""
@@ -12,7 +13,10 @@
                 <img tal:attributes="src string:${context/absolute_url}/@@images/capture/preview"/></a>
                 <br />
                 <div class="float-left client-url">
-                    <span tal:replace="context/url"/>
+                    <a href=""
+                       tal:attributes="href context/url"
+                       tal:content="context/url"
+                       target="_blank" />
                 </div>
                 <div class="float-right client-date">
                     <span tal:replace="python:context.realisation_date.strftime('%d-%m-%Y')"/>
