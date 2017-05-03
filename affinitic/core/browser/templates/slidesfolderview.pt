@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+    <body>
+        <div metal:fill-slot="content-title"> </div>
+        <div metal:fill-slot="content-core">
+            <tal:results define="results python:context.results();">
+                <tal:bcl tal:repeat="brain results">
+                <tal:item define="obj brain/getObject">
+                    <span tal:replace="obj/type_slide" />
+                    <div class="tileImage" tal:attributes="style string:background-image:url(${obj/absolute_url}/@@images/parallax_front/mini)">
+                    </div>
+                </tal:item>
+                </tal:bcl>
+            </tal:results>
+         </div>
+    </body>
+</html>

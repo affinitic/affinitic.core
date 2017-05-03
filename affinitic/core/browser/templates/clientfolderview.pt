@@ -1,36 +1,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       metal:use-macro="here/main_template/macros/master">
-<body>
-    <div metal:fill-slot="content-core"
-         id="client-listing-wrapper"
-         tal:define="clients view/getClients">
-        <tal:bcl tal:repeat="client clients">
-            <article class="client-listing">
-                <section>
-                    <a tal:attributes="href string:${client/absolute_url}">
+    <head>
+    </head>
+    <body>
+        <div metal:fill-slot="content-core"
+      id="client-listing-wrapper"
+      tal:define="clients view/getClients">
+            <tal:bcl tal:repeat="client clients">
+            <a tal:attributes="href string:${client/absolute_url}">
+                <article class="tileItem">
+                    <h2 class="tileHeadline">
                         <span tal:content="client/nom" class="brun-titre" />
-                    </a>
-                </section>
-                <section>
-                    <a tal:attributes="href string:${client/absolute_url}"
-                       >
-                        <img tal:attributes="src string:${client/absolute_url}/@@images/capture/mini"/></a>
-                </section>
-                <section class="fleche-plus">
-                  <a href=""
-                     alt=""
-                     title=""
-                     tal:attributes="href client/url;
-                                     alt client/url;
-                                     title client/url"
-                     target="_blank"><img src="fleche.png"></a>
-                </section>
-
-            </article>
-            <tal:block tal:condition="repeat/client/odd">
+                    </h2>
+                    <div class="tileImage" tal:attributes="style string:background-image:url(${client/absolute_url}/@@images/capture/large)">
+                    </div>
+                    <div class="tileBody">
+                        <section id="client-site-description">
+                            <span class="description" tal:replace="structure client/description"/>
+                        </section>
+                    </div>
+                    <div class="tileFooter">
+                        Lire la suite…
+                    </div>
+                    <div class="visualClear"><!-- --></div>
+                </article>
+            </a>
+                <tal:block tal:condition="repeat/client/odd">
                 <div class="break-float"></div>
-            </tal:block>
-        </tal:bcl>
-    </div>
-</body>
+                </tal:block>
+            </tal:bcl>
+        </div>
+    </body>
 </html>

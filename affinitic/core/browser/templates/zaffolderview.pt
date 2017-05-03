@@ -4,29 +4,26 @@
     <div metal:fill-slot="content-core"
          tal:define="zafs view/getZafs">
         <tal:bcl tal:repeat="zaf zafs">
-            <article class="zaf-boyz-listing">
-                <section class="zaf-boyz-short-description">
-                    <h2>
-                      <a tal:attributes="href string:${zaf/absolute_url}"
-                         tal:content="zaf/name" />
+            <a tal:attributes="href string:${zaf/absolute_url}">
+                <article class="tileItem">
+                    <div class="tileImage" tal:attributes="style string:background-image:url(${zaf/absolute_url}/@@images/photo/thumb)">
+                    </div>
+                    <h2 class="tileHeadline" tal:content="zaf/name">
                     </h2>
-                    <ul>
-                      <li><span tal:replace="zaf/fonction"/></li>
-                      <li tal:define="email zaf/email">
-                        <a href=""
-	                       tal:attributes="href string:mailto:${email}">
-                           <span tal:replace="email"/>
+                    <div class="tileBody">
+                        <span tal:replace="zaf/fonction"/>
+                    </div>
+                    <div class="tileMail" tal:define="email zaf/email">
+                        <a href="" tal:attributes="href string:mailto:${email}">
+                            <span tal:replace="email"/>
                         </a>
-                      </li>
-                    </ul>
-                </section>
-                <section class="zaf-boyz-vignette">
-                    <a tal:attributes="href string:${zaf/absolute_url}">
-                        <img tal:attributes="src string:${zaf/absolute_url}/@@images/photo/thumb"/>
-                    </a>
-                </section>
-                <div class="break-float"></div>
-            </article>
+                    </div>
+                    <div class="tileFooter">
+                        Lire la suite…
+                    </div>
+                    <div class="visualClear"><!-- --></div>
+                </article>
+            </a>
         </tal:bcl>
     </div>
   </body>

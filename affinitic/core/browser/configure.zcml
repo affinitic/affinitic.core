@@ -21,6 +21,37 @@
       />
 
   <browser:page
+      for="*"
+      name="zafview"
+      class=".zafview.ZafView"
+      permission="zope.Public"
+      template="templates/zafview.pt"
+      />
+
+  <browser:page
+      for="plone.app.contenttypes.interfaces.ICollection"
+      name="slidesfolderview"
+      permission="zope.Public"
+      template="templates/slidesfolderview.pt"
+      />
+
+  <browser:menuItem
+      for="plone.app.contenttypes.interfaces.ICollection"
+      menu="plone_displayviews"
+      title="Vue pour slides"
+      action="slidesfolderview"
+      description="Vue pour slides"
+      />
+
+  <browser:page
+      for="*"
+      name="slideview"
+      class=".slideview.SlideView"
+      permission="zope.Public"
+      template="templates/slideview.pt"
+      />
+
+  <browser:page
       for="Products.CMFCore.interfaces.IFolderish"
       name="clientfolderview"
       class=".clientfolderview.ClientFolderView"
@@ -33,15 +64,7 @@
       menu="plone_displayviews"
       title="Vue pour Client"
       action="clientfolderview"
-      description="Vue pour Zaf"
-      />
-
-  <browser:page
-      for="*"
-      name="zafview"
-      class=".zafview.ZafView"
-      permission="zope.Public"
-      template="templates/zafview.pt"
+      description="Vue pour Client"
       />
 
   <browser:page
