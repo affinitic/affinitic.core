@@ -53,6 +53,22 @@
 
   <browser:page
       for="Products.CMFCore.interfaces.IFolderish"
+      name="servicesfolderview"
+      class=".servicesfolderview.ServicesFolderView"
+      permission="zope.Public"
+      template="templates/servicesfolderview.pt"
+      />
+
+  <browser:menuItem
+      for="Products.CMFCore.interfaces.IFolderish"
+      menu="plone_displayviews"
+      title="Vue pour Services"
+      action="servicesfolderview"
+      description="Vue pour Services"
+      />
+
+  <browser:page
+      for="Products.CMFCore.interfaces.IFolderish"
       name="clientfolderview"
       class=".clientfolderview.ClientFolderView"
       permission="zope.Public"

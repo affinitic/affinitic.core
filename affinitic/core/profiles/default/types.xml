@@ -4,4 +4,5 @@
  <object name="Collection" meta_type="Dexterity FTI"/>
  <object name="zaf" meta_type="Dexterity FTI"/>
  <object name="client" meta_type="Dexterity FTI"/>
+ <object name="slides" meta_type="Dexterity FTI"/>
 </object>

@@ -1,0 +1,17 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      metal:use-macro="here/main_template/macros/master">
+    <head>
+    </head>
+    <body>
+        <div metal:fill-slot="content-core"
+      id="client-listing-wrapper"
+      tal:define="services view/getServices">
+            <div tal:repeat="service services" class="services">
+                <a tal:attributes="href string:${service/absolute_url}">
+                    <div tal:content="service/Title"></div>
+                    <div tal:content="service/Description"></div>
+                </a>
+            </div>
+        </div>
+    </body>
+</html>

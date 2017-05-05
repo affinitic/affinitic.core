@@ -6,5 +6,6 @@
     <element value="zaffolderview" />
     <element value="clientfolderview" />
     <element value="slidesfolderview" />
+    <element value="servicesfolderview" />
   </property>
 </object>
