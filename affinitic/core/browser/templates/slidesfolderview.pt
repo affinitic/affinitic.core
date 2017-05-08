@@ -11,19 +11,33 @@
         <div metal:fill-slot="content-description"> </div>
         <div metal:fill-slot="content-core">
             <tal:results define="results python:context.results();">
-                <tal:bcl tal:repeat="brain results">
-                <a tal:attributes="href string:${brain/absolute_url}">
-                    <div class="slide">
-                        <div tal:content="brain/Title"></div>
-                        <tal:item define="obj brain/getObject">
-                            <div tal:replace="obj/type_slide" />
-                            <div class="tileImage" tal:attributes="style string:background-image:url(${obj/absolute_url}/@@images/parallax_front/mini)">
+                <div id="slides_home">
+                    <tal:bcl tal:repeat="brain results">
+                        <article class="tileItem">
+                            <tal:item define="obj brain/getObject">
+                            <a tal:attributes="href string:${obj/absolute_url}">
+                                <div class="contentItem">
+                                    <h1>
+                                        <span tal:content="brain/Title" />
+                                    </h1>
+                                    <div class="tileBody">
+                                        <span tal:content="brain/description" />
+                                    </div>
+                                    <div class="tileFooter">
+                                            Lire la suite…
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="tileImage Front" tal:attributes="style string:background-image:url(${obj/absolute_url}/@@images/parallax_front/large)">
                             </div>
-                        </tal:item>
-                    </div>
-                </a>
-                </tal:bcl>
+                            <div class="tileImage Back" tal:attributes="style string:background-image:url(${obj/absolute_url}/@@images/parallax_back/large)">
+                            </div>
+                            </tal:item>
+                        </article>
+                    </tal:bcl>
+                </div>
             </tal:results>
+            <div id="clear"></div>
          </div>
     </body>
 </html>

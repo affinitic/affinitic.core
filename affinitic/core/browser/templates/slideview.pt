@@ -7,9 +7,9 @@
             <article id="slides-description">
                 <div class="tileImage" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/photo/large)">
                 </div>
-                <h1 class="documentFirstHeading" tal:content="context/type_slide"></h1>
+                <h1 class="documentFirstHeading" tal:content="context/Title"></h1>
                 <h2 class="documentFirstHeading" tal:content="context/description"></h2>
-                <span tal:replace="structure context/text/output"/>
+                <span tal:condition="context/text/output" tal:replace="structure context/text/output"/>
                 <div class="tileImage" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/parallax_front/large)">
                 </div>
                 <div class="tileImage" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/parallax_back/large)">
