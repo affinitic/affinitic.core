@@ -5,39 +5,47 @@
       lang="en"
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="plone">
-    <head></head>
+    <head>
+        <script src="https://raw.githubusercontent.com/pixelcog/parallax.js/master/parallax.js"></script>
+    </head>
     <body>
         <div metal:fill-slot="content-title"> </div>
         <div metal:fill-slot="content-description"> </div>
         <div metal:fill-slot="content-core">
             <tal:results define="results python:context.results();">
-                <div id="slides_home">
-                    <tal:bcl tal:repeat="brain results">
-                        <article class="tileItem">
-                            <tal:item define="obj brain/getObject">
+            <div id="slides_home">
+                <tal:article tal:repeat="brain results">
+                <tal:item define="obj brain/getObject">
+                <article class="tileItem" tal:attributes="id string:${brain/Title}">
+                        <div class="contentItem">
+                            <h1>
+                                <span tal:content="brain/Title" />
+                            </h1>
+                            <div class="tileBody">
+                                <span tal:content="brain/description" />
+                            </div>
                             <a tal:attributes="href string:${obj/absolute_url}">
-                                <div class="contentItem">
-                                    <h1>
-                                        <span tal:content="brain/Title" />
-                                    </h1>
-                                    <div class="tileBody">
-                                        <span tal:content="brain/description" />
-                                    </div>
-                                    <div class="tileFooter">
-                                            Lire la suite…
-                                    </div>
+                                <div class="tileFooter">
+                                    Lire la suite…
                                 </div>
                             </a>
-                            <div class="tileImage Front" tal:attributes="style string:background-image:url(${obj/absolute_url}/@@images/parallax_front/large)">
-                            </div>
-                            <div class="tileImage Back" tal:attributes="style string:background-image:url(${obj/absolute_url}/@@images/parallax_back/large)">
-                            </div>
-                            </tal:item>
-                        </article>
-                    </tal:bcl>
-                </div>
+                        </div>
+                    <div class="tileImage Front" tal:attributes="style string:background-image:url(${obj/absolute_url}/@@images/parallax_front/large); id string:front_${brain/Title}">
+                    </div>
+                    <div class="tileImage Back" tal:attributes="style string:background-image:url(${obj/absolute_url}/@@images/parallax_back/large); id string:back_${brain/Title}">
+                    </div>
+                </article>
+                </tal:item>
+                </tal:article>
+            </div>
+            <div id="buttons_home">
+                <tal:button tal:repeat="brain results">
+                <a tal:attributes="id string:${brain/Title}; href string:#${brain/Title}" class="button_home">
+                </a>
+                </tal:button>
+            </div>
             </tal:results>
             <div id="clear"></div>
-         </div>
+        </div>
     </body>
 </html>

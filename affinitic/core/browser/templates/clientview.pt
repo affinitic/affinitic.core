@@ -2,33 +2,57 @@
       metal:use-macro="here/main_template/macros/master">
   <body>
     <div metal:fill-slot="main">
-        <article id="client-description">
-            <h1 class="documentFirstHeading"
-                tal:content="context/nom"></h1>
-
-            <section id="client-image-site-description">
-                <a href=""
-                   tal:attributes="href context/url"
-                   target="_blank">
-                <img tal:attributes="src string:${context/absolute_url}/@@images/capture/preview"/></a>
-                <br />
-                <div class="float-left client-url">
-                    <a href=""
-                       tal:attributes="href context/url"
-                       tal:content="context/url"
-                       target="_blank" />
+        <article>
+            <div id="client-testimonial">
+                <h2 tal:content="context/testimonial/output">
+                </h2>
+                <div tal:content="context/author">
                 </div>
-                <div class="float-right client-date">
-                    <span tal:replace="python:context.realisation_date.strftime('%d-%m-%Y')"/>
+            </div>
+            <div id="client-description">
+                <div class="img" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/capture/large)">
                 </div>
-                <div class="break-float"></div>
-            </section>
-
-            <section id="client-site-description">
-                <h3>Description</h3>
-                <span tal:replace="structure context/texte/output"/>
-            </section>
+                <div class="txt">
+                    <h2>A propos du projet</h2>
+                    <span tal:replace="structure context/texte/output"/>
+                </div>
+            </div>
+            <div id="client-resume">
+                <div class="resume client">
+                    <h2>Le client</h2>
+                    <span class="documentFirstHeading" tal:content="context/nom"></span>
+                </div>
+                <div class="resume task">
+                    <h2>Notre tâche</h2>
+                    <span class="documentFirstHeading" tal:content="context/description"></span>
+                </div>
+                <div class="resume web">
+                    <h2>Leur site web</h2>
+                    <a href="" tal:attributes="href context/url" target="_blank">
+                        <span tal:content="context/url"></span>
+                    </a>
+                </div>
+                <div id="clear"></div>
+                <div class="number">
+                    <h2>En chiffre</h2>
+                    <div>
+                        <span class="number_nbr" tal:content="context/nbr">3</span>
+                        <hr>
+                        <span class="number_nbr" tal:content="context/type">3</span>
+                    </div>
+                </div>
+                <div class="service">
+                    <h2>Services</h2>
+                    <div class="img">
+                    </div>
+                    <div class="img">
+                    </div>
+                    <div class="img">
+                    </div>
+                </div>
+            </div>
         </article>
+        <div id="clear"></div>
     </div>
   </body>
 </html>

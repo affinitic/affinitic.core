@@ -18,6 +18,14 @@
                         <section id="client-site-description">
                             <span class="description" tal:replace="structure client/description"/>
                         </section>
+                        <div class="tileServices">
+                            <div class="img">
+                            </div>
+                            <div class="img">
+                            </div>
+                            <div class="img">
+                            </div>
+                        </div>
                     </div>
                     <div class="tileFooter">
                         Lire la suite…

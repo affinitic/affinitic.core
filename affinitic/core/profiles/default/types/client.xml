@@ -28,26 +28,51 @@
     name="model_source">&lt;model xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns="http://namespaces.plone.org/supermodel/schema"&gt;
     &lt;schema&gt;
       &lt;field name="nom" type="zope.schema.TextLine"&gt;
-        &lt;description&gt;Nom du client&lt;/description&gt;
-        &lt;title&gt;Nom&lt;/title&gt;
+        &lt;title&gt;Nom du client&lt;/title&gt;
       &lt;/field&gt;
+
+      &lt;field name="testimonial" type="plone.app.textfield.RichText"&gt;
+        &lt;description&gt;Témoignage &lt;/description&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;/field&gt;
+
+      &lt;field name="author" type="zope.schema.TextLine"&gt;
+        &lt;title&gt;Auteur du témoignage&lt;/title&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;/field&gt;
+
       &lt;field name="capture" type="plone.namedfile.field.NamedBlobImage"&gt;
-        &lt;description&gt;Afficher une capture de la homepage du site du client&lt;/description&gt;
         &lt;title&gt;Capture-image du site&lt;/title&gt;
-      &lt;/field&gt;
+        &lt;/field&gt;
+
       &lt;field name="url" type="zope.schema.TextLine"&gt;
         &lt;description&gt;Url du site du client&lt;/description&gt;
         &lt;title&gt;url&lt;/title&gt;
-      &lt;/field&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;/field&gt;
+
       &lt;field name="realisation_date" type="zope.schema.Date"&gt;
         &lt;description&gt;Date de la r&amp;#233;alisation du site&lt;/description&gt;
         &lt;required&gt;False&lt;/required&gt;
         &lt;title&gt;Date de r&amp;#233;alisation&lt;/title&gt;
-      &lt;/field&gt;
+        &lt;/field&gt;
+
       &lt;field name="texte" type="plone.app.textfield.RichText"&gt;
-        &lt;description&gt;Une description &lt;/description&gt;
-        &lt;title&gt;Texte&lt;/title&gt;
+        &lt;title&gt;Présentation complète du projet et du client&lt;/title&gt;
+        &lt;required&gt;False&lt;/required&gt;
       &lt;/field&gt;
+
+
+      &lt;field name="nbr" type="zope.schema.Int"&gt;
+        &lt;description&gt;Exemple : 3 personnes (ont travaillé sur le site)&lt;/description&gt;
+        &lt;title&gt;Nombre&lt;/title&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;/field&gt;
+      &lt;field name="type" type="zope.schema.TextLine"&gt;
+        &lt;title&gt;de &lt;/title&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;/field&gt;
+
     &lt;/schema&gt;
   &lt;/model&gt;</property>
  <property name="model_file"></property>
