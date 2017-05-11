@@ -68,10 +68,31 @@
         &lt;title&gt;Nombre&lt;/title&gt;
         &lt;required&gt;False&lt;/required&gt;
         &lt;/field&gt;
+
       &lt;field name="type" type="zope.schema.TextLine"&gt;
         &lt;title&gt;de &lt;/title&gt;
         &lt;required&gt;False&lt;/required&gt;
         &lt;/field&gt;
+
+      &lt;field name="webdesign" type="zope.schema.Bool"&gt;
+        &lt;title&gt;Webdesign&lt;/title&gt;
+        &lt;required&gt;False&lt;/required&gt;
+      &lt;/field&gt;
+
+      &lt;field name="developpement" type="zope.schema.Bool"&gt;
+        &lt;title&gt;Developpement&lt;/title&gt;
+        &lt;required&gt;False&lt;/required&gt;
+      &lt;/field&gt;
+
+      &lt;field name="hebergement" type="zope.schema.Bool"&gt;
+        &lt;title&gt;Hebergement&lt;/title&gt;
+        &lt;required&gt;False&lt;/required&gt;
+      &lt;/field&gt;
+
+      &lt;field name="coaching" type="zope.schema.Bool"&gt;
+        &lt;title&gt;Coaching&lt;/title&gt;
+        &lt;required&gt;False&lt;/required&gt;
+      &lt;/field&gt;
 
     &lt;/schema&gt;
   &lt;/model&gt;</property>
