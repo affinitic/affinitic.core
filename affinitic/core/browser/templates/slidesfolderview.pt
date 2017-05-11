@@ -18,21 +18,21 @@
                 <tal:item define="obj brain/getObject">
                 <article class="tileItem" tal:attributes="id string:${brain/Title}">
                         <div class="contentItem">
-                            <h1>
-                                <span tal:content="brain/Title" />
-                            </h1>
+                            <h1 tal:content="brain/Title" />
                             <div class="tileBody">
-                                <span tal:content="brain/description" />
+                                <h2 tal:content="brain/description" />
                             </div>
                             <a tal:attributes="href string:${obj/absolute_url}">
                                 <div class="tileFooter">
-                                    Lire la suite…
+                                    En savoir plus…
                                 </div>
                             </a>
                         </div>
                     <div class="tileImage Front" tal:attributes="style string:background-image:url(${obj/absolute_url}/@@images/parallax_front/large); id string:front_${brain/Title}">
                     </div>
                     <div class="tileImage Back" tal:attributes="style string:background-image:url(${obj/absolute_url}/@@images/parallax_back/large); id string:back_${brain/Title}">
+                    </div>
+                    <div class="tileImage BackgroundColor">
                     </div>
                 </article>
                 </tal:item>
