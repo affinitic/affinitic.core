@@ -19,11 +19,13 @@
                             <span class="description" tal:replace="structure client/description"/>
                         </section>
                         <div class="tileServices">
-                            <div class="img">
+                            <div class="img webdesign" tal:condition="client/webdesign">
                             </div>
-                            <div class="img">
+                            <div class="img developpement" tal:condition="client/developpement">
                             </div>
-                            <div class="img">
+                            <div class="img hebergement" tal:condition="client/hebergement">
+                            </div>
+                            <div class="img coaching" tal:condition="client/coaching">
                             </div>
                         </div>
                     </div>

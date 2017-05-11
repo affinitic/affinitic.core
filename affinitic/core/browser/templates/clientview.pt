@@ -20,11 +20,11 @@
             <div id="client-resume">
                 <div class="resume client">
                     <h2>Le client</h2>
-                    <span class="documentFirstHeading" tal:content="context/nom"></span>
+                    <span tal:content="context/nom"></span>
                 </div>
                 <div class="resume task">
                     <h2>Notre tâche</h2>
-                    <span class="documentFirstHeading" tal:content="context/description"></span>
+                    <span tal:content="context/description"></span>
                 </div>
                 <div class="resume web">
                     <h2>Leur site web</h2>
@@ -43,11 +43,13 @@
                 </div>
                 <div class="service">
                     <h2>Services</h2>
-                    <div class="img">
+                    <div class="img webdesign" tal:condition="context/webdesign">
                     </div>
-                    <div class="img">
+                    <div class="img developpement" tal:condition="context/developpement">
                     </div>
-                    <div class="img">
+                    <div class="img hebergement" tal:condition="context/hebergement">
+                    </div>
+                    <div class="img coaching" tal:condition="context/coaching">
                     </div>
                 </div>
             </div>
