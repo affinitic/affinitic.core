@@ -10,13 +10,15 @@
                 <article class="tileItem">
                     <a tal:attributes="href string:${service/absolute_url}">
                         <div class="contentItem">
-                            <div class="tileHeader" tal:content="service/Title"></div>
+                            <div class="tileHeader">
+                                <div class="tileImage" tal:attributes="style string:background-image:url(${service/absolute_url}/@@images/photo)">
+                                </div>
+                                <h2 tal:content="service/Title"/>
+                            </div>
                             <div class="tileBody" tal:content="service/Description"></div>
                             <div class="tileFooter">
-                                Lire la suite…
+                                En savoir plus…
                             </div>
-                        </div>
-                        <div class="tileImage" tal:attributes="style string:background-image:url(${service/absolute_url}/@@images/photo/large)">
                         </div>
                     </a>
                 </article>
