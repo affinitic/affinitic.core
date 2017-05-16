@@ -4,48 +4,40 @@
     </head>
     <body>
         <div metal:fill-slot="main">
-            <article id="zaf-boyz-description">
-                <div class="tileImage" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/photo/mini)">
-                </div>
-                <h1 class="documentFirstHeading" tal:content="context/name"></h1>
-                <h2>
+            <header>
+                <div class="title">
+                    <div class="tileImage" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/photo/mini)">
+                    </div>
+                    <h2 tal:content="context/name"></h2>
                     <span tal:replace="context/fonction" class="fonction"></span>
-                </h2>
-                <span class="date">
-                    Depuis le <span tal:replace="python: context.engagement_date.strftime('%d/%m/%Y')"></span>
-                </span>
-                <div id="description">
-                    <div id="contact">
-                        <h3>Contact</h3>
-                        <ul>
-                            <li tal:define="email context/email">
-                                Email :
-                                <a tal:attributes="href string:mailto:${email}">
-                                    <span tal:replace="email"/>
-                                </a>
-                            </li>
-                            <li tal:define="account context/github"
-                         tal:condition="account">
-                                GitHub :
-                                <a tal:attributes="href string:https://github.com/${account}">
-                                    <span tal:replace="account"/>
-                                </a>
-                            </li>
-                            <li tal:define="account context/twitter"
-                         tal:condition="account">
-                                Twitter :
-                                <a tal:attributes="href string:https://twitter.com/${account}">
-                                    <span tal:replace="account"/>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="experience">
-                        <h3>Expérience</h3>
-                        <span tal:replace="structure context/text/output"/>
+                    <div class="date">
+                        Depuis le <span tal:replace="python: context.engagement_date.strftime('%d/%m/%Y')"></span>
                     </div>
                 </div>
-            </article>
+
+            </header>
+            <div id="description">
+                <div id="description_left">
+                    <h2>Contact</h2>
+                    <a tal:attributes="href string:mailto:${email}" tal:define="email context/email" tal:condition="email">
+                        <div class="img mail">
+                            <span tal:replace="email" />
+                        </div>
+                    </a>
+                    <a  tal:attributes="href string:https://twitter.com/${twitter}"  tal:define="twitter context/twitter" tal:condition="twitter">
+                        <div class="img twitter">
+                        </div>
+                    </a>
+                    <a tal:attributes="href string:https://github.com/${github}" tal:define="github context/github" tal:condition="github">
+                        <div class="img github">
+                        </div>
+                    </a>
+                </div>
+                <div id="description_right">
+                    <h2>Expérience</h2>
+                    <span tal:replace="structure context/text/output"/>
+                </div>
+            </div>
         </div>
     </body>
 </html>

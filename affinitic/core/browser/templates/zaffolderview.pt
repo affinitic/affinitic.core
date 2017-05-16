@@ -3,28 +3,29 @@
   <body>
     <div metal:fill-slot="content-core"
          tal:define="zafs view/getZafs">
+        <div class="intro">
+            Texte en dur dans la template
+        </div>
         <tal:bcl tal:repeat="zaf zafs">
-            <a tal:attributes="href string:${zaf/absolute_url}">
                 <article class="tileItem">
-                    <div class="tileImage" tal:attributes="style string:background-image:url(${zaf/absolute_url}/@@images/photo/thumb)">
-                    </div>
-                    <h2 class="tileHeadline" tal:content="zaf/name">
-                    </h2>
-                    <div class="tileBody">
-                        <span tal:replace="zaf/fonction"/>
-                    </div>
-                    <div class="tileMail" tal:define="email zaf/email">
-                        <a href="" tal:attributes="href string:mailto:${email}">
-                            <span tal:replace="email"/>
-                        </a>
-                    </div>
-                    <div class="tileFooter">
-                        Lire la suite…
-                    </div>
-                    <div class="visualClear"><!-- --></div>
+                    <a tal:attributes="href string:${zaf/absolute_url}">
+                        <div class="tileImage" tal:attributes="style string:background-image:url(${zaf/absolute_url}/@@images/photo/large)">
+                        </div>
+                        <h2 class="tileHeadline" tal:content="zaf/name">
+                        </h2>
+                        <div class="tileBody">
+                            <div tal:replace="zaf/fonction"></div>
+                            <div class="mail">
+                                <span tal:replace="email" tal:define="email zaf/email" tal:condition="email"/>
+                            </div>
+                        </div>
+                        <div class="tileFooter">
+                            Voir le cv...
+                        </div>
+                    </a>
                 </article>
-            </a>
         </tal:bcl>
+        <div id="clear"></div>
     </div>
   </body>
 </html>

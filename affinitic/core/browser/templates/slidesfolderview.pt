@@ -14,6 +14,26 @@
         <div metal:fill-slot="content-core">
             <tal:results define="results python:context.results();">
             <div id="slides_home">
+                <article class="tileItem" id="intro">
+                        <div class="contentItem">
+                            <img src="/Affinitic/++theme++affinitic.theme/images/affinitic_logo_blanc.png">
+                            <h1>
+                                Bienvenue
+                            </h1>
+                            <div class="tileBody">
+                                <h2>
+                                    Votre spécialiste du développement sur mesure de solutions digitales
+                                </h2>
+                            </div>
+                            <div class="fleche"></div>
+                        </div>
+
+                    <div class="tileImage Front" id="front_intro">
+                    </div>
+                    <div class="tileImage Back" id="back_intro">
+                    </div>
+                </article>
+
                 <tal:article tal:repeat="brain results">
                 <tal:item define="obj brain/getObject">
                 <article class="tileItem" tal:attributes="id string:${brain/Title}">
@@ -28,9 +48,9 @@
                                 </div>
                             </a>
                         </div>
-                    <div class="tileImage Front" tal:attributes="style string:background-image:url(${obj/absolute_url}/@@images/parallax_front/large); id string:front_${brain/Title}">
+                    <div class="tileImage Front" tal:attributes="style string:background-image:url(${obj/absolute_url}/@@images/parallax_front/); id string:front_${brain/Title}">
                     </div>
-                    <div class="tileImage Back" tal:attributes="style string:background-image:url(${obj/absolute_url}/@@images/parallax_back/large); id string:back_${brain/Title}">
+                    <div class="tileImage Back" tal:attributes="style string:background-image:url(${obj/absolute_url}/@@images/parallax_back/); id string:back_${brain/Title}">
                     </div>
                     <div class="tileImage BackgroundColor">
                     </div>
@@ -39,6 +59,8 @@
                 </tal:article>
             </div>
             <div id="buttons_home">
+                <a href="#intro" class="button_home">
+                </a>
                 <tal:button tal:repeat="brain results">
                 <a tal:attributes="id string:${brain/Title}; href string:#${brain/Title}" class="button_home">
                 </a>
