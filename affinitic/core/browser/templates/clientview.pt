@@ -3,53 +3,52 @@
   <body>
     <div metal:fill-slot="main">
         <article>
-            <div id="client-testimonial">
-                <h2 tal:content="context/testimonial/output">
+            <header>
+                <h2 tal:content="context/testimonial/output" class="citation">
                 </h2>
                 <div tal:content="context/author">
                 </div>
-            </div>
-            <div id="client-description">
-                <div class="img" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/capture/large)">
+            </header>
+            <div class="column_60">
+                <div class="column_img" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/capture/large)">
                 </div>
                 <div class="txt">
                     <h2>A propos du projet</h2>
                     <span tal:replace="structure context/texte/output"/>
                 </div>
             </div>
-            <div id="client-resume">
-                <div class="resume client">
+            <div class="column_40 left">
+                <div class="icone client">
                     <h2>Le client</h2>
                     <span tal:content="context/nom"></span>
                 </div>
-                <div class="resume task">
+                <div class="icone task">
                     <h2>Notre tâche</h2>
                     <span tal:content="context/description"></span>
                 </div>
-                <div class="resume web">
+                <div class="icone link">
                     <h2>Leur site web</h2>
                     <a href="" tal:attributes="href context/url" target="_blank">
                         <span tal:content="context/url"></span>
                     </a>
                 </div>
-                <div id="clear"></div>
-                <div class="number">
+                <div>
                     <h2>En chiffre</h2>
                     <div>
-                        <span class="number_nbr" tal:content="context/nbr">3</span>
+                        <h2 tal:content="context/nbr" />
                         <hr>
-                        <span class="number_nbr" tal:content="context/type">3</span>
+                        <h2 tal:content="context/type" />
                     </div>
                 </div>
-                <div class="service">
+                <div>
                     <h2>Services</h2>
-                    <div class="img webdesign" tal:condition="context/webdesign">
+                    <div class="icone webdesign" tal:condition="context/webdesign">
                     </div>
-                    <div class="img developpement" tal:condition="context/developpement">
+                    <div class="icone developpement" tal:condition="context/developpement">
                     </div>
-                    <div class="img hebergement" tal:condition="context/hebergement">
+                    <div class="icone hebergement" tal:condition="context/hebergement">
                     </div>
-                    <div class="img coaching" tal:condition="context/coaching">
+                    <div class="icone coaching" tal:condition="context/coaching">
                     </div>
                 </div>
             </div>

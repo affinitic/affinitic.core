@@ -3,41 +3,41 @@
     <head>
     </head>
     <body>
-        <div metal:fill-slot="main">
-            <header>
-                <div class="title">
-                    <div class="tileImage" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/photo/mini)">
+        <div metal:fill-slot="main" id="cv">
+            <article>
+                <header>
+                    <h2 tal:content="context/name">
+                    </h2>
+                    <div class="txt" tal:content="context/fonction">
                     </div>
-                    <h2 tal:content="context/name"></h2>
-                    <span tal:replace="context/fonction" class="fonction"></span>
-                    <div class="date">
-                        Depuis le <span tal:replace="python: context.engagement_date.strftime('%d/%m/%Y')"></span>
-                    </div>
-                </div>
-
-            </header>
-            <div id="description">
-                <div id="description_left">
+                    <span class="timbre_img" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/photo/large)" />
+                </header>
+                <div class="column_30 left">
                     <h2>Contact</h2>
-                    <a tal:attributes="href string:mailto:${email}" tal:define="email context/email" tal:condition="email">
-                        <div class="img mail">
+                    <a tal:attributes="href string:mailto:${email}" tal:define="email context/email" tal:condition="email" target="_blank">
+                        <div class="icone mail">
                             <span tal:replace="email" />
                         </div>
                     </a>
-                    <a  tal:attributes="href string:https://twitter.com/${twitter}"  tal:define="twitter context/twitter" tal:condition="twitter">
-                        <div class="img twitter">
+                    <h2>Follow</h2>
+                    <a tal:attributes="href string:https://github.com/${twitter}" tal:define="twitter context/twitter" tal:condition="twitter" target="_blank">
+                        <div class="icone twitter">
                         </div>
                     </a>
-                    <a tal:attributes="href string:https://github.com/${github}" tal:define="github context/github" tal:condition="github">
-                        <div class="img github">
+                    <a tal:attributes="href string:https://github.com/${github}" tal:define="github context/github" tal:condition="github" target="_blank">
+                        <div class="icone github">
                         </div>
                     </a>
                 </div>
-                <div id="description_right">
-                    <h2>Expérience</h2>
-                    <span tal:replace="structure context/text/output"/>
+
+                <div class="column_70 left">
+                    <div class="txt">
+                        <h2>Expérience</h2>
+                        <span tal:replace="structure context/text/output"/>
+                    </div>
                 </div>
-            </div>
+            </article>
+            <div id=clear></div>
         </div>
     </body>
 </html>

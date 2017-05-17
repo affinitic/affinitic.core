@@ -4,17 +4,30 @@
     </head>
     <body>
         <div metal:fill-slot="main">
-            <article id="slides-description">
-                <div class="tileImage" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/photo/large)">
+            <header>
+                <div class="description">
+                    <div class="tileImage" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/photo/large)">
+                    </div>
+                    <h2 tal:content="context/Title"></h2>
+                    <span tal:replace="context/description" class="description"></span>
                 </div>
-                <h1 class="documentFirstHeading" tal:content="context/Title"></h1>
-                <h2 class="documentFirstHeading" tal:content="context/description"></h2>
-                <span tal:condition="context/text/output" tal:replace="structure context/text/output"/>
-                <div class="tileImage" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/parallax_front/large)">
+            </header>
+            <div id="description">
+                <div id="description_left">
+                    <h2>Résumé</h2>
+                    nknknkjnknk
                 </div>
-                <div class="tileImage" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/parallax_back/large)">
+                <div id="description_right">
+                    <h2>Description</h2>
+                    <span tal:replace="structure context/text/output"/>
                 </div>
-            </article>
+                <div id="background">
+                    <div class="tileImage" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/parallax_front/large)">
+                    </div>
+                    <div class="tileImage" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/parallax_back/large)">
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
