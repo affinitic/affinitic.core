@@ -4,9 +4,10 @@
     <div metal:fill-slot="main">
         <article>
             <header>
-                <h2 tal:content="context/testimonial/output" class="citation">
+                <h2 class="citation" tal:define="testimonial context/testimonial" tal:condition="testimonial" tal:content="testimonial/output">
+                    Référence
                 </h2>
-                <div tal:content="context/author">
+                <div tal:define="author context/author" tal:condition="author" tal:content="author">
                 </div>
             </header>
             <div class="column_60">
@@ -42,13 +43,13 @@
                 </div>
                 <div>
                     <h2>Services</h2>
-                    <div class="icone webdesign" tal:condition="context/webdesign">
+                    <div class="icone webdesign" tal:define="service context/webdesign" tal:condition="service">
                     </div>
-                    <div class="icone developpement" tal:condition="context/developpement">
+                    <div class="icone developpement" tal:define="service context/developpement" tal:condition="service">
                     </div>
-                    <div class="icone hebergement" tal:condition="context/hebergement">
+                    <div class="icone hebergement" tal:define="service context/hebergement" tal:condition="service">
                     </div>
-                    <div class="icone coaching" tal:condition="context/coaching">
+                    <div class="icone coaching" tal:define="service context/coaching" tal:condition="service">
                     </div>
                 </div>
             </div>

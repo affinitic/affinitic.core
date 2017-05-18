@@ -18,7 +18,7 @@
                         <div class="contentItem">
                             <img src="/Affinitic/++theme++affinitic.theme/images/affinitic_logo_blanc.png">
                             <h1>
-                                Bienvenue
+                               AFFINITIC 
                             </h1>
                             <div class="tileBody">
                                 <h2>
@@ -37,17 +37,17 @@
                 <tal:article tal:repeat="brain results">
                 <tal:item define="obj brain/getObject">
                 <article class="tileItem" tal:attributes="id string:${brain/Title}">
-                        <div class="contentItem">
-                            <h1 tal:content="brain/Title" />
+                    <div class="contentItem">
+                        <h1 tal:content="brain/Title" />
                             <div class="tileBody">
                                 <h2 tal:content="brain/description" />
                             </div>
-                            <a tal:attributes="href string:${obj/absolute_url}">
-                                <div class="tileFooter">
-                                    En savoir plus…
-                                </div>
-                            </a>
+                    </div>
+                    <a tal:attributes="href string:${obj/absolute_url}" class="more_info">
+                        <div class="tileFooter">
+                            En savoir plus…
                         </div>
+                    </a>
                     <div class="tileImage Front" tal:attributes="style string:background-image:url(${obj/absolute_url}/@@images/parallax_front/); id string:front_${brain/Title}">
                     </div>
                     <div class="tileImage Back" tal:attributes="style string:background-image:url(${obj/absolute_url}/@@images/parallax_back/); id string:back_${brain/Title}">
@@ -59,12 +59,6 @@
                 </tal:article>
             </div>
             <div id="buttons_home">
-                <a href="#intro" class="button_home">
-                </a>
-                <tal:button tal:repeat="brain results">
-                <a tal:attributes="id string:${brain/Title}; href string:#${brain/Title}" class="button_home">
-                </a>
-                </tal:button>
             </div>
             </tal:results>
             <div id="clear"></div>

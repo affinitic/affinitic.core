@@ -2,28 +2,24 @@
       metal:use-macro="here/main_template/macros/master">
   <body>
     <div metal:fill-slot="content-core" id="vignette" class="carte" tal:define="list view/getZafs">
-        <div class="intro">
-            Texte en dur dans la template
-        </div>
-            <tal:bcl tal:repeat="context list">
-            <a tal:attributes="href string:${context/absolute_url}">
-                <article class="tileItem">
-                    <h2 class="tileHeadline" tal:content="context/name">
-                    </h2>
-                    <div class="tileImage" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/photo/large)">
+        <tal:bcl tal:repeat="context list">
+        <a tal:attributes="href string:${context/absolute_url}">
+            <article class="tileItem">
+                <h2 class="tileHeadline" tal:content="context/name">
+                </h2>
+                <div class="tileImage" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/photo/large)">
+                </div>
+                <div class="tileBody">
+                    <div class="description">
+                        <span tal:replace="context/fonction"/>
                     </div>
-                    <div class="tileBody">
-                        <div class="description">
-                            <span tal:replace="context/fonction"/>
-                        </div>
-                        <span tal:replace="email" tal:define="email context/email" tal:condition="email"/>
-                    </div>
-                    <div class="tileFooter">
-                        Voir le cv...
-                    </div>
-                </article>
-            </a>
-            </tal:bcl>
+                </div>
+                <div class="tileFooter">
+                    +
+                </div>
+            </article>
+        </a>
+        </tal:bcl>
         <div id="clear"></div>
     </div>
   </body>
