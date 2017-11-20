@@ -3,30 +3,50 @@
     <head>
     </head>
     <body>
-        <div metal:fill-slot="content-core" id="vignette" tal:define="list view/getClients" class="float">
+        <div metal:fill-slot="content-core" id="clients-folder" tal:define="list view/getClients">
             <tal:bcl tal:repeat="context list">
-            <article class="tileItem">
-                <a tal:attributes="href string:${context/absolute_url}">
-                    <h2 class="tileHeadline" tal:content="context/nom">
-                    </h2>
-                    <div class="tileImage" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/capture/large)">
+            <a tal:attributes="href string:${context/absolute_url}">
+                <article class="Item">
+                    <div class="Item-image" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/capture/large)">
                     </div>
-                    <div class="tileBody">
-                        <div class="description">
+                    <div class="Item-info">
+                        <div class="Item-name" tal:content="context/nom">
+                        </div>
+                        <div class="Item-description">
                             <span tal:replace="structure context/description" />
                         </div>
-                        <div>
-                            <span class="icone webdesign" tal:condition="context/webdesign" />
-                                <span class="icone developpement" tal:condition="context/developpement" />
-                                    <span class="icone hebergement" tal:condition="context/hebergement" />
-                                        <span class="icone coaching" tal:condition="context/coaching" />
+                        <div class="Item-icons">
+                            <span tal:define="service context/webdesign" tal:condition="service">
+                                <span class="fa-stack fa-lg icon">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-desktop fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </span>
+                            <span tal:define="service context/developpement" tal:condition="service">
+                                <span class="fa-stack fa-lg icon">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-code fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </span>
+                            <span tal:define="service context/hebergement" tal:condition="service">
+                                <span class="fa-stack fa-lg icon">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-cloud fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </span>
+                            <span tal:define="service context/coaching" tal:condition="service">
+                                <span class="fa-stack fa-lg icon">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa graduation-cap fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="Item-more">
+                            Lire la suite…
                         </div>
                     </div>
-                    <div class="tileFooter">
-                        Lire la suite…
-                    </div>
-                </a>
-            </article>
+                </article>
+            </a>
             </tal:bcl>
             <div id="clear"></div>
         </div>

@@ -1,60 +1,103 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       metal:use-macro="here/main_template/macros/master">
-  <body>
-    <div metal:fill-slot="main">
-        <article>
-            <header>
-                <h2 class="citation" tal:define="testimonial context/testimonial" tal:condition="testimonial" tal:content="testimonial/output">
-                    Référence
-                </h2>
-                <div tal:define="author context/author" tal:condition="author" tal:content="author">
-                </div>
-            </header>
-            <div class="column_60">
-                <div class="column_img" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/capture/large)">
-                </div>
-                <div class="txt">
-                    <h2>A propos du projet</h2>
-                    <span tal:replace="structure context/texte/output"/>
-                </div>
-            </div>
-            <div class="column_40 left">
-                <div class="icone client">
-                    <h2>Le client</h2>
-                    <span tal:content="context/nom"></span>
-                </div>
-                <div class="icone task">
-                    <h2>Notre tâche</h2>
-                    <span tal:content="context/description"></span>
-                </div>
-                <div class="icone link">
-                    <h2>Leur site web</h2>
-                    <a href="" tal:attributes="href context/url" target="_blank">
-                        <span tal:content="context/url"></span>
-                    </a>
-                </div>
-                <div>
-                    <h2>En chiffre</h2>
+    <body>
+        <div metal:fill-slot="main" class="client-view">
+            <article>
+                <header>
+                    <div  tal:define="testimonial context/testimonial" tal:condition="testimonial">
+                        <span tal:content="structure testimonial/output" class="citation">Citation</span>
+                    </div>
+                    <div tal:define="author context/author" tal:condition="author" tal:content="author" class="author">
+                    </div>
+                </header>
+                <section>
                     <div>
-                        <h2 tal:content="context/nbr" />
-                        <hr>
-                        <h2 tal:content="context/type" />
+                        <div class="column_img" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/capture/large)">
+                        </div>
+                        <div>
+                            <div class="title">
+                                A propos du projet
+                            </div>
+                            <span tal:replace="structure context/texte/output"/>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <h2>Services</h2>
-                    <div class="icone webdesign" tal:define="service context/webdesign" tal:condition="service">
+                    <div>
+                        <div>
+                            <span class="fa-stack fa-lg icon">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <span class="title">
+                                Le client
+                            </span>
+                            <div class="text" tal:content="context/nom"></div>
+                        </div>
+                        <div>
+                            <span class="fa-stack fa-lg icon">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-tasks fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <span class="title">
+                                Notre tâche
+                            </span>
+                            <div class="text" tal:content="context/description"></div>
+                        </div>
+                        <div >
+                            <span class="fa-stack fa-lg icon">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-link fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <span class="title">
+                                Leur site web
+                            </span>
+                            <a href="" tal:attributes="href context/url" target="_blank">
+                                <div class="text" tal:content="context/url"></div>
+                            </a>
+                        </div>
+                        <div>
+                            <span class="fa-stack fa-lg icon">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <span class="title">
+                                En chiffre
+                            </span>
+                            <div>
+                                <div tal:content="context/nbr" class="text" />
+                                    <hr>
+                                    <div tal:content="context/type" />
+                            </div>
+                        </div>
+                        <div>
+                            <div class="title">Services</div>
+                            <span tal:define="service context/webdesign" tal:condition="service">
+                                <span class="fa-stack fa-lg icon">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-desktop fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </span>
+                            <span tal:define="service context/developpement" tal:condition="service">
+                                <span class="fa-stack fa-lg icon">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-code fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </span>
+                            <span tal:define="service context/hebergement" tal:condition="service">
+                                <span class="fa-stack fa-lg icon">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-cloud fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </span>
+                            <span tal:define="service context/coaching" tal:condition="service">
+                                <span class="fa-stack fa-lg icon">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa graduation-cap fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </span>
+                        </div>
                     </div>
-                    <div class="icone developpement" tal:define="service context/developpement" tal:condition="service">
-                    </div>
-                    <div class="icone hebergement" tal:define="service context/hebergement" tal:condition="service">
-                    </div>
-                    <div class="icone coaching" tal:define="service context/coaching" tal:condition="service">
-                    </div>
-                </div>
-            </div>
-        </article>
-        <div id="clear"></div>
-    </div>
-  </body>
+                </section>
+            </article>
+        </div>
+    </body>
 </html>
