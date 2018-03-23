@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-version = '0.1'
-
 from setuptools import setup, find_packages
+version = '0.1'
 
 long_description = (open('README.rst').read() + '\n')
 
@@ -30,6 +29,12 @@ setup(name='affinitic.core',
           'plone.api',
           'Plone',
           'collective.geotransform',
+          'plone.behavior',
+          'zope.schema',
+          'zope.interface',
+          'zope.component',
+          'plone.namedfile',
+          'plone.formwidget.namedfile',
       ],
       entry_points={},
-)
+      )

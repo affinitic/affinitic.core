@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      metal:use-macro="here/main_template/macros/master">
+    <head>
+    </head>
+    <body>
+        <div metal:fill-slot="main" id="view_contact">
+            <div>
+                <h1>Contact</h1>
+                <h2>Un projet? Contactez-nous!</h2>
+                <div id="view_content">
+                    <div>
+                    </div>
+                    <div>
+                        <a tal:attributes="href string:mailto:${email}" tal:define="email context/email" tal:condition="email" target="_blank">
+                            <span tal:content="context/email"></span>
+                        </a>
+                    </div>
+                    <div>
+                        Téléphone :
+                        <span tal:content="context/phone"></span>
+                    </div>
+                    <div>
+                        GSM (administratif) :
+                        <span tal:content="context/gsm1"></span>
+                    </div>
+                    <div>
+                        GSM (gestion de projet / technique) :
+                        <span tal:content="context/gsm2"></span>
+                    </div>
+                    <div>
+                        <span tal:content="context/street"></span>
+                        <span tal:content="context/number"></span>
+                        <span tal:content="context/box"></span>
+                        <br />
+                        <span tal:content="context/postalcode"></span>
+                        <span tal:content="context/city"></span>
+                        <span tal:content="context/country"></span>
+                    </div>
+                    <div>
+                        Numéro d'entreprise :
+                        <span tal:content="context/tva"></span>
+                    </div>
+                    <ul class="social_share">
+                        <li>
+                            <a tal:attributes="href context/facebook" target="_blank" title="Affinitic Facebook">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a tal:attributes="href context/twitter" target="_blank" title="Affinitic Twitter">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a tal:attributes="href context/linkedin" target="_blank" title="Affinitic Linkedin">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a tal:attributes="href context/github" target="_blank" title="Affinitic Github">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="map" tal:content="structure context/googlemap"></div>
+        </div>
+    </body>
+</html>

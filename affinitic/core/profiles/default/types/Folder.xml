@@ -5,7 +5,5 @@
   <property name="view_methods" purge="False">
     <element value="zaffolderview" />
     <element value="clientfolderview" />
-    <element value="slidesfolderview" />
-    <element value="servicesfolderview" />
   </property>
 </object>

@@ -1,18 +1,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       metal:use-macro="here/main_template/macros/master">
   <body>
-    <div metal:fill-slot="content-core" id="zafs-folder" tal:define="list view/getZafs">
+    <div metal:fill-slot="content-core" id="view_content" tal:define="list view/getZafs">
         <tal:bcl tal:repeat="context list">
         <article class="tileItem">
-            <a tal:attributes="href string:${context/absolute_url}">
-                <div class="Item-image" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/photo/large)">
+<!--            <a tal:attributes="href string:${context/absolute_url}">-->
+                <div class="team-photo" tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/photo/large)">
                 </div>
-                <div class="Item-name" tal:content="context/name">
+                <div class="team-name" tal:content="context/name">
                 </div>
-                <div class="Item-description">
+                <div class="team-description">
                     <span tal:replace="context/fonction"/>
                 </div>
-            </a>
+<!--            </a>-->
         </article>
         </tal:bcl>
     </div>

@@ -1,0 +1,190 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+    <head>
+    </head>
+    <body>
+        <div metal:fill-slot="content-title"> </div>
+        <div metal:fill-slot="content-description"> </div>
+        <div metal:fill-slot="content-core">
+            <div id="homepage_view">
+                <div id='container'>
+                    <tal:block tal:repeat="brain brains" tal:define="brains python: view.getObjectTag('about')">
+                    <tal:item define="item brain/getObject; img1 item/background1">
+                    <div id="About" class="group">
+                        <div class="background">
+                        </div>
+                        <div class="foreground">
+                            <div class="image" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/background1/${item/background1/filename})">
+                            </div>
+                            <div class="text">
+                                <h2 tal:content="item/title_portlet"></h2>
+                                <div tal:content="item/description_portlet"></div>
+                                <a class="more" tal:attributes="href string:${item/absolute_url}">
+                                    Plus d'infos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    </tal:item>
+                    </tal:block>
+
+                    <div id="Services" class="group">
+                        <div class="background">
+                        </div>
+                        <div class="foreground">
+                            <h2>Nos services</h2>
+                            <div class="list">
+                            <tal:block tal:repeat="brain brains" tal:define="brains python: view.getObjectTag('service_item')">
+                            <div>
+                                <tal:item tal:define="item brain/getObject">
+                                <a class="more" tal:attributes="href string:${item/absolute_url}">
+                                <tal:image tal:define="image nocall:item/image"
+                                     tal:condition="nocall:image">
+                                <div class="image" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/image/${image/filename})"></div>
+                                </tal:image>
+                                <h3 tal:content="item/title_portlet"></h3>
+                                <h6 tal:content="item/description_portlet"></h6>
+                                </a>
+                                </tal:item>
+                            </div>
+                            </tal:block>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <tal:block tal:repeat="brain brains" tal:define="brains python: view.getObjectTag('opensource')">
+                    <tal:item tal:define="item brain/getObject">
+                    <div id="OpenSource" class="group">
+                        <div class="foreground">
+                            <tal:image tal:define="image nocall:item/image"
+                             tal:condition="nocall:image">
+                            <div class="image" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/image/${image/filename})"></div>
+                            </tal:image>
+                            <h2 tal:content="item/title"></h2>
+                            <div tal:content="item/title_portlet"></div>
+                            <div tal:content="item/description_portlet"></div>
+                            <a class="more" tal:attributes="href string:${item/absolute_url}">
+                                Plus dinfos
+                            </a>
+                        </div>
+                        <div class="background">
+                        </div>
+                    </div>
+                    </tal:item>
+                    </tal:block>
+
+                    <div id="Number" class="group">
+                        <div class="background">
+                        </div>
+                        <div class="foreground">
+                            <h2>En chiffre</h2>
+                            <div class="group_number">
+                                <div class="number">12</div>
+                                <div class="description">ans</div>
+                            </div>
+                            <div class="group_number">
+                                <div class="number">27</div>
+                                <div class="description">repo github</div>
+                            </div>
+                            <div class="group_number">
+                                <div class="number">14 456</div>
+                                <div class="description">café</div>
+                            </div>
+                            <div class="group_number">
+                                <div class="number">8</div>
+                                <div class="description">personnes</div>
+                            </div>
+                        </div>
+                    </div>
+
+<!--                    <div id="Team" class="group">-->
+<!--                        <div class="background">-->
+<!--                        </div>-->
+<!--                        <div class="foreground">-->
+<!--                            <h2>Notre équipe</h2>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+
+<!--                    <div id="References" class="group">-->
+<!--                        <div class="background">-->
+<!--                        </div>-->
+<!--                        <div class="foreground">-->
+<!--                            <h2>Références</h2>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+                    <div id="Tools" class="group">
+                        <div class="background">
+                        </div>
+                        <div class="foreground">
+                            <h2>Nos outils</h2>
+                        </div>
+                    </div>
+
+
+                    <tal:block tal:repeat="brain brains" tal:define="brains python: view.getObjectType('contact')">
+                    <tal:item define="item brain/getObject">
+                    <div id="Contact" class="group">
+                        <div class="background">
+                            <div id="map" tal:content="structure item/googlemap"></div>
+                        </div>
+                        <div class="foreground">
+                            <a tal:attributes="href string:${item/absolute_url}">
+                                <h2 tal:content="item/description_portlet"></h2>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="Share" class="group">
+                        <div class="foreground">
+                            <h2>Suivez-nous</h2>
+
+                            <ul class="social_share">
+                                <li>
+                                    <a tal:attributes="href item/facebook" target="_blank" title="Affinitic Facebook">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-stack-2x"></i>
+                                            <i class="fa fa-facebook fa-stack-1x"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a tal:attributes="href item/twitter" target="_blank" title="Affinitic Twitter">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-stack-2x"></i>
+                                            <i class="fa fa-twitter fa-stack-1x"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a tal:attributes="href item/linkedin" target="_blank" title="Affinitic Linkedin">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-stack-2x"></i>
+                                            <i class="fa fa-linkedin fa-stack-1x"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a tal:attributes="href item/github" target="_blank" title="Affinitic Github">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    </tal:item>
+                    </tal:block>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

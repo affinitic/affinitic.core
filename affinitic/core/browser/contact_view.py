@@ -3,6 +3,6 @@
 from Products.Five import BrowserView
 
 
-class SlideView(BrowserView):
+class ContactView(BrowserView):
     """
     """

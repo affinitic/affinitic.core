@@ -2,93 +2,88 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser">
 
-  <include package="plone.app.contentmenu" />
+    <include package="plone.app.contentmenu" />
+
+
+    <browser:page
+        for="Products.CMFCore.interfaces.IFolderish"
+        name="zaffolderview"
+        class=".zaffolderview.ZafFolderView"
+        permission="zope.Public"
+        template="templates/zaffolderview.pt"
+        />
+
+    <browser:menuItem
+        for="Products.CMFCore.interfaces.IFolderish"
+        menu="plone_displayviews"
+        title="Vue pour Zaf"
+        action="zaffolderview"
+        description="Vue pour Zaf"
+        />
+
+    <browser:page
+        for="*"
+        name="zafview"
+        class=".zafview.ZafView"
+        permission="zope.Public"
+        template="templates/zafview.pt"
+        />
+
+
+    <browser:page
+        for="Products.CMFCore.interfaces.IFolderish"
+        name="clientfolderview"
+        class=".clientfolderview.ClientFolderView"
+        permission="zope.Public"
+        template="templates/clientfolderview.pt"
+        />
+
+    <browser:menuItem
+        for="Products.CMFCore.interfaces.IFolderish"
+        menu="plone_displayviews"
+        title="Vue pour Client"
+        action="clientfolderview"
+        description="Vue pour Client"
+        />
+
+    <browser:page
+        for="*"
+        name="clientview"
+        class=".clientview.ClientView"
+        permission="zope.Public"
+        template="templates/clientview.pt"
+        />
+
+
+
+
 
   <browser:page
-      for="Products.CMFCore.interfaces.IFolderish"
-      name="zaffolderview"
-      class=".zaffolderview.ZafFolderView"
-      permission="zope.Public"
-      template="templates/zaffolderview.pt"
-      />
-
-  <browser:menuItem
-      for="Products.CMFCore.interfaces.IFolderish"
-      menu="plone_displayviews"
-      title="Vue pour Zaf"
-      action="zaffolderview"
-      description="Vue pour Zaf"
-      />
-
-  <browser:page
+      name="view_document"
       for="*"
-      name="zafview"
-      class=".zafview.ZafView"
-      permission="zope.Public"
-      template="templates/zafview.pt"
-      />
-
-  <browser:page
-      for="plone.app.contenttypes.interfaces.ICollection"
-      name="slidesfolderview"
-      permission="zope.Public"
-      template="templates/slidesfolderview.pt"
-      />
-
-  <browser:menuItem
-      for="plone.app.contenttypes.interfaces.ICollection"
+      template="templates/document.pt"
+      permission="zope2.View"
       menu="plone_displayviews"
-      title="Vue pour slides"
-      action="slidesfolderview"
-      description="Vue pour slides"
+      title="View Document"
       />
 
   <browser:page
+      name="contact_view"
       for="*"
-      name="slideview"
-      class=".slideview.SlideView"
-      permission="zope.Public"
-      template="templates/slideview.pt"
-      />
-
-  <browser:page
-      for="Products.CMFCore.interfaces.IFolderish"
-      name="servicesfolderview"
-      class=".servicesfolderview.ServicesFolderView"
-      permission="zope.Public"
-      template="templates/servicesfolderview.pt"
-      />
-
-  <browser:menuItem
-      for="Products.CMFCore.interfaces.IFolderish"
+      template="templates/contact.pt"
+      permission="zope2.View"
       menu="plone_displayviews"
-      title="Vue pour Services"
-      action="servicesfolderview"
-      description="Vue pour Services"
+      title="View Contact"
       />
 
-  <browser:page
-      for="Products.CMFCore.interfaces.IFolderish"
-      name="clientfolderview"
-      class=".clientfolderview.ClientFolderView"
-      permission="zope.Public"
-      template="templates/clientfolderview.pt"
-      />
-
-  <browser:menuItem
-      for="Products.CMFCore.interfaces.IFolderish"
-      menu="plone_displayviews"
-      title="Vue pour Client"
-      action="clientfolderview"
-      description="Vue pour Client"
-      />
-
-  <browser:page
-      for="*"
-      name="clientview"
-      class=".clientview.ClientView"
-      permission="zope.Public"
-      template="templates/clientview.pt"
-      />
+    <browser:page
+        name="homepage_view"
+        for="plone.app.contenttypes.interfaces.ICollection"
+        template="templates/listing_homepage.pt"
+        menu="plone_displayviews"
+        title="Vue pour Homepage"
+        permission="zope2.View"
+        class=".homepageview.HomepageView"
+        />
 
 </configure>
