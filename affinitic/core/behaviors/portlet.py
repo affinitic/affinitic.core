@@ -5,6 +5,7 @@ from plone.autoform.interfaces import IFormFieldProvider
 from zope import schema
 from zope.interface import alsoProvides
 from plone.namedfile.field import NamedImage
+from plone.app.textfield import RichText
 
 
 class IPortlet(model.Schema):
@@ -20,7 +21,7 @@ class IPortlet(model.Schema):
         required=False,
     )
 
-    description_portlet = schema.Text(
+    description_portlet = RichText(
         title=u"Description",
         required=False,
     )
