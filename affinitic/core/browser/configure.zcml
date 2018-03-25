@@ -79,7 +79,7 @@
     <browser:page
         name="homepage_view"
         for="plone.app.contenttypes.interfaces.ICollection"
-        template="templates/listing_homepage.pt"
+        template="templates/homepage.pt"
         menu="plone_displayviews"
         title="Vue pour Homepage"
         permission="zope2.View"
