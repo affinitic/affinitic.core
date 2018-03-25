@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      metal:use-macro="here/main_template/macros/master">
+    <body>
+        <div metal:fill-slot="content-core" id="view_content">
+            <div id="Services_folder"
+                 tal:define="list_intro python: view.getServices('service_intro');
+                 list_services python: view.getServices('service_item');
+                 list_others python: view.getServices('service_others');
+                 list_tools python: view.getServices('tools_item');
+                 list_folder python: view.getServices('tools_folder')">
+
+                <div id="Services_intro" class='parallax'>
+                    <div class="item" tal:repeat="item list_intro">
+                        <tal:image tal:define="image nocall:item/image"
+                       tal:condition="nocall:image">
+                        <div class="image mini" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/image/${image/filename})"></div>
+                        </tal:image>
+                        <div class="text">
+                            <h3 tal:content="item/title"></h3>
+                            <span tal:content="item/description"></span>
+                            <span tal:replace="structure item/text/output"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="Services_item">
+                    <a tal:repeat="item list_services"
+                       tal:define="size python: (100/len(list_services)-1)"
+                       tal:attributes="href string:${item/absolute_url}; style string: width: ${size}%">
+                        <tal:image tal:define="image nocall:item/image"
+                       tal:condition="nocall:image">
+                        <div class="image" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/image/${image/filename})"></div>
+                        </tal:image>
+                        <h3 tal:content="item/title"></h3>
+                        <div class="justify" tal:content="item/description"></div>
+                    </a>
+                </div>
+
+                <div id="Services_others" class='parallax'>
+                    <div class="item" tal:repeat="item list_others">
+                        <tal:image tal:define="image nocall:item/image"
+                       tal:condition="nocall:image">
+                        <div class="image mini" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/image/${image/filename})"></div>
+                        </tal:image>
+                        <div class="text">
+                            <h3 tal:content="item/title"></h3>
+                            <span tal:content="item/description"></span>
+                            <span tal:replace="structure item/text/output"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="Tools">
+                    <tal:repeat tal:repeat="item list_folder">
+                        <h1 tal:content="item/title"></h1>
+                        <h3 tal:content="item/description"></h3>
+                    </tal:repeat>
+
+                    <tal:repeat tal:repeat="item list_tools">
+                    <tal:image tal:define="image nocall:item/image"
+                     tal:condition="nocall:image">
+                    <div class="image xs" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/image/${image/filename})"></div>
+                    </tal:image>
+                    </tal:repeat>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

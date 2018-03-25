@@ -60,6 +60,7 @@
 
   <browser:page
       name="view_document"
+      class=".documentview.DocumentView"
       for="*"
       template="templates/document.pt"
       permission="zope2.View"
@@ -79,11 +80,27 @@
     <browser:page
         name="homepage_view"
         for="plone.app.contenttypes.interfaces.ICollection"
-        template="templates/homepage.pt"
+        template="templates/homepage_collection.pt"
         menu="plone_displayviews"
-        title="Vue pour Homepage"
+        title="Vue pour la Homepage"
         permission="zope2.View"
         class=".homepageview.HomepageView"
+        />
+
+    <browser:page
+        for="Products.CMFCore.interfaces.IFolderish"
+        name="services_folder_view"
+        class=".servicesfolderview.ServicesFolderView"
+        permission="zope.Public"
+        template="templates/services_folder.pt"
+        />
+
+    <browser:menuItem
+        for="Products.CMFCore.interfaces.IFolderish"
+        menu="plone_displayviews"
+        title="Vue pour le dossier Services"
+        action="services_folder_view"
+        description="Vue pour le dossier Services"
         />
 
 </configure>

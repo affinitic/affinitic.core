@@ -6,21 +6,24 @@
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="plone">
     <body>
-
-        <metal:content-core fill-slot="content-core">
-        <metal:content-core define-macro="content-core"
-                            tal:define="toc context/table_of_contents|nothing;">
-        <div tal:define="image nocall:context/image"
-             tal:condition="nocall:image">
-            <img tal:attributes="src string:${context/absolute_url}/@@download/image/${image/filename};" />
+        <div metal:fill-slot="main" id="view_document">
+            <div class='parallax'>
+                <div class="group">
+                    <div class="background before">
+                    </div>
+                    <div class="background" tal:attributes="style string: background-image:url(${context/absolute_url}/@@download/background1/${context/background1/filename})">
+                    </div>
+                    <div class="foreground">
+                            <tal:image tal:define="image nocall:context/image"
+                                 tal:condition="nocall:image">
+                            <div class="image" tal:attributes="style string: background-image:url(${context/absolute_url}/@@download/image/${image/filename})"></div>
+                            </tal:image>
+                        <h1 tal:content="context/title"></h1>
+                        <h2 tal:content="context/description"></h2>
+                        <div tal:replace="structure context/text/raw"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <span tal:content="context/description_portlet" />
-            <div id="parent-fieldname-text"
-             tal:condition="context/text"
-             tal:content="structure python:context.text.output_relative_to(view.context)"
-             tal:attributes="class python: toc and 'pat-autotoc' or ''"></div>
-        </metal:content-core>
-        </metal:content-core>
-
     </body>
 </html>

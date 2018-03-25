@@ -5,7 +5,7 @@
     <body>
         <div metal:fill-slot="main" id="view_contact">
             <div id="view_content">
-                <div id='parallax'>
+                <div class='parallax'>
                     <div class="group">
                         <a href="" tal:attributes="href context/googlemap" target="_blank">
                             <div class="background" tal:attributes="style string: background-image:url(${context/absolute_url}/@@download/background1/${context/background1/filename})">
