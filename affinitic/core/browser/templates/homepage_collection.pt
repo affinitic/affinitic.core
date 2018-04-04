@@ -12,21 +12,20 @@
         <div metal:fill-slot="content-description"> </div>
         <div metal:fill-slot="content-core">
             <div id="homepage_view">
-                <div id="shortcut">
+                <div id="shortcut" class="color-text">
                     <a href="#About" class="button"><label>A propos</label></a>
                     <a href="#Services" class="button"><label>Nos services</label></a>
-                    <a href="#Number" class="button"><label>Number</label></a>
                     <a href="#OpenSource" class="button"><label>Open source</label></a>
-<!--                    <a href="#Team" class="button"><label></label></a>-->
+                    <a href="#Team" class="button"><label>Notre équipe</label></a>
+                    <a href="#Number" class="button"><label>Number</label></a>
 <!--                    <a href="#References" class="button"><label></label></a>-->
                     <a href="#Tools" class="button"><label>Nos outils</label></a>
                     <a href="#Contact" class="button"><label>Contact</label></a>
-                    <a href="#Share" class="button"><label>Suivez-nous</label></a>
                 </div>
                 <div class='parallax'>
                     <tal:block tal:repeat="brain brains" tal:define="brains python: view.getObjectTag('about')">
                     <tal:item define="item brain/getObject; img1 item/background1">
-                    <div id="About" class="group">
+                    <div id="About" class="group_parallax color-text">
                         <div class="background" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/background1/${item/background1/filename})">
                         </div>
                         <div class="foreground">
@@ -35,7 +34,7 @@
                             <div class="image" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/image/${image/filename})"></div>
                             </tal:image>
                             <div class="text">
-                                <h2 tal:content="item/title_portlet"></h2>
+                                <h1 tal:content="item/title_portlet"></h1>
                                 <div tal:content="structure item/description_portlet/output"></div>
                                 <a class="more" tal:attributes="href string:${item/absolute_url}">
                                     Plus d'infos
@@ -46,14 +45,12 @@
                     </tal:item>
                     </tal:block>
 
-                    <div id="Services" class="group">
-                        <div class="background">
-                        </div>
+                    <div id="Services" class="group_parallax color-text">
                         <div class="foreground">
                             <h2>Nos services</h2>
-                            <ul>
+                            <ul class="row" >
                             <tal:block tal:repeat="brain brains" tal:define="brains python: view.getObjectTag('service_item')">
-                            <li tal:define="size python: (100/len(brains)-1)" tal:attributes="style string: width: ${size}%">
+                            <li tal:define="size python: (100/len(brains))-1" tal:attributes="style string: width: ${size}%">
                                 <tal:item tal:define="item brain/getObject">
                                 <a tal:attributes="href string:${item/absolute_url}">
                                 <tal:image tal:define="image nocall:item/image"
@@ -70,39 +67,13 @@
                             </tal:block>
                             </ul>
                         </div>
-                    </div>
-
-                    <div id="Number" class="group">
-                        <tal:block tal:repeat="brain brains" tal:define="brains python: view.getObjectTag('number_folder')">
-                        <tal:item tal:define="item brain/getObject; img1 item/background1; img2 item/background2">
-                        <div class="background" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/background1/${item/background1/filename})">
-                            <h2 tal:content="item/title_portlet"></h2>
-                            <div tal:content="structure item/description_portlet/output"></div>
-                            <ul>
-                                <tal:block tal:repeat="brain brains" tal:define="brains python: view.getObjectTag('number_item')">
-                                <tal:item tal:define="item brain/getObject">
-                                <li class="group_number">
-                                    <h2 class="description">
-                                        <i tal:attributes="class item/title"></i>
-                                    </h2>
-                                    <div class="number">
-                                        <span tal:content="item/description"></span>
-                                    </div>
-                                </li>
-                                </tal:item>
-                                </tal:block>
-                            </ul>
+                        <div class="background">
                         </div>
-                        <div class="foreground" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/background2/${item/background2/filename})">
-                        </div>
-                        </tal:item>
-                        </tal:block>
                     </div>
-
 
                     <tal:block tal:repeat="brain brains" tal:define="brains python: view.getObjectTag('opensource')">
                     <tal:item tal:define="item brain/getObject">
-                    <div id="OpenSource" class="group">
+                    <div id="OpenSource" class="group_parallax">
                         <div class="foreground">
                             <tal:image tal:define="image nocall:item/image"
                              tal:condition="nocall:image">
@@ -122,20 +93,76 @@
                     </tal:block>
 
 
-<!--                    <div id="Team" class="group">-->
-<!--                        <div class="background">-->
-<!--                        </div>-->
-<!--                        <div class="foreground">-->
-<!--                            <h2>Notre équipe</h2>-->
-<!--                            <ul>-->
-<!--                            <tal:block tal:repeat="brain brains" tal:define="brains python: view.getObjectTag('team_item')">-->
-<!--                            </tal:block>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <tal:team tal:define="team_items python: view.getObjectTag('team_folder')">
+                    <tal:block tal:repeat="team_item team_items">
+                    <div id="Team" class="group_parallax" tal:define="team_folder team_item/getObject">
+                        <div class="background">
+                        </div>
+                        <div class="foreground">
+                            <a tal:attributes="href string:${team_folder/absolute_url}">
+<!--                            <h2 tal:content="team_folder/title"></h2>-->
+                            <div class="slideshow" tal:define="brains python: view.getObjectTag('team_item')">
+                                <ul id="lightSlider_team" tal:define="size python: 200*len(brains)" tal:attributes="style string: width: ${size}px">
+                                    <tal:block tal:repeat="brain brains">
+                                    <li>
+                                        <tal:item tal:define="item brain/getObject">
+                                        <tal:image tal:define="image nocall:item/photo"
+                                    tal:condition="nocall:image">
+                                        <div class="team-photo image mini" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/photo/${image/filename})"></div>
+                                        <div class="team-name" tal:content="item/title"></div>
+                                        <div class="team-description" tal:content="item/fonction"></div>
+                                        </tal:image>
+                                        </tal:item>
+                                    </li>
+                                    </tal:block>
+                                </ul>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                    </tal:block>
+                    </tal:team>
+
+                    <div id="Number" class="group_parallax">
+                        <tal:block tal:repeat="brain brains" tal:define="brains python: view.getObjectTag('number_folder')">
+                        <tal:item tal:define="item brain/getObject; img1 item/background1; img2 item/background2">
+                        <div class="foreground">
+                            <h1 tal:content="item/title_portlet"></h1>
+                            <div tal:content="structure item/description_portlet/output"></div>
+                            <ul class="row">
+                                <li tal:define="repo view/getNumberRepoGit" tal:condition="repo">
+                                    <div class="fa fa-github fa-xl"></div>
+                                    <h1 tal:content="repo"></h1>
+                                </li>
+                                <li tal:define="birth view/getBirthday" tal:condition="birth">
+                                    <div class="fa fa-birthday-cake fa-xl"></div>
+                                    <h1 tal:content="birth"></h1>
+                                </li>
+                                <li tal:define="team python: view.getObjectTag('team_item')" tal:condition="team">
+                                    <div class="fa fa-male fa-xl"></div>
+                                    <h1 tal:content="python: len(team)"></h1>
+                                </li>
+                                <tal:block tal:repeat="brain brains" tal:define="brains python: view.getObjectTag('number_item')">
+                                <tal:item tal:define="item brain/getObject">
+                                <li>
+                                    <div tal:attributes="class item/title"></div>
+                                    <h1 tal:content="item/description"></h1>
+                                </li>
+                                </tal:item>
+                                </tal:block>
+                            </ul>
+                        </div>
+                        <div class="middleground" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/background2/${item/background2/filename})"></div>
+                        <div class="background" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/background1/${item/background1/filename})">
+                        </div>
+                        </tal:item>
+                        </tal:block>
+                    </div>
 
 
-<!--                    <div id="References" class="group">-->
+
+
+<!--                    <div id="References" class="group_parallax">-->
 <!--                        <div class="background">-->
 <!--                        </div>-->
 <!--                        <div class="foreground">-->
@@ -144,7 +171,7 @@
 <!--                    </div>-->
 
 
-                    <div id="Tools" class="group">
+                    <div id="Tools" class="group_parallax">
                         <div class="background">
                         </div>
                         <div class="foreground">
@@ -157,13 +184,14 @@
                                 </tal:block>
                             </div>
                             <div class="slideshow" tal:define="brains python: view.getObjectTag('tools_item')">
-                                <ul id="lightSlider" tal:define="size python: (200*(len(brains)+1))" tal:attributes="style string: width: ${size}px">
+                                <ul id="slider_tools" tal:define="size python: 200*len(brains)" tal:attributes="style string: width: ${size}px">
                                     <tal:block tal:repeat="brain brains">
                                     <li>
                                         <tal:item tal:define="item brain/getObject">
                                         <tal:image tal:define="image nocall:item/image"
                                     tal:condition="nocall:image">
-                                        <div class="image_slider" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/image/${image/filename})"></div>
+                                        <div class="image small" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/image/${image/filename})"></div>
+                                        <h3 class="title" tal:content="item/title"></h3>
                                         </tal:image>
                                         </tal:item>
                                     </li>
@@ -173,47 +201,17 @@
                         </div>
                     </div>
 
-
-
                     <tal:block tal:repeat="brain brains" tal:define="brains python: view.getObjectType('contact')">
                     <tal:item define="item brain/getObject">
-                    <div id="Contact" class="group">
-                        <div class="background" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/background1/${item/background1/filename})">
-                        </div>
-                        <div class="foreground">
+                    <div id="Contact" class="group_parallax">
+                        <div class="foreground color-background">
                             <h2 tal:content="item/title_portlet"></h2>
                             <h3 tal:content="structure item/description_portlet/output"></h3>
                             <a class="more" tal:attributes="href string:${item/absolute_url}">
                                 Plus dinfos
                             </a>
                         </div>
-                    </div>
-                    <div id="Share" class="group">
-                        <div class="foreground">
-                            <h2>Suivez-nous</h2>
-
-                            <ul class="social_share">
-                                <li>
-                                    <a tal:attributes="href item/facebook" target="_blank" title="Affinitic Facebook">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a tal:attributes="href item/twitter" target="_blank" title="Affinitic Twitter">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a tal:attributes="href item/linkedin" target="_blank" title="Affinitic Linkedin">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a tal:attributes="href item/github" target="_blank" title="Affinitic Github">
-                                        <i class="fa fa-github"></i>
-                                    </a>
-                                </li>
-                            </ul>
+                        <div class="background" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/background1/${item/background1/filename})">
                         </div>
                     </div>
                     </tal:item>

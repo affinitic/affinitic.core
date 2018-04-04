@@ -3,13 +3,14 @@
     <body>
         <div metal:fill-slot="content-core" id="view_content">
             <div id="Services_folder"
+                 class="color-text"
                  tal:define="list_intro python: view.getServices('service_intro');
                  list_services python: view.getServices('service_item');
                  list_others python: view.getServices('service_others');
                  list_tools python: view.getServices('tools_item');
                  list_folder python: view.getServices('tools_folder')">
 
-                <div id="Services_intro" class='parallax'>
+                <div id="Services_intro" class="block">
                     <div class="item" tal:repeat="item list_intro">
                         <tal:image tal:define="image nocall:item/image"
                        tal:condition="nocall:image">
@@ -23,20 +24,24 @@
                     </div>
                 </div>
 
-                <div id="Services_item">
-                    <a tal:repeat="item list_services"
-                       tal:define="size python: (100/len(list_services)-1)"
-                       tal:attributes="href string:${item/absolute_url}; style string: width: ${size}%">
-                        <tal:image tal:define="image nocall:item/image"
-                       tal:condition="nocall:image">
-                        <div class="image" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/image/${image/filename})"></div>
-                        </tal:image>
-                        <h3 tal:content="item/title"></h3>
-                        <div class="justify" tal:content="item/description"></div>
-                    </a>
+                <div id="Services_item" class="block">
+                    <ul class="row">
+                        <li tal:repeat="item list_services"
+                               tal:define="size python: (100/len(list_services)-1)"
+                               tal:attributes="style string: width: ${size}%">
+                            <a tal:attributes="href string:${item/absolute_url}">
+                                <tal:image tal:define="image nocall:item/image"
+                               tal:condition="nocall:image">
+                                <div class="image" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/image/${image/filename})"></div>
+                                </tal:image>
+                                <h3 tal:content="item/title"></h3>
+                                <div class="justify" tal:content="item/description"></div>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
 
-                <div id="Services_others" class='parallax'>
+                <div id="Services_others" class="block">
                     <div class="item" tal:repeat="item list_others">
                         <tal:image tal:define="image nocall:item/image"
                        tal:condition="nocall:image">
@@ -50,7 +55,7 @@
                     </div>
                 </div>
 
-                <div id="Tools">
+                <div id="Tools" class="block">
                     <tal:repeat tal:repeat="item list_folder">
                         <h1 tal:content="item/title"></h1>
                         <h3 tal:content="item/description"></h3>
