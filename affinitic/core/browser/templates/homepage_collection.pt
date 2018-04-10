@@ -22,7 +22,7 @@
                     <a href="#Tools" class="button"><label>Nos outils</label></a>
                     <a href="#Contact" class="button"><label>Contact</label></a>
                 </div>
-                <div class='parallax'>
+                <div class="parallax">
                     <tal:block tal:repeat="brain brains" tal:define="brains python: view.getObjectTag('about')">
                     <tal:item define="item brain/getObject; img1 item/background1">
                     <div id="About" class="group_parallax color-text">
@@ -206,12 +206,12 @@
                     <div id="Contact" class="group_parallax">
                         <div class="foreground color-background">
                             <h2 tal:content="item/title_portlet"></h2>
-                            <h3 tal:content="structure item/description_portlet/output"></h3>
                             <a class="more" tal:attributes="href string:${item/absolute_url}">
                                 Plus dinfos
                             </a>
                         </div>
-                        <div class="background" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/background1/${item/background1/filename})">
+                        <div class="background">
+                            <div id="map" tal:content="structure item/description_portlet/output"></div>
                         </div>
                     </div>
                     </tal:item>

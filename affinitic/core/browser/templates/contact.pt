@@ -5,12 +5,18 @@
     <body>
         <div metal:fill-slot="main" id="view_contact">
             <div id="view_content">
-                <div class='parallax'>
-                    <div class="group">
-                        <a href="" tal:attributes="href context/googlemap" target="_blank">
-                            <div class="background" tal:attributes="style string: background-image:url(${context/absolute_url}/@@download/background1/${context/background1/filename})">
+                <div class="parallax">
+                    <div class="group_parallax">
+                        <div id="contact"></div>
+                        <div class="background">
+                            <tal:foreground tal:content="structure context/description_portlet/output"></tal:foreground>
+                            <div class="map-contact">
+                                <a href="#contact" title="Affinitic Contact">
+                                    <i class="fa fa-envelope"></i>
+                                </a>
                             </div>
-                        </a>
+                            <div id="map"></div>
+                        </div>
                         <div class="foreground">
                             <h1 tal:content="context/title"></h1>
                             <h2 tal:content="context/description"></h2>
@@ -66,6 +72,12 @@
                                     </a>
                                 </li>
                             </ul>
+
+                            <div class="map-marker">
+                                <a href="#map" title="Affinitic Google Map">
+                                    <i class="fa fa-map-marker"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
