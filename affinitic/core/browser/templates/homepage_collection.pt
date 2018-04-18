@@ -36,9 +36,9 @@
                             <div class="text">
                                 <h1 tal:content="item/title_portlet"></h1>
                                 <div tal:content="structure item/description_portlet/output"></div>
-                                <a class="more" tal:attributes="href string:${item/absolute_url}">
-                                    Plus d'infos
-                                </a>
+<!--                                <a class="more" tal:attributes="href string:${item/absolute_url}">-->
+<!--                                    Plus d'infos-->
+<!--                                </a>-->
                             </div>
                         </div>
                     </div>
@@ -52,16 +52,16 @@
                             <tal:block tal:repeat="brain brains" tal:define="brains python: view.getObjectTag('service_item')">
                             <li tal:define="size python: (100/len(brains))-1" tal:attributes="style string: width: ${size}%">
                                 <tal:item tal:define="item brain/getObject">
-                                <a tal:attributes="href string:${item/absolute_url}">
+<!--                                <a tal:attributes="href string:${item/absolute_url}">-->
                                 <tal:image tal:define="image nocall:item/image"
                                      tal:condition="nocall:image">
                                 <div class="image" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/image/${image/filename})"></div>
                                 </tal:image>
                                 <h3 tal:content="item/title_portlet"></h3>
-                                <div class="justify">
-                                    <span tal:content="structure item/description_portlet/output"></span>
-                                </div>
-                                </a>
+<!--                                <div class="justify">-->
+<!--                                    <span tal:content="structure item/description_portlet/output"></span>-->
+<!--                                </div>-->
+<!--                                </a>-->
                                 </tal:item>
                             </li>
                             </tal:block>
@@ -80,11 +80,11 @@
                             <div class="image" tal:attributes="style string: background-image:url(${item/absolute_url}/@@download/image/${image/filename})"></div>
                             </tal:image>
                             <h2 tal:content="item/title"></h2>
-                            <h5 tal:content="item/title_portlet"></h5>
+                            <h4 tal:content="item/title_portlet"></h4>
                             <div tal:content="structure item/description_portlet/output"></div>
-                            <a class="more" tal:attributes="href string:${item/absolute_url}">
-                                Plus dinfos
-                            </a>
+<!--                            <a class="more" tal:attributes="href string:${item/absolute_url}">-->
+<!--                                Plus dinfos-->
+<!--                            </a>-->
                         </div>
                         <div class="background">
                         </div>
@@ -211,7 +211,9 @@
                             </a>
                         </div>
                         <div class="background">
-                            <div id="map" tal:content="structure item/description_portlet/output"></div>
+                            <a href="https://www.google.com/maps/d/viewer?mid=1GMm11fQKGgKx4USqE_OIJ4Lu-0PjvAJu&hl=fr&usp=sharing" alt="Lien Google map">
+                                <div id="map" tal:content="structure item/description_portlet/output"></div>
+                            </a>
                         </div>
                     </div>
                     </tal:item>
