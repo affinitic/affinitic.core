@@ -8,4 +8,4 @@ class ClientFolderView(BrowserView):
     """
 
     def getClients(self):
-        return self.context.listFolderContents(contentFilter={"portal_type": "Client"})
+        return self.context.listFolderContents(contentFilter={"portal_type": "client"})
