@@ -10,11 +10,6 @@
                         <div id="contact"></div>
                         <div class="background">
                             <tal:foreground tal:content="structure context/description_portlet/output"></tal:foreground>
-                            <div class="map-contact">
-                                <a href="#contact" title="Affinitic Contact">
-                                    <i class="fa fa-envelope"></i>
-                                </a>
-                            </div>
                             <div id="map"></div>
                         </div>
                         <div class="foreground">
@@ -26,16 +21,18 @@
                                 </a>
                             </div>
                             <div>
-                                Téléphone :
-                                <span tal:content="context/phone"></span>
-                            </div>
-                            <div>
-                                GSM (administratif) :
-                                <span tal:content="context/gsm1"></span>
-                            </div>
-                            <div>
-                                GSM (gestion de projet / technique) :
-                                <span tal:content="context/gsm2"></span>
+				    <div>
+					Téléphone :
+					<span tal:content="context/phone"></span>
+				    </div>
+				    <div>
+					GSM (administratif) :
+					<span tal:content="context/gsm1"></span>
+				    </div>
+				    <div>
+					GSM (gestion de projet / technique) :
+					<span tal:content="context/gsm2"></span>
+				    </div>
                             </div>
                             <div>
                                 <span tal:content="context/street"></span>
