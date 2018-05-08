@@ -11,7 +11,9 @@
                 <div class="group">
                     <div class="background before">
                     </div>
-                    <div class="background" tal:attributes="style string: background-image:url(${context/absolute_url}/@@download/background1/${context/background1/filename})">
+                    <div class="background"
+                         tal:define="background_filename context/background1/filename | nothing"
+                         tal:attributes="style string: background-image:url(${context/absolute_url}/@@download/background1/${background_filename})">
                     </div>
                     <div class="foreground">
                             <tal:image tal:define="image nocall:context/image"
