@@ -1,0 +1,5 @@
+==============
+affinitic.core
+==============
+
+User documentation

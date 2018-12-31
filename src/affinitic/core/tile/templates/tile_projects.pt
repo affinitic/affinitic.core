@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="plone">
+    <head></head>
+    <body>
+
+        <div class="article">
+            <h1>Nos dernières réalisations</h1>
+            <div class="content">
+                <div class="article-galery"
+                     tal:define="projects view/projects;"
+                     tal:condition="projects">
+                    <tal:repeat tal:repeat="project projects">
+                    <tal:define tal:define="brain project/brain;
+                                            image project/image">
+                    <div class="article-thumbs" tal:condition="project">
+                        <a href="#" tal:attributes="href brain/getURL;" class="article-thumbs-link">
+                            <div class="article-thumbs-image"
+                                 tal:attributes="style string:background-image:url(${image/getURL}/@@images/image/mini">
+                            </div>
+                            <div class="article-thumbs-text"
+                                 tal:content="brain/Title"></div>
+                        </a>
+                    </div>
+                    </tal:define>
+                    </tal:repeat>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

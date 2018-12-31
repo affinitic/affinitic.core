@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="portal_types" meta_type="Plone Types Tool">
+    <property name="title">Controls the available content types in your portal</property>
+
+    <object name="Service" meta_type="Dexterity FTI"/>
+    <object name="ServicesList" meta_type="Dexterity FTI"/>
+
+    <object name="Reference" meta_type="Dexterity FTI"/>
+    <object name="ReferencesList" meta_type="Dexterity FTI"/>
+
+    <object name="Contact" meta_type="Dexterity FTI"/>
+    <object name="ContactsList" meta_type="Dexterity FTI"/>
+
+    <object name="Folder" meta_type="Dexterity FTI"/>
+    <object name="Document" meta_type="Dexterity FTI"/>
+</object>

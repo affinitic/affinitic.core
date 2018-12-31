@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<model xmlns="http://namespaces.plone.org/supermodel/schema"
+    xmlns:form="http://namespaces.plone.org/supermodel/form"
+    xmlns:users="http://namespaces.plone.org/supermodel/users"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="plone">
+    <schema name="member-fields">
+        <field name="function" type="zope.schema.TextLine"
+            users:forms="In User Profile">
+            <description i18n:translate="help_function">
+                Your function.
+            </description>
+            <required>False</required>
+            <title i18n:translate="label_function">Function</title>
+        </field>
+
+        <field name="cv" type="zope.schema.Text"
+            users:forms="In User Profile">
+            <description i18n:translate="help_cv">
+                A short overview of who you are and what you do. Will be displayed on your author page, linked from the items you create.
+            </description>
+            <required>False</required>
+            <title i18n:translate="label_cv">CV court</title>
+        </field>
+
+        <field name="cv_details" type="zope.schema.Text"
+            users:forms="In User Profile">
+            <description i18n:translate="help_cv_details">
+                A long overview of who you are and what you do. Will be displayed on your author page, linked from the items you create.
+            </description>
+            <required>False</required>
+            <title i18n:translate="label_cv_details">CV détaillé</title>
+        </field>
+
+        <field name="portrait"
+            type="plone.namedfile.field.NamedBlobImage"
+            users:forms="In User Profile">
+            <description i18n:translate="help_portrait">
+                To add or change the portrait: click the "Browse" button; select a picture of yourself. Recommended image size is 75 pixels wide by 100 pixels tall.
+            </description>
+            <required>False</required>
+            <title i18n:translate="label_portrait">Portrait</title>
+        </field>
+
+        <field name="home_page" type="zope.schema.URI"
+            users:forms="In User Profile">
+            <description i18n:translate="help_homepage">
+                The URL for your external home page, if you have one.
+            </description>
+            <required>False</required>
+            <title i18n:translate="label_homepage">Home page</title>
+        </field>
+
+        <field name="phone" type="zope.schema.TextLine"
+            users:forms="In User Profile">
+            <description i18n:translate="help_phone">
+                Your phone.
+            </description>
+            <required>False</required>
+            <title i18n:translate="label_phone">Phone</title>
+        </field>
+
+        <field name="linkedin" type="zope.schema.TextLine"
+            users:forms="In User Profile">
+            <description i18n:translate="help_linkedin">
+                Your username linkedin.
+            </description>
+            <required>False</required>
+            <title i18n:translate="label_linkedin">Linkedin</title>
+        </field>
+
+        <field name="github" type="zope.schema.TextLine"
+            users:forms="In User Profile">
+            <description i18n:translate="help_github">
+                Your username github.
+            </description>
+            <required>False</required>
+            <title i18n:translate="label_github">Github</title>
+        </field>
+
+        <field name="twitter" type="zope.schema.TextLine"
+            users:forms="In User Profile">
+            <description i18n:translate="help_twitter">
+                Your username twitter.
+            </description>
+            <required>False</required>
+            <title i18n:translate="label_twitter">Twitter</title>
+        </field>
+
+        <field name="facebook" type="zope.schema.TextLine"
+            users:forms="In User Profile">
+            <description i18n:translate="help_facebook">
+                Your username facebook.
+            </description>
+            <required>False</required>
+            <title i18n:translate="label_facebook">Facebook</title>
+        </field>
+    </schema>
+</model>

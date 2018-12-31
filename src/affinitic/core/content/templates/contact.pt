@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master">
+    <head></head>
+    <body>
+        <metal:main fill-slot="main">
+        <metal:content-core define-macro="content-core">
+        <section tal:define="contact view/contact">
+            <div tal:define="link python: view.link(contact);
+                             image python: view.image(contact)">
+                <div class="image">
+                    <tal:image tal:condition="python: image['icon_ext'] and image['icon_data']">
+                    <tal:svg tal:condition="python: image['icon_ext'] == '.svg'">
+                    <div tal:replace="structure image/icon_data"></div>
+                    </tal:svg>
+
+                    <tal:bitmap tal:condition="python: image['icon_ext'] != '.svg'">
+                    <img class="marker_bitmap" alt="Image contact" src="/" tal:attributes="src string:${contact/absolute_url}/@@images/contact_image/mini">
+                    </tal:bitmap>
+                    </tal:image>
+                </div>
+                <div class="title" tal:content="contact/Title" tal:condition="contact/Title"></div>
+                <div class="description" tal:content="contact/Description" tal:condition="contact/Description"></div>
+                <div class="email" tal:content="contact/contact_email" tal:condition="contact/contact_email"></div>
+                <div class="adress">
+                    <div>
+                        <span tal:content="contact/contact_address" tal:condition="contact/contact_address"></span>
+                        <span tal:content="contact/contact_number" tal:condition="contact/contact_number"></span>
+                    </div>
+                    <div>
+                        <span tal:content="contact/contact_code" tal:condition="contact/contact_code"></span>
+                        <span tal:content="contact/contact_city" tal:condition="contact/contact_city"></span>
+                        <span tal:condition="contact/contact_country"  tal:condition="contact/contact_country">
+                            (<span tal:content="contact/contact_country"></span>)
+                        </span>
+                    </div>
+                </div>
+                <div class="phone" tal:content="contact/contact_phone" tal:condition="contact/contact_phone"></div>
+                <div class="cellphone" tal:content="contact/contact_cellphone1" tal:condition="contact/contact_cellphone1"></div>
+                <div class="cellphone" tal:content="contact/contact_cellphone2" tal:condition="contact/contact_cellphone2"></div>
+                <div class="fax" tal:content="contact/contact_fax" tal:condition="contact/contact_fax"></div>
+                <div class="social_network">
+                    <div class="twitter" tal:content="contact/twitter" tal:condition="contact/twitter"></div>
+                    <div class="facebook" tal:content="contact/facebook" tal:condition="contact/facebook"></div>
+                    <div class="linkedin" tal:content="contact/linkedin" tal:condition="contact/linkedin"></div>
+                    <div class="github" tal:content="contact/github" tal:condition="contact/github"></div>
+                    <div class="pinterest" tal:content="contact/pinterest" tal:condition="contact/pinterest"></div>
+                    <div class="googleplus" tal:content="contact/googleplus" tal:condition="contact/googleplus"></div>
+                    <div class="instagram" tal:content="contact/instagram" tal:condition="contact/instagram"></div>
+                    <div class="reddit" tal:content="contact/reddit" tal:condition="contact/reddit"></div>
+                    <div class="youtube" tal:content="contact/youtube" tal:condition="contact/youtube"></div>
+                    <div class="vimeo" tal:content="contact/vimeo" tal:condition="contact/vimeo"></div>
+                    <div class="whatsapp" tal:content="contact/whatsapp" tal:condition="contact/whatsapp"></div>
+                </div>
+                <a href="#" alt="link contact" tal:attributes="href link" tal:condition="link">Link</a>
+            </div>
+        </section>
+        </metal:content-core>
+        </metal:main>
+    </body>
+</html>

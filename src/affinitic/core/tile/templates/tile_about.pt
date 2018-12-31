@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="plone">
+    <head></head>
+    <body>
+        <tal:services tal:define="about view/about">
+        <div class="article light"
+             condition="about">
+            <div class="content">
+                <div class="article-image"
+                     tal:attributes="style string:background-image:url(${about/absolute_url}/@@images/article_image/mini)">
+                </div>
+                <div class="article-content">
+                    <h2 tal:content="about/title" tal:condition="about/title"></h2>
+                    <div id="parent-fieldname-text" tal:content="about/description" tal:condition="about/description"></div>
+                    <div class="readmore right">
+                        <a href="#" tal:attributes="href about/absolute_url">Plus d'infos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </tal:services>
+    </body>
+</html>

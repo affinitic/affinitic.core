@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master">
+    <head></head>
+    <body>
+        <metal:main fill-slot="main">
+        <metal:content-core define-macro="content-core">
+        <div class="article light">
+            <div class="content">
+                <tal:reference tal:define="image python: view.image(context);">
+                <tal:image tal:condition="python: image['icon_ext'] and image['icon_data']">
+                <tal:svg tal:condition="python: image['icon_ext'] == '.svg'">
+                <div class="article-image vw-10" tal:content="structure image/icon_data"></div>
+                </tal:svg>
+
+                <tal:bitmap tal:condition="python: image['icon_ext'] != '.svg'">
+                <div class="article-image vw-10"
+                     tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/article_image/mini">
+                </div>
+                </tal:bitmap>
+                </tal:image>
+                </tal:reference>
+                <div class="article-content">
+                    <h2 tal:content="context/title"></h2>
+                    <div tal:content="context/description"></div>
+                </div>
+            </div>
+            <div class="content">
+                <div id="parent-fieldname-text" tal:content="structure context/text/output" tal:condition="context/text"></div>
+            </div>
+        </div>
+        </metal:content-core>
+        </metal:main>
+    </body>
+</html>

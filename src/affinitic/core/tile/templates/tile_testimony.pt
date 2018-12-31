@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="plone">
+    <head></head>
+    <body>
+        <tal:testimony tal:define="service view/service;" tal:condition="service">
+        <div class="testimony">
+            <div class="testimony-text" tal:condition="service/reference_testimony" tal:content="service/reference_testimony"></div>
+            <div class="testimony-author">
+                <span class="testimony-funtion" tal:condition="service/reference_function" tal:content="service/reference_function">
+                </span><span tal:condition="python: service.reference_function and service.reference_author">,</span>
+                <span class="testimony-name" tal:condition="service/reference_author" tal:content="service/reference_author"></span>
+            </div>
+        </div>
+        </tal:testimony>
+    </body>
+</html>

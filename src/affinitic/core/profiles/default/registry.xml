@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<registry>
+    <records interface="plone.app.mosaic.interfaces.IWeightedDict"
+        prefix="plone.app.mosaic.tiles_categories.content">
+        <value key="name">content</value>
+        <value key="label">Content</value>
+        <value key="weight">60</value>
+    </records>
+
+    <records prefix="plone.app.mosaic.app_tiles.services"
+        interface="plone.app.mosaic.interfaces.ITile">
+        <value key="name">tile.services</value>
+        <value key="label">Our services</value>
+        <value key="category">content</value>
+        <value key="tile_type">textapp</value>
+        <value key="default_value">Our services</value>
+        <value key="read_only">true</value>
+        <value key="settings">false</value>
+        <value key="favorite">false</value>
+        <value key="rich_text">false</value>
+        <value key="weight">20</value>
+    </records>
+
+    <records prefix="plone.app.mosaic.app_tiles.about"
+        interface="plone.app.mosaic.interfaces.ITile">
+        <value key="name">tile.about</value>
+        <value key="label">About us</value>
+        <value key="category">content</value>
+        <value key="tile_type">textapp</value>
+        <value key="default_value">About us</value>
+        <value key="read_only">true</value>
+        <value key="settings">false</value>
+        <value key="favorite">false</value>
+        <value key="rich_text">false</value>
+        <value key="weight">20</value>
+    </records>
+
+    <records prefix="plone.app.mosaic.app_tiles.projects"
+        interface="plone.app.mosaic.interfaces.ITile">
+        <value key="name">tile.projects</value>
+        <value key="label">Our last projects</value>
+        <value key="category">content</value>
+        <value key="tile_type">textapp</value>
+        <value key="default_value">Our last projects</value>
+        <value key="read_only">true</value>
+        <value key="settings">false</value>
+        <value key="favorite">false</value>
+        <value key="rich_text">false</value>
+        <value key="weight">20</value>
+    </records>
+
+    <records prefix="plone.app.mosaic.app_tiles.references"
+        interface="plone.app.mosaic.interfaces.ITile">
+        <value key="name">tile.references</value>
+        <value key="label">Our references</value>
+        <value key="category">content</value>
+        <value key="tile_type">textapp</value>
+        <value key="default_value">Our references</value>
+        <value key="read_only">true</value>
+        <value key="settings">false</value>
+        <value key="favorite">false</value>
+        <value key="rich_text">false</value>
+        <value key="weight">20</value>
+    </records>
+
+    <records prefix="plone.app.mosaic.app_tiles.testimony"
+        interface="plone.app.mosaic.interfaces.ITile">
+        <value key="name">tile.testimony</value>
+        <value key="label">Our testimony</value>
+        <value key="category">content</value>
+        <value key="tile_type">textapp</value>
+        <value key="default_value">Our testimony</value>
+        <value key="read_only">true</value>
+        <value key="settings">false</value>
+        <value key="favorite">false</value>
+        <value key="rich_text">false</value>
+        <value key="weight">20</value>
+    </records>
+
+    <records prefix="plone.app.mosaic.app_tiles.team"
+        interface="plone.app.mosaic.interfaces.ITile">
+        <value key="name">tile.team</value>
+        <value key="label">Our team</value>
+        <value key="category">content</value>
+        <value key="tile_type">textapp</value>
+        <value key="default_value">Our team</value>
+        <value key="read_only">true</value>
+        <value key="settings">false</value>
+        <value key="favorite">false</value>
+        <value key="rich_text">false</value>
+        <value key="weight">20</value>
+    </records>
+
+    <records prefix="plone.resources/affinitic-core"
+        interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+        <value key="js">++resource++affinitic.core/pattern.js</value>
+    </records>
+
+    <records prefix="plone.bundles/affinitic-core"
+        interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+        <value key="resources">
+            <element>affinitic-core</element>
+        </value>
+        <value key="enabled">True</value>
+        <value key="compile">False</value>
+        <value key="last_compilation"></value>
+        <value key="jscompilation">++plone++static/responsiveslides-min-compiled.js</value>
+    </records>
+
+</registry>

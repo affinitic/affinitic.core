@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master">
+    <head></head>
+
+    <metal:main fill-slot="main">
+        <div class="article light">
+            <h1 tal:content="context/title"></h1>
+            <div class="content">
+                <div class="article-image"
+                     tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/article_image/mini">
+                </div>
+                <div class="article-content">
+                    <h2 tal:content="context/description"></h2>
+                    <div id="parent-fieldname-text" tal:content="structure context/text/output" tal:condition="context/text"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="article">
+            <h1>Nos dommaines d'expertise</h1>
+            <div class="content">
+                <div class="article-galery">
+                    <tal:services tal:define="services view/services;">
+                    <tal:repeat repeat="service services">
+                    <a href="#" tal:attributes="href service/getURL" class="article-columns-5">
+
+                        <tal:reference tal:define="image python: view.image(service);">
+                        <tal:image tal:condition="python: image['icon_ext'] and image['icon_data']">
+                        <tal:svg tal:condition="python: image['icon_ext'] == '.svg'">
+                        <div class="article-icon circle"
+                             tal:attributes="style string:mask-image:url(${service/getURL}/@@images/article_image"></div>
+                        </tal:svg>
+
+                        <tal:bitmap tal:condition="python: image['icon_ext'] != '.svg'">
+                        <div class="article-icon"
+                             tal:attributes="style string:background-image:url(${service/getURL}/@@images/article_image/mini">
+                        </div>
+                        </tal:bitmap>
+                        </tal:image>
+                        </tal:reference>
+                        <h4 class="border-bottom" tal:content="service/Title"></h4>
+                        <div tal:content="service/Description"></div>
+                    </a>
+                    </tal:repeat>
+                    </tal:services>
+                </div>
+            </div>
+        </div>
+    </metal:main>
+</html>

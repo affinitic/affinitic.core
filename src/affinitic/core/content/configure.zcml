@@ -1,0 +1,65 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+
+    <browser:page
+        name="about_view"
+        for="*"
+        class=".about.AboutView"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        name="member_view"
+        for="*"
+        class=".about.MemberView"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="*"
+        name="services_list_view"
+        class=".services.ServicesListView"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="*"
+        name="service_view"
+        class=".services.ServiceView"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="*"
+        name="references_list_view"
+        class=".references.ReferencesListView"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="*"
+        name="reference_view"
+        class=".references.ReferenceView"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="*"
+        name="contacts_list_view"
+        class=".contacts.ContactsListView"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="*"
+        name="contact_view"
+        class=".contacts.ContactView"
+        permission="zope2.View"
+        />
+
+</configure>

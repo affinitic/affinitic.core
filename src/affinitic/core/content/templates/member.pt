@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master">
+    <head></head>
+    <body>
+        <metal:main fill-slot="main">
+        <div class="article">
+            <div class="content" tal:define="member view/member">
+                <div class="content-flex">
+                    <div class="content">
+                        <img class="article-image vw-10 circle" alt="Image contact"
+                             src="defaultUser.png"
+                             alt=""
+                             border="0"
+                             width="75"
+                             height="100"
+                             tal:attributes="src member/portrait" />
+                        <div class="article-content">
+                            <h2 tal:content="member/fullname">Name</h2>
+                            <div id="parent-fieldname-text" tal:content="member/cv">Description</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-column">
+                    <h2>Fonction</h2>
+                    <div tal:content="member/function"></div>
+                    <br>
+                    <h2>Contact</h2>
+                    <div tal:content="member/phone">phone</div>
+                    <div tal:content="member/email">email</div>
+                </div>
+            </div>
+        </div>
+        </metal:main>
+    </body>
+</html>

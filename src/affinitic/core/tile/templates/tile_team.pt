@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="plone">
+    <head></head>
+    <body>
+        <div class="article" tal:define="team view/team;
+                                         portal_url view/portal_url" tal:condition="team">
+            <h1>Notre équipe</h1>
+            <div class="content">
+                <div class="tile-team">
+                <tal:member tal:repeat="member team" tal:condition="team">
+                <tal:index define="index repeat/member/index;">
+                <a href="#" tal:attributes="href string:${portal_url}/@@member_view?member=${member/username}">
+                    <div class="image">
+                        <div class="image-background" tal:condition="not:member/portrait"></div>
+                        <div tal:attributes="class string:image-background member;
+                        style string:background-image:url(${member/portrait})"
+                             tal:condition="member/portrait"></div>
+                    </div>
+                    <div class="text">
+                        <div  class="name" tal:content="member/fullname" tal:condition="member/fullname"></div>
+                        <div class="function" tal:content="member/function" tal:condition="member/function"></div>
+                    </div>
+                </a>
+                </tal:index>
+                </tal:member>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<portlets
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="plone">
+
+    <!-- Top -->
+    <assignment name="texte-statique" category="context" key="/"
+        manager="plone.topportlets" type="plone.topportlet.Static" visible="True">
+        <property name="text">Slogan</property>
+    </assignment>
+    <assignment name="search" category="context" key="/"
+        manager="plone.topportlets" type="plone.topportlet.Search" visible="True">
+        <property name="enableLivesearch">True</property>
+    </assignment>
+    <assignment name="actions" category="context" key="/"
+        manager="plone.topportlets" type="plone.topportlet.Actions"
+        visible="True">
+        <property name="category">top_actions</property>
+        <property name="ptitle">Actions</property>
+        <property name="default_icon">action_icon.png</property>
+        <property name="show_icons">True</property>
+    </assignment>
+
+    <!-- Left -->
+    <assignment name="navigation" category="context" key="/"
+        manager="plone.leftcolumn" type="portlets.Navigation" visible="False">
+    </assignment>
+
+    <!-- FOOTER -->
+    <assignment name="footer" category="context" key="/"
+        manager="plone.footerportlets" type="portlets.Classic" visible="True" remove="True">
+    </assignment>
+    <assignment name="colophon" category="context" key="/"
+        manager="plone.footerportlets" type="portlets.Classic" visible="True" remove="True">
+    </assignment>
+    <assignment name="copyright" category="context" key="/"
+        manager="plone.footerportlets" type="plone.portlet.static.Static" visible="True">
+        <property
+            name="text">Copyright Affinitic</property>
+        <property name="more_url"/>
+        <property name="footer"/>
+        <property name="header">Copyright</property>
+        <property name="omit_border">True</property>
+    </assignment>
+
+</portlets>

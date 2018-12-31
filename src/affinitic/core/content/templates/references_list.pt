@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master">
+    <head></head>
+    <body>
+        <metal:main fill-slot="main">
+        <div class="article light">
+            <h1 tal:content="context/title"></h1>
+            <div class="content">
+                <div class="article-image"
+                     tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/article_image/mini">
+                </div>
+                <div class="article-content">
+                    <h2 tal:content="context/description"></h2>
+                    <div id="parent-fieldname-text" tal:content="structure context/text/output" tal:condition="context/text"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="article">
+            <h1>Nos réalisations</h1>
+            <div class="content">
+                <div class="article-galery"
+                     tal:define="references view/references;"
+                     tal:condition="references">
+                    <tal:repeat repeat="reference references">
+                    <div class="article-thumbs" tal:condition="reference" tal:define="image python:view.gallery(reference);">
+                        <a href="#" tal:attributes="href reference/getURL;" class="article-thumbs-link">
+                            <div class="article-thumbs-image"
+                                 tal:attributes="style string:background-image:url(${image/getURL}/@@images/image/mini">
+                            </div>
+                            <div class="article-thumbs-text"
+                                 tal:content="reference/Title"></div>
+                        </a>
+                    </div>
+                    </tal:repeat>
+                </div>
+                <div class="article-column">
+                     <tal:services tal:define="services view/services;"
+                     tal:condition="services">
+                    <h2>Catégories</h2>
+                    <tal:repeat repeat="service services">
+                    <div class="content">
+                        <a href="#" tal:content="service/name" tal:attributes="href service/url">Service</a>
+                        <div tal:content="service/number" class="tags">Number</div>
+                    </div>
+                    </tal:repeat>
+                     </tal:services>
+                    <br>
+                     <tal:tags tal:define="tags view/tags;"
+                               tal:condition="tags">
+                    <h2>Mots clés</h2>
+                    <tal:repeat repeat="tag tags">
+                    <div class="tags" tal:content="tag">Tag</div>
+                    </tal:repeat>
+                     </tal:tags>
+                </div>
+            </div>
+        </div>
+        </metal:main>
+    </body>
+</html>

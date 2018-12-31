@@ -1,0 +1,86 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master">
+    <head></head>
+    <body>
+        <metal:main fill-slot="main">
+        <div class="article light">
+            <h1 tal:content="context/title"></h1>
+            <div class="content">
+                <div class="content-flex">
+                    <div class="content">
+                        <tal:reference tal:define="image python: view.image(context);">
+                        <tal:image tal:condition="python: image['icon_ext'] and image['icon_data']">
+                        <tal:svg tal:condition="python: image['icon_ext'] == '.svg'">
+                        <div class="article-image vw-10" tal:content="structure image/icon_data"></div>
+                        </tal:svg>
+
+                        <tal:bitmap tal:condition="python: image['icon_ext'] != '.svg'">
+                        <img class="article-image vw-10" alt="Image contact" src="/" tal:attributes="src string:${context/absolute_url}/@@images/contact_image/mini">
+                        </tal:bitmap>
+                        </tal:image>
+                        </tal:reference>
+                        <div class="article-content">
+                            <h2>Le client</h2>
+                            <div id="parent-fieldname-text" tal:content="context/description">Le client</div>
+                        </div>
+                    </div>
+                    <h2>Le projet</h2>
+                    <div id="parent-fieldname-text" tal:content="structure context/text/output" tal:condition="context/text"></div>
+                </div>
+                <div class="article-column">
+                    <tal:services tal:condition="context/reference_service">
+                    <h2>Services</h2>
+                    <tal:repeat repeat="service context/reference_service">
+                    <div tal:content="service"></div>
+                    </tal:repeat>
+                    <br>
+                    </tal:services>
+                    <tal:technology tal:condition="context/reference_technology">
+                    <h2>Technologies</h2>
+                    <tal:repeat repeat="technology context/reference_technology">
+                    <div class="tags" tal:content="technology"></div>
+                    </tal:repeat>
+                    </tal:technology>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="article" tal:define="gallery view/gallery;" tal:condition="gallery">
+            <h1>Galerie</h1>
+            <div class="content">
+                <div class="article-galery">
+                    <tal:repeat tal:repeat="image gallery">
+                    <div class="article-thumbs">
+                        <a href="#" tal:attributes="href string: ${image/absolute_url}/view;" class="article-thumbs-link">
+                            <div class="article-thumbs-image"
+                                 tal:attributes="style string:background-image:url(${image/absolute_url}/@@images/image/mini)">
+                            </div>
+                            <div class="article-thumbs-text">
+                                <span tal:content="image/Title"></span>
+                                <span tal:content="image/Description"></span>
+                            </div>
+                        </a>
+                    </div>
+                    </tal:repeat>
+                </div>
+            </div>
+        </div>
+
+        <tal:testimony tal:condition="context/reference_testimony">
+        <div class="testimony">
+            <div class="testimony-text" tal:condition="context/reference_testimony" tal:content="context/reference_testimony"></div>
+            <div class="testimony-author">
+                <span class="testimony-funtion" tal:condition="context/reference_function" tal:content="context/reference_function">
+                </span><span tal:condition="python: context.reference_function and context.reference_author">,</span>
+                <span class="testimony-name" tal:condition="context/reference_author" tal:content="context/reference_author"></span>
+            </div>
+        </div>
+        </tal:testimony>
+        </metal:main>
+    </body>
+</html>

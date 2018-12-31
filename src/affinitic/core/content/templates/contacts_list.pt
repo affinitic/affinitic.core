@@ -1,0 +1,76 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master">
+    <head></head>
+
+    <metal:main fill-slot="main">
+    <metal:block fill-slot="content-core">
+    <tal:contacts tal:define="contacts view/contacts;">
+    <tal:repeat repeat="contact contacts">
+
+    <div class="article">
+        <div class="content"
+             tal:define="link python: view.link(contact);
+             item python: contact.getObject();
+             image python: view.image(item)">
+            <div class="content-flex">
+                <div class="content">
+                    <tal:image tal:condition="python: image['icon_ext'] and image['icon_data']">
+                    <tal:svg tal:condition="python: image['icon_ext'] == '.svg'">
+                    <div class="article-image vw-10" tal:content="structure image/icon_data"></div>
+                    </tal:svg>
+                    <tal:bitmap tal:condition="python: image['icon_ext'] != '.svg'">
+                    <div class="article-image vw-10 contain"
+                         tal:attributes="style string:background-image:url(${item/absolute_url}/@@images/contact_image/mini">
+                    </div>
+                    </tal:bitmap>
+                    </tal:image>
+                    <div class="article-content">
+                        <h2 tal:content="contact/Title">Name</h2>
+                        <div id="parent-fieldname-text" tal:content="contact/Description">Description</div>
+                        <div>
+                            <span tal:content="item/contact_address" tal:condition="item/contact_address"></span>
+                            <span tal:content="item/contact_number" tal:condition="item/contact_number"></span>
+                        </div>
+                        <div>
+                            <span tal:content="item/contact_code" tal:condition="item/contact_code"></span>
+                            <span tal:content="item/contact_city" tal:condition="item/contact_city"></span>
+                            <span tal:condition="item/contact_country"  tal:condition="item/contact_country">
+                                (<span tal:content="item/contact_country"></span>)
+                            </span>
+                        </div>
+                        <div class="email" tal:content="item/contact_email" tal:condition="item/contact_email"></div>
+                        <div class="phone" tal:content="item/contact_phone" tal:condition="item/contact_phone"></div>
+                        <div class="cellphone" tal:content="item/contact_cellphone1" tal:condition="item/contact_cellphone1"></div>
+                        <div class="cellphone" tal:content="item/contact_cellphone2" tal:condition="item/contact_cellphone2"></div>
+                        <div class="fax" tal:content="item/contact_fax" tal:condition="item/contact_fax"></div>
+                        <a href="#" alt="link contact" tal:attributes="href link" tal:condition="link">Link</a>
+                    </div>
+                </div>
+            </div>
+            <div class="article-column">
+                <h2>Réseaux sociaux</h2>
+                <div class="social_network">
+                    <div class="twitter" tal:content="item/twitter" tal:condition="item/twitter"></div>
+                    <div class="facebook" tal:content="item/facebook" tal:condition="item/facebook"></div>
+                    <div class="linkedin" tal:content="item/linkedin" tal:condition="item/linkedin"></div>
+                    <div class="github" tal:content="item/github" tal:condition="item/github"></div>
+                    <div class="pinterest" tal:content="item/pinterest" tal:condition="item/pinterest"></div>
+                    <div class="googleplus" tal:content="item/googleplus" tal:condition="item/googleplus"></div>
+                    <div class="instagram" tal:content="item/instagram" tal:condition="item/instagram"></div>
+                    <div class="reddit" tal:content="item/reddit" tal:condition="item/reddit"></div>
+                    <div class="youtube" tal:content="item/youtube" tal:condition="item/youtube"></div>
+                    <div class="vimeo" tal:content="item/vimeo" tal:condition="item/vimeo"></div>
+                    <div class="whatsapp" tal:content="item/whatsapp" tal:condition="item/whatsapp"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </tal:repeat>
+    </tal:contacts>
+    </metal:block>
+
+    </metal:main>
+</html>

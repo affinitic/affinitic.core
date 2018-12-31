@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="plone">
+    <head></head>
+    <body>
+
+        <div class="article light">
+            <h1>Ils nous font confiance</h1>
+            <div class="content">
+                <div class="article-galery"
+                     tal:define="references view/references;"
+                     tal:condition="references">
+                    <tal:repeat repeat="brain references">
+                    <tal:reference tal:define="reference python:brain.getObject();
+                                               image python: view.image(reference);">
+                        <a href="#" tal:attributes="href reference/absolute_url;" class="article-thumbs-link">
+                            <tal:image tal:condition="python: image['icon_ext'] and image['icon_data']">
+                            <tal:svg tal:condition="python: image['icon_ext'] == '.svg'">
+                            <div class="reference-logo" tal:content="structure image/icon_data"></div>
+                            </tal:svg>
+
+                            <tal:bitmap tal:condition="python: image['icon_ext'] != '.svg'">
+                            <img class="reference-logo" alt="Image contact" src="/" tal:attributes="src string:${reference/absolute_url}/@@images/contact_image/mini">
+                            </tal:bitmap>
+                            </tal:image>
+                        </a>
+                    </tal:reference>
+                    </tal:repeat>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
