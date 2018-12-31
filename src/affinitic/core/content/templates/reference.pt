@@ -26,7 +26,13 @@
                         </tal:image>
                         </tal:reference>
                         <div class="article-content">
-                            <h2>Le client</h2>
+                            <h2>Le client 
+                                <a href="#" tal:condition="context/reference_website"
+                                   target="_blank"
+                                    tal:attributes="href context/reference_website">
+                                    <i class="glyphicon glyphicon-link reference-link"></i>
+                                </a>
+                            </h2>
                             <div id="parent-fieldname-text" tal:content="context/description">Le client</div>
                         </div>
                     </div>
@@ -64,7 +70,6 @@
                             </div>
                             <div class="article-thumbs-text">
                                 <span tal:content="image/Title"></span>
-                                <span tal:content="image/Description"></span>
                             </div>
                         </a>
                     </div>

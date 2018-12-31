@@ -15,7 +15,7 @@
                     <tal:repeat repeat="brain references">
                     <tal:reference tal:define="reference python:brain.getObject();
                                                image python: view.image(reference);">
-                        <a href="#" tal:attributes="href reference/absolute_url;" class="article-thumbs-link">
+                        <a href="#" tal:attributes="href reference/reference_website;" target="_blank" class="article-thumbs-link">
                             <tal:image tal:condition="python: image['icon_ext'] and image['icon_data']">
                             <tal:svg tal:condition="python: image['icon_ext'] == '.svg'">
                             <div class="reference-logo" tal:content="structure image/icon_data"></div>

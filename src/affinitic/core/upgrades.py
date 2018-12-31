@@ -250,8 +250,9 @@ def add_references():
         type='Reference',
         id='reference1',
         title=_(u'CIRB'),
-        description=text_small,
+        description=_(u"Le Centre d’Informatique pour la Région Bruxelloise (CIRB)  est le partenaire informatique de confiance qui, en Région de Bruxelles-Capitale, peut être chargé de toute mission de développement et d'assistance informatique, télématique et cartographique."),
         reference_technology=['python', 'plone 5'],
+        reference_website='https://cirb.brussels/',
         reference_service=[u'Web Design', u'Development', u'Coaching', u'CICD / Devops'],
         reference_author=u'Panpan',
         reference_function=u'Lapin',
@@ -265,10 +266,10 @@ def add_references():
 
     api.content.create(
         type='Image',
-        id='reference1_image1',
-        title=_(u'Image 1'),
+        id='cirb_image1',
+        title=_(u'Homepage'),
         description=_(u'Image 1'),
-        image=image_format('reference_image.jpg'),
+        image=image_format('cirb_image1.png'),
         container=obj,
     )
 
