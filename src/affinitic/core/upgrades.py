@@ -50,7 +50,7 @@ def change_site_title():
 
 
 def change_site_logo():
-    image = image_format('logoblanc.svg')
+    image = image_format('logo_affinitic_blanc.svg')
     image_encode = b64encode_file(image.filename, image.data)
     api.portal.set_registry_record('plone.site_logo', image_encode)
 
@@ -249,10 +249,10 @@ def add_references():
     obj = api.content.create(
         type='Reference',
         id='reference1',
-        title=_(u'Client 1'),
+        title=_(u'CIRB'),
         description=text_small,
-        reference_technology=['python'],
-        reference_service=[u'Web Design'],
+        reference_technology=['python', 'plone 5'],
+        reference_service=[u'Web Design', u'Development', u'Coaching', u'CICD / Devops'],
         reference_author=u'Panpan',
         reference_function=u'Lapin',
         reference_testimony=u'Drame en Sologne : un chasseur confond son fils avec un sanglier... \
@@ -260,7 +260,7 @@ def add_references():
         container=parent,
     )
     api.content.transition(obj=obj, transition='publish')
-    obj.article_image = image_format('logo.svg')
+    obj.article_image = image_format('logo_cirb.png')
     obj.text = RichTextValue(text_large)
 
     api.content.create(
@@ -292,7 +292,7 @@ def add_contacts():
         id='contact',
         title=_(u'Contact'),
         description=_(u'Contact us'),
-        contact_image=image_format('logo.png'),
+        contact_image=image_format('logo_affinitic_blanc.svg'),
         contact_email=u'info@affinitic.be',
         contact_business=u'0882 564 990',
         contact_address=u'rue de la Maîtrise',
