@@ -31,7 +31,7 @@
                         <tal:image tal:condition="python: image['icon_ext'] and image['icon_data']">
                         <tal:svg tal:condition="python: image['icon_ext'] == '.svg'">
                         <div class="article-icon circle"
-                             tal:attributes="style string:mask-image:url(${service/getURL}/@@images/article_image"></div>
+                             tal:attributes="style string:background-image:url(${service/getURL}/@@images/article_image"></div>
                         </tal:svg>
 
                         <tal:bitmap tal:condition="python: image['icon_ext'] != '.svg'">

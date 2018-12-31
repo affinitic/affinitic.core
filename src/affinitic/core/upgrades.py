@@ -198,37 +198,42 @@ def add_services():
         'webdesign',
         _(u'Web Design'),
         text_small,
+        'service_webdesign.svg',
     )
     add_service_content(
         'development',
         _(u'Development'),
         text_small,
+        'service_development.svg',
     )
     add_service_content(
         'cicd_devops',
         _(u'CICD / Devops'),
         text_small,
+        'service_cicd.svg',
     )
     add_service_content(
         'webhosting',
         _(u'Web hosting'),
         text_small,
+        'service_webhosting.svg',
     )
     add_service_content(
         'coaching',
         _(u'Coaching'),
         text_small,
+        'service_coaching.svg',
     )
 
 
-def add_service_content(service_id, service_title, service_description):
+def add_service_content(service_id, service_title, service_description, image):
     portal = api.portal.get()
     parent = getattr(portal, 'services', None)
     layout = 'service_view'
     create_content('Service', service_id, service_title, service_description, parent, layout, 'publish', True)
     portal = api.portal.get()
     service = getattr(parent, service_id, None)
-    service.article_image = image_format('paint.svg')
+    service.article_image = image_format(image)
 
 
 def create_references_folder():
