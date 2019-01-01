@@ -9,7 +9,7 @@
         <div class="article">
             <h1>Nos services</h1>
             <div class="content">
-                <div class="article-galery">
+                <div class="article-galery services">
                     <tal:services tal:define="services view/services;">
                     <tal:repeat repeat="service services">
                     <a href="#" tal:attributes="href service/getURL" class="article-columns-5">
