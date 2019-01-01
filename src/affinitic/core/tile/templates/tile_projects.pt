@@ -10,8 +10,9 @@
             <h1>Nos dernières réalisations</h1>
             <div class="content">
                 <div class="article-galery"
-                     tal:define="projects view/projects;"
-                     tal:condition="projects">
+                     tal:define="projects_all view/projects;"
+                     tal:condition="projects_all">
+                    <tal:last tal:define="projects python: projects_all[:5]">
                     <tal:repeat tal:repeat="project projects">
                     <tal:define tal:define="brain project/brain;
                                             image project/image">
@@ -26,6 +27,7 @@
                     </div>
                     </tal:define>
                     </tal:repeat>
+                    </tal:last>
                 </div>
             </div>
         </div>
