@@ -20,7 +20,7 @@
         </div>
 
         <div class="article">
-            <h1>Nos dommaines d'expertise</h1>
+            <h1>Nos domaines d'expertise</h1>
             <div class="content">
                 <div class="article-galery">
                     <tal:services tal:define="services view/services;">
