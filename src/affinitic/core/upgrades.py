@@ -50,7 +50,7 @@ def change_site_title():
 
 
 def change_site_logo():
-    image = image_format('logo_affinitic_blanc.svg')
+    image = image_format('logo_affinitic_texte_blanc.svg')
     image_encode = b64encode_file(image.filename, image.data)
     api.portal.set_registry_record('plone.site_logo', image_encode)
 
