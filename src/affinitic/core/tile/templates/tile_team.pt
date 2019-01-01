@@ -19,10 +19,6 @@
                         style string:background-image:url(${member/portrait})"
                              tal:condition="member/portrait"></div>
                     </div>
-                    <div class="text">
-                        <div  class="name" tal:content="member/fullname" tal:condition="member/fullname"></div>
-                        <div class="function" tal:content="member/function" tal:condition="member/function"></div>
-                    </div>
                 </a>
                 </tal:index>
                 </tal:member>
