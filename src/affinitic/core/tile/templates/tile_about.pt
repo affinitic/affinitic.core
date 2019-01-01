@@ -6,7 +6,7 @@
     <head></head>
     <body>
         <tal:services tal:define="about view/about">
-        <div class="article"
+        <div class="article light"
              condition="about">
             <div class="content">
                 <div class="article-image"
