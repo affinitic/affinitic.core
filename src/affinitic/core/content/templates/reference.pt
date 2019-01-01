@@ -36,8 +36,10 @@
                             <div tal:content="context/description">Le client</div>
                         </div>
                     </div>
+                    <tal:projet tal:condition="context/text">
                     <h2>Le projet</h2>
-                    <div tal:content="structure context/text/output" tal:condition="context/text"></div>
+                    <div tal:content="structure context/text/output"></div>
+                    </tal:projet>
                 </div>
                 <div class="article-column">
                     <tal:services tal:condition="context/reference_service">
@@ -68,7 +70,7 @@
                             <tal:index define="index repeat/image/index;" tal:condition="image">
                             <div tal:attributes="class python:'carousel-item active' if index==0 else 'carousel-item';">
                                 <div class="content">
-                                    <div class="article-image vw-30" tal:attributes="style string:background-image:url(${image/absolute_url}/@@images/image)"></div>
+                                    <div class="article-image vw-30" tal:attributes="style string:background-image:url(${image/absolute_url}/@@images/image/large)"></div>
                                     <div class="article-content">
                                         <div  class="name" tal:content="image/Title" tal:condition="image/Title"></div>
                                         <div  class="name" tal:content="image/Description" tal:condition="image/Description"></div>

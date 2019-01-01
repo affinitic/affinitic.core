@@ -11,7 +11,7 @@
             <h1 tal:content="context/title"></h1>
             <div class="content">
                 <div class="article-image"
-                     tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/article_image/mini">
+                     tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/article_image/preview">
                 </div>
                 <div class="article-content">
                     <h2 tal:content="context/description"></h2>
@@ -30,7 +30,7 @@
                     <div class="article-thumbs" tal:condition="reference" tal:define="image python:view.gallery(reference);">
                         <a href="#" tal:attributes="href reference/getURL;" class="article-thumbs-link">
                             <div class="article-thumbs-image"
-                                 tal:attributes="style string:background-image:url(${image/getURL}/@@images/image/mini">
+                                 tal:attributes="style string:background-image:url(${image/getURL}/@@images/image/preview">
                             </div>
                             <div class="article-thumbs-text"
                                  tal:content="reference/Title"></div>
