@@ -21,7 +21,7 @@ class IReferencesList(model.Schema):
     text = RichText(
         title=_(u"Text"),
         description=_(u"The text to render"),
-        required=True)
+        required=False)
 
 
 class ReferencesList(Container):
@@ -92,7 +92,7 @@ class IReference(model.Schema):
     text = RichText(
         title=_(u"Text"),
         description=_(u"The text to render"),
-        required=True)
+        required=False)
 
     reference_website = schema.TextLine(
         title=_(u'Website'),
