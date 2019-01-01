@@ -51,7 +51,7 @@ class IService(model.Schema):
     text = RichText(
         title=_(u"Text"),
         description=_(u"The text to render"),
-        required=True)
+        required=False)
 
 
 class Service(Container):
