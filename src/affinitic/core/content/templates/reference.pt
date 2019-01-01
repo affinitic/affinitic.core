@@ -29,15 +29,15 @@
                             <h2>Le client 
                                 <a href="#" tal:condition="context/reference_website"
                                    target="_blank"
-                                    tal:attributes="href context/reference_website">
+                                   tal:attributes="href context/reference_website">
                                     <i class="glyphicon glyphicon-link reference-link"></i>
                                 </a>
                             </h2>
-                            <div id="parent-fieldname-text" tal:content="context/description">Le client</div>
+                            <div tal:content="context/description">Le client</div>
                         </div>
                     </div>
                     <h2>Le projet</h2>
-                    <div id="parent-fieldname-text" tal:content="structure context/text/output" tal:condition="context/text"></div>
+                    <div tal:content="structure context/text/output" tal:condition="context/text"></div>
                 </div>
                 <div class="article-column">
                     <tal:services tal:condition="context/reference_service">
@@ -61,19 +61,46 @@
         <div class="article" tal:define="gallery view/gallery;" tal:condition="gallery">
             <h1>Galerie</h1>
             <div class="content">
-                <div class="article-galery">
-                    <tal:repeat tal:repeat="image gallery">
-                    <div class="article-thumbs">
-                        <a href="#" tal:attributes="href string: ${image/absolute_url}/view;" class="article-thumbs-link">
-                            <div class="article-thumbs-image"
-                                 tal:attributes="style string:background-image:url(${image/absolute_url}/@@images/image/mini)">
+                <div id="carousel-thumb" class="carousel slide carousel-thumbnails member-about" data-ride="carousel">
+                    <div class="carousel-header">
+                        <div class="carousel-inner" role="listbox">
+                            <tal:image tal:repeat="image gallery">
+                            <tal:index define="index repeat/image/index;" tal:condition="image">
+                            <div tal:attributes="class python:'carousel-item active' if index==0 else 'carousel-item';">
+                                <div class="content">
+                                    <div class="article-image vw-30" tal:attributes="style string:background-image:url(${image/absolute_url}/@@images/image)"></div>
+                                    <div class="article-content">
+                                        <div  class="name" tal:content="image/Title" tal:condition="image/Title"></div>
+                                        <div  class="name" tal:content="image/Description" tal:condition="image/Description"></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="article-thumbs-text">
-                                <span tal:content="image/Title"></span>
-                            </div>
+                            </tal:index>
+                            </tal:image>
+                        </div>
+                        <tal:multiple tal:condition="python: len(gallery) > 1">
+                        <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
                         </a>
+                        <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        </tal:multiple>
                     </div>
-                    </tal:repeat>
+                    <tal:multiple tal:condition="python: len(gallery) > 1">
+                    <ol class="carousel-indicators">
+                        <tal:image tal:repeat="image gallery">
+                        <tal:index define="index repeat/image/index;" tal:condition="image">
+                        <li data-target="#carousel-thumb" tal:attributes="data-slide-to index">
+                            <div tal:attributes="class string:image-background small;
+                            style string:background-image:url(${image/absolute_url}/@@images/image/mini)"></div>
+                        </li>
+                        </tal:index>
+                        </tal:image>
+                    </ol>
+                    </tal:multiple>
                 </div>
             </div>
         </div>
