@@ -6,7 +6,7 @@
     <head></head>
 
     <metal:main fill-slot="main">
-    <div class="article light">
+    <div class="article">
         <h1 tal:content="context/title"></h1>
         <div class="content">
             <div class="article-image"
@@ -22,7 +22,7 @@
     <tal:documents tal:define="documents view/documents;">
     <tal:document tal:repeat="document documents" tal:condition="documents">
     <tal:index define="index repeat/document/index">
-    <div tal:condition="python: index%2!=0" class="article light">
+    <div tal:condition="python: index%2!=0" class="article">
         <div class="content">
             <div class="article-image"
                  tal:attributes="style string:background-image:url(${document/absolute_url}/@@images/article_image/mini)">

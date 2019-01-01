@@ -6,7 +6,7 @@
     <head></head>
 
     <metal:main fill-slot="main">
-        <div class="article light">
+        <div class="article">
             <h1 tal:content="context/title"></h1>
             <div class="content">
                 <div class="article-image"

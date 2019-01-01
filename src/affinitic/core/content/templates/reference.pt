@@ -7,7 +7,7 @@
     <head></head>
     <body>
         <metal:main fill-slot="main">
-        <div class="article light">
+        <div class="article">
             <h1 tal:content="context/title"></h1>
             <div class="content">
                 <div class="content-flex">
@@ -19,7 +19,7 @@
                         </tal:svg>
 
                         <tal:bitmap tal:condition="python: image['icon_ext'] != '.svg'">
-                        <div class="article-image vw-10 contain"
+                        <div class="article-image vw-10 contain reference-logo-intro"
                              tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/article_image/mini)">
                         </div>
                         </tal:bitmap>
