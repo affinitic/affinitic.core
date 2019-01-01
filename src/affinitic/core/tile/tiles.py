@@ -33,11 +33,13 @@ class ReferencesTile(Tile):
     """ A tile for mosaic representing a contact card """
 
     def references(self):
-        query = {}
-        query['portal_type'] = 'Reference'
-        brains = self.context.portal_catalog(query)
+        portal = api.portal.get()
+        references = getattr(portal, 'references', None)
+        results = []
+        if references:
+            brains = references.listFolderContents(contentFilter={"portal_type": "Reference"})
         if brains:
-            results = [brain for brain in brains if getattr(brain.getObject(), 'article_image', False)]
+            results = [brain for brain in brains if getattr(brain, 'article_image', False)]
             return results
         return None
 
@@ -50,19 +52,18 @@ class ProjectsTile(Tile):
     """ A tile for mosaic representing a contact card """
 
     def projects(self):
-        query = {}
-        query['portal_type'] = 'Reference'
-        brains = self.context.portal_catalog(query)
+        portal = api.portal.get()
+        references = getattr(portal, 'references', None)
         results = []
+        if references:
+            brains = references.listFolderContents(contentFilter={"portal_type": "Reference"})
         if brains:
             for brain in brains:
-                query = {}
-                query['portal_type'] = 'Image'
-                folder_path = brain.getPath()
-                query['path'] = {'query': folder_path, 'depth': 1}
-                images_reference = self.context.portal_catalog(query)
+                images_reference = brain.listFolderContents(contentFilter={"portal_type": "Image"})
                 if images_reference:
-                    item = {'brain': brain, 'image': images_reference[0]}
+                    item = {'url': brain.absolute_url(),
+                            'image': images_reference[0].absolute_url(),
+                            'title': brain.Title}
                     results.append(item)
         return results
 

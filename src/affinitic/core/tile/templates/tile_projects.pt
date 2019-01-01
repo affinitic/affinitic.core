@@ -14,15 +14,16 @@
                      tal:condition="projects_all">
                     <tal:last tal:define="projects python: projects_all[:5]">
                     <tal:repeat tal:repeat="project projects">
-                    <tal:define tal:define="brain project/brain;
+                    <tal:define tal:define="url project/url;
+                                            title project/title;
                                             image project/image">
                     <div class="article-thumbs" tal:condition="project">
-                        <a href="#" tal:attributes="href brain/getURL;" class="article-thumbs-link">
+                        <a href="#" tal:attributes="href url;" class="article-thumbs-link">
                             <div class="article-thumbs-image"
-                                 tal:attributes="style string:background-image:url(${image/getURL}/@@images/image/mini">
+                                 tal:attributes="style string:background-image:url(${image}/@@images/image/mini">
                             </div>
                             <div class="article-thumbs-text"
-                                 tal:content="brain/Title"></div>
+                                 tal:content="title"></div>
                         </a>
                     </div>
                     </tal:define>
