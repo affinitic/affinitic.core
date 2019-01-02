@@ -10,7 +10,7 @@
              condition="about">
             <div class="content">
                 <div class="article-image"
-                     tal:attributes="style string:background-image:url(${about/absolute_url}/@@images/article_image/mini)">
+                     tal:attributes="style string:background-image:url(${about/absolute_url}/@@images/article_image/large)">
                 </div>
                 <div class="article-content">
                     <h2 tal:content="about/title" tal:condition="about/title"></h2>

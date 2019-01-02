@@ -11,7 +11,7 @@
             <h1 tal:content="context/title"></h1>
             <div class="content">
                 <div class="article-image"
-                     tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/article_image/preview">
+                     tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/article_image/large)">
                 </div>
                 <div class="article-content">
                     <h2 tal:content="context/description"></h2>
