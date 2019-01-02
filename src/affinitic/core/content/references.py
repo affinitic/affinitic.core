@@ -138,6 +138,12 @@ class IReference(model.Schema):
         default=None,
     )
 
+    reference_display = schema.Bool(
+        title=_(u'Display in reference'),
+        required=False,
+        default=True,
+    )
+
 
 class Reference(Container):
     implements(IReference)

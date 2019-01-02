@@ -39,7 +39,7 @@ class ReferencesTile(Tile):
         if references:
             brains = references.listFolderContents(contentFilter={"portal_type": "Reference"})
         if brains:
-            results = [brain for brain in brains if getattr(brain, 'article_image', False)]
+            results = [brain for brain in brains if getattr(brain, 'article_image', False) and getattr(brain, 'reference_display', False)]
             return results
         return None
 
