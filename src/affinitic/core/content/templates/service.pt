@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="content">
-                <div id="parent-fieldname-text" tal:content="structure context/text/output" tal:condition="context/text"></div>
+                <div tal:content="structure context/text/output" tal:condition="context/text"></div>
             </div>
         </div>
         </metal:content-core>

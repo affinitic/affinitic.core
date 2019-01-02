@@ -29,7 +29,7 @@
                     </tal:image>
                     <div class="article-content">
                         <h2 tal:content="contact/Title">Name</h2>
-                        <div id="parent-fieldname-text" tal:content="contact/Description">Description</div>
+                        <div tal:content="contact/Description">Description</div>
                         <div>
                             <span tal:content="item/contact_address" tal:condition="item/contact_address"></span>
                             <span tal:content="item/contact_number" tal:condition="item/contact_number"></span>

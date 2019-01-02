@@ -16,7 +16,8 @@
                     <tal:reference tal:define="image python: view.image(reference);">
                         <a href="#" tal:attributes="href reference/reference_website;
                                                     name reference/title;
-                                                    id reference/id"
+                                                    id reference/id;
+                                                    aria-label reference/title"
                                     target="_blank">
                             <tal:image tal:condition="python: image['icon_ext'] and image['icon_data']">
                             <tal:svg tal:condition="python: image['icon_ext'] == '.svg'">

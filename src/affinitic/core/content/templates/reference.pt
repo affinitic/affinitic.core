@@ -65,7 +65,7 @@
             <div class="content">
                 <div id="carousel-thumb" class="carousel slide carousel-thumbnails member-about" data-ride="carousel">
                     <div class="carousel-header">
-                        <div class="carousel-inner" role="listbox">
+                        <div class="carousel-inner">
                             <tal:image tal:repeat="image gallery">
                             <tal:index define="index repeat/image/index;" tal:condition="image">
                             <div tal:attributes="class python:'carousel-item active' if index==0 else 'carousel-item';">

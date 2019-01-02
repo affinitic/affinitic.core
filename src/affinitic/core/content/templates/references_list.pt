@@ -15,7 +15,7 @@
                 </div>
                 <div class="article-content">
                     <h2 tal:content="context/description"></h2>
-                    <div id="parent-fieldname-text" tal:content="structure context/text/output" tal:condition="context/text"></div>
+                    <div tal:content="structure context/text/output" tal:condition="context/text"></div>
                 </div>
             </div>
         </div>

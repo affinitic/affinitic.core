@@ -14,7 +14,7 @@
                 </div>
                 <div class="article-content">
                     <h2 tal:content="about/title" tal:condition="about/title"></h2>
-                    <div id="parent-fieldname-text" tal:content="about/description" tal:condition="about/description"></div>
+                    <div tal:content="about/description" tal:condition="about/description"></div>
                     <div class="readmore right">
                         <a href="#" tal:attributes="href about/absolute_url">Plus d'infos</a>
                     </div>

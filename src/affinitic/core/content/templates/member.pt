@@ -20,7 +20,7 @@
                              tal:attributes="src member/portrait" />
                         <div class="article-content">
                             <h2 tal:content="member/fullname">Name</h2>
-                            <div id="parent-fieldname-text" tal:content="member/cv">Description</div>
+                            <div tal:content="member/cv">Description</div>
                         </div>
                     </div>
                 </div>

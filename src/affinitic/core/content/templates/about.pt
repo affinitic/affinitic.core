@@ -14,7 +14,7 @@
             </div>
             <div class="article-content">
                 <h2>Introduction</h2>
-                <div id="parent-fieldname-text" tal:content="context/description" tal:condition="context/description"></div>
+                <div tal:content="context/description" tal:condition="context/description"></div>
             </div>
         </div>
     </div>
@@ -29,25 +29,25 @@
             </div>
             <div class="article-content">
                 <h2 tal:content="document/title"></h2>
-                <div id="parent-fieldname-text" tal:content="document/description"></div>
+                <div tal:content="document/description"></div>
             </div>
         </div>
         <div class="content">
-            <div id="parent-fieldname-text" tal:content="structure document/text/output" tal:condition="document/text"></div>
+            <div tal:content="structure document/text/output" tal:condition="document/text"></div>
         </div>
     </div>
     <div tal:condition="python: index%2==0" class="article transparent">
         <div class="content">
             <div class="article-content">
                 <h2 tal:content="document/title"></h2>
-                <div id="parent-fieldname-text" tal:content="document/description"></div>
+                <div tal:content="document/description"></div>
             </div>
             <div class="article-image"
                  tal:attributes="style string:background-image:url(${document/absolute_url}/@@images/article_image/mini)">
             </div>
         </div>
         <div class="content">
-            <div id="parent-fieldname-text" tal:content="structure document/text/output" tal:condition="document/text"></div>
+            <div tal:content="structure document/text/output" tal:condition="document/text"></div>
         </div>
     </div>
     </tal:index>
@@ -59,7 +59,7 @@
         <div class="content">
             <div id="carousel-thumb" class="carousel slide carousel-thumbnails member-about" data-ride="carousel">
                 <div class="carousel-header">
-                    <div class="carousel-inner" role="listbox">
+                    <div class="carousel-inner">
                         <tal:member tal:repeat="member team" tal:condition="team">
                         <tal:index define="index repeat/member/index;">
                         <div tal:attributes="class python:'carousel-item active' if index==0 else 'carousel-item';">
