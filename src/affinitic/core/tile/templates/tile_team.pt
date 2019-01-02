@@ -12,7 +12,9 @@
                 <div class="tile-team">
                 <tal:member tal:repeat="member team" tal:condition="team">
                 <tal:index define="index repeat/member/index;">
-                <a href="#" tal:attributes="href string:${portal_url}/@@member_view?member=${member/username}">
+                <a href="#" tal:attributes="href string:${portal_url}/@@member_view?member=${member/username};
+                                            name member/username;
+                                            aria-label member/username">
                     <div class="image">
                         <div class="image-background" tal:condition="not:member/portrait"></div>
                         <div tal:attributes="class string:image-background member;
