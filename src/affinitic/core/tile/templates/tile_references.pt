@@ -18,6 +18,7 @@
                                                     name reference/title;
                                                     id reference/id;
                                                     aria-label reference/title"
+                                    rel="noopener"
                                     target="_blank">
                             <tal:image tal:condition="python: image['icon_ext'] and image['icon_data']">
                             <tal:svg tal:condition="python: image['icon_ext'] == '.svg'">
