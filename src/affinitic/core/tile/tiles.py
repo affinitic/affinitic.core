@@ -62,7 +62,12 @@ class ProjectsTile(Tile):
                 images_reference = brain.listFolderContents(contentFilter={"portal_type": "Image"})
                 if images_reference:
                     item = {'url': brain.absolute_url(),
-                            'image': images_reference[0].absolute_url(),
+                            'image': "%s/@@images/image/preview" % images_reference[0].absolute_url(),
+                            'title': brain.Title}
+                    results.append(item)
+                else:
+                    item = {'url': brain.absolute_url(),
+                            'image': "%s/@@images/article_image/preview" % brain.absolute_url(),
                             'title': brain.Title}
                     results.append(item)
         return results

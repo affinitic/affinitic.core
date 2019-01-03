@@ -20,7 +20,7 @@
                     <div class="article-thumbs" tal:condition="project">
                         <a href="#" tal:attributes="href url;" class="article-thumbs-link">
                             <div class="article-thumbs-image"
-                                 tal:attributes="style string:background-image:url(${image}/@@images/image/preview">
+                                 tal:attributes="style string:background-image:url(${image})">
                             </div>
                             <div class="article-thumbs-text"
                                  tal:content="title"></div>
