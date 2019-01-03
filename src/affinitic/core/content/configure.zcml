@@ -14,9 +14,16 @@
         />
 
     <browser:page
+        for="*"
+        name="members_list_view"
+        class=".members.MembersListView"
+        permission="zope2.View"
+        />
+
+    <browser:page
         name="member_view"
         for="*"
-        class=".about.MemberView"
+        class=".members.MemberView"
         permission="zope2.View"
         />
 

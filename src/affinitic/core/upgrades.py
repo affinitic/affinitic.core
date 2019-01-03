@@ -11,31 +11,14 @@ from zope.component import getUtility
 import os
 
 
-text_small = _(u'Latius iam disseminata licentia onerosus bonis omnibus Caesar \
-    nullum post haec adhibens modum orientis latera cuncta vexabat nec honoratis \
-    parcens nec urbium primatibus nec plebeiis.')
-
-text_medium = _(u'Inter haec Orfitus praefecti potestate regebat urbem aeternam ultra \
-    modum delatae dignitatis sese efferens insolenter, vir quidem prudens et forensium \
-    negotiorum oppido gnarus, sed splendore liberalium doctrinarum minus quam nobilem \
-    decuerat institutus, quo administrante seditiones sunt concitatae graves ob inopiam \
-    vini: huius avidis usibus vulgus intentum ad motus asperos excitatur et crebros.')
-
-text_large = _(u'Quam ob rem vita quidem talis fuit vel fortuna vel gloria, ut nihil posset \
-    accedere, moriendi autem sensum celeritas abstulit; quo de genere mortis difficile \
-    dictu est; quid homines suspicentur, videtis; hoc vere tamen licet dicere, P. Scipioni \
-    ex multis diebus, quos in vita celeberrimos laetissimosque viderit, illum diem clarissimum \
-    fuisse, cum senatu dimisso domum reductus ad vesperum est a patribus conscriptis, populo \
-    Romano, sociis et Latinis, pridie quam excessit e vita, ut ex tam alto dignitatis gradu \
-    ad superos videatur deos potius quam ad inferos pervenisse.')
-
-
 def add_content(context):
     change_site_title()
     change_site_logo()
     create_homepage()
     create_about_folder()
     add_about_content()
+    create_members_folder()
+    add_users()
     add_members()
     create_services_folder()
     add_services()
@@ -71,7 +54,8 @@ def create_about_folder():
     create_content('Folder', about_id, title, text_large, None, layout, 'publish', None)
     portal = api.portal.get()
     about = getattr(portal, 'about', None)
-    about.article_image = image_format('reference_image.jpg')
+    if about:
+        about.article_image = image_format('reference_image.jpg')
 
 
 def add_about_content():
@@ -81,104 +65,60 @@ def add_about_content():
     create_content('Document', 'philosophy', _(u'Philosophy'), text_large, parent, 'layout_view', 'publish', None)
     portal = api.portal.get()
     history = getattr(parent, 'history', None)
-    history.article_image = image_format('reference_image.jpg')
+    if history:
+        history.article_image = image_format('reference_image.jpg')
     philosophy = getattr(parent, 'philosophy', None)
-    philosophy.article_image = image_format('reference_image.jpg')
+    if philosophy:
+        philosophy.article_image = image_format('reference_image.jpg')
+
+
+def create_members_folder():
+    folder_id = 'team'
+    title = _(u'Notre équipe')
+    description = _(u'Notre équipe')
+    layout = 'members_list_view'
+    create_content('MembersList', folder_id, title, description, None, layout, 'publish', None)
+    portal = api.portal.get()
+    team = getattr(portal, 'team', None)
+    if team:
+        team.article_image = image_format('reference_image.jpg')
+        team.text = RichTextValue(text_large)
+
+
+def add_users():
+    for member in TEAM:
+        api.user.create(
+            username=member["username"],
+            email=member["email"],
+            password='secret',
+            properties={
+                'fullname': member["fullname"],
+            }
+        )
+
+        api.group.add_user(groupname=member["groupname"], username=member["username"])
+
+    mtool = api.portal.get_tool(name='portal_membership')
+
+    for member in TEAM:
+        mtool.changeMemberPortrait(user_image_format(member["image"]), id=member["username"])
 
 
 def add_members():
-    jeff_properties = {
-        'fullname': 'Jean-François Roche',
-        'function': _(u'Directeur technique - Gérant'),
-        'phone': '+32 (0)497 155 900',
-        'cv': text_large,
-    }
-    api.user.create(
-        username='jeff',
-        email='jfroche@affinitic.be',
-        password='secret',
-        properties=jeff_properties,
-    )
-    api.group.add_user(groupname='manager', username='jeff')
-
-    martin_properties = {
-        'fullname': 'Martin Peeters',
-        'function': _(u'Software Architect - Gérant'),
-        'phone': '+ 32 (0)483 46 08 40',
-        'twitter': 'martin',
-        'cv': text_large,
-    }
-    api.user.create(
-        username='martin',
-        email='martin@affinitic.be',
-        password='secret',
-        properties=martin_properties,
-    )
-    api.group.add_user(groupname='manager', username='martin')
-
-    laz_properties = {
-        'fullname': 'Laurent Lasudry',
-        'function': _(u'Analyste développeur - Chef de projets - Gérant'),
-        'phone': '+32 (0)476 733 664',
-        'twitter': 'laz',
-        'cv': text_large,
-    }
-    api.user.create(
-        username='laz',
-        email='laurent@affinitic.be',
-        password='secret',
-        properties=laz_properties,
-    )
-    api.group.add_user(groupname='manager', username='laz')
-
-    aurore_properties = {
-        'fullname': 'Aurore Mariscal',
-        'function': _(u'Développeur - Graphiste'),
-        'cv': text_large,
-        'linkedin': 'aurore-mariscal',
-        'github': 'AuroreMariscal',
-    }
-    api.user.create(
-        username='aurore',
-        email='aurore@affinitic.be',
-        password='secret',
-        properties=aurore_properties,
-    )
-    api.group.add_user(groupname='employees', username='aurore')
-
-    valentin_properties = {
-        'fullname': 'Valentin Piret',
-        'function': _(u'Analyste développeur'),
-        'cv': text_large,
-    }
-    api.user.create(
-        username='valentin',
-        email='valentin@affinitic.be',
-        password='secret',
-        properties=valentin_properties,
-    )
-    api.group.add_user(groupname='employees', username='valentin')
-
-    nicolas_properties = {
-        'fullname': 'Nicolas Demonte',
-        'function': _(u'Analyste développeur'),
-        'cv': text_large,
-    }
-    api.user.create(
-        username='nicolas',
-        email='nicolas@affinitic.be',
-        password='secret',
-        properties=nicolas_properties,
-    )
-    api.group.add_user(groupname='employees', username='nicolas')
-
-    mtool = api.portal.get_tool(name='portal_membership')
-    mtool.changeMemberPortrait(user_image_format('jeff.jpg'), id='jeff')
-    mtool.changeMemberPortrait(user_image_format('laurent.jpg'), id='laz')
-    mtool.changeMemberPortrait(user_image_format('martin.jpg'), id='martin')
-    mtool.changeMemberPortrait(user_image_format('aurore.jpg'), id='aurore')
-    mtool.changeMemberPortrait(user_image_format('valentin.jpg'), id='valentin')
-    mtool.changeMemberPortrait(user_image_format('nicolas.jpg'), id='nicolas')
+    portal = api.portal.get()
+    parent = getattr(portal, 'team', None)
+    for member in TEAM:
+        create_content('Member', member["username"], member["fullname"], text_small, parent, 'member_view', 'publish', None)
+    portal = api.portal.get()
+    for member in TEAM:
+        find_member = getattr(parent, member["username"], None)
+        if find_member:
+            find_member.article_image = member_format(member["image"])
+            find_member.text = RichTextValue(text_large)
+            find_member.member_service = member["services"]
+            find_member.member_phone = member["phone"]
+            find_member.member_email = member["email"]
+            find_member.member_function = member["function"]
 
 
 def create_services_folder():
@@ -189,14 +129,15 @@ def create_services_folder():
     create_content('ServicesList', folder_id, title, description, None, layout, 'publish', None)
     portal = api.portal.get()
     services = getattr(portal, 'services', None)
-    services.article_image = image_format('reference_image.jpg')
-    services.text = RichTextValue(text_large)
+    if services:
+        services.article_image = image_format('reference_image.jpg')
+        services.text = RichTextValue(text_large)
 
 
 def add_services():
     add_service_content(
-        'webdesign',
-        _(u'Web Design'),
+        'design',
+        _(u'Design'),
         text_small,
         'service_webdesign.svg',
     )
@@ -258,7 +199,7 @@ def add_references():
         description=_(u"Le Centre d’Informatique pour la Région Bruxelloise (CIRB)  est le partenaire informatique de confiance qui, en Région de Bruxelles-Capitale, peut être chargé de toute mission de développement et d'assistance informatique, télématique et cartographique."),
         reference_technology=['python', 'plone 5'],
         reference_website='https://cirb.brussels/',
-        reference_service=[u'Web Design', u'Development', u'Coaching', u'CICD / Devops'],
+        reference_service=[u'Design', u'webhosting', u'cicd_devops', u'coaching'],
         reference_author=u'Panpan',
         reference_function=u'Lapin',
         reference_testimony=u'Drame en Sologne : un chasseur confond son fils avec un sanglier... \
@@ -287,7 +228,8 @@ def create_contacts_folder():
     create_content('ContactsList', folder_id, title, description, None, layout, 'publish', None)
     portal = api.portal.get()
     folder = getattr(portal, 'contacts', None)
-    setattr(folder, 'map_google', True)
+    if folder:
+        setattr(folder, 'map_google', True)
 
 
 def add_contacts():
@@ -356,6 +298,17 @@ def image_format(filename):
     return image
 
 
+def member_format(filename):
+    path_package = os.path.dirname(__file__)
+    path_folder = '/static/team/'
+    file_path = '%s%s%s' % (path_package, path_folder, filename)
+    image = NamedImage(
+        data=open(file_path, 'r').read(),
+        filename=unicode(filename),
+    )
+    return image
+
+
 def user_image_format(filename):
     path_package = os.path.dirname(__file__)
     path_folder = '/static/team/'
@@ -363,3 +316,97 @@ def user_image_format(filename):
     data = open(file_path, 'rb')
     image = dummy.FileUpload(dummy.FieldStorage(data))
     return image
+
+
+text_small = _(u'Latius iam disseminata licentia onerosus bonis omnibus Caesar \
+    nullum post haec adhibens modum orientis latera cuncta vexabat nec honoratis \
+    parcens nec urbium primatibus nec plebeiis.')
+
+text_medium = _(u'Inter haec Orfitus praefecti potestate regebat urbem aeternam ultra \
+    modum delatae dignitatis sese efferens insolenter, vir quidem prudens et forensium \
+    negotiorum oppido gnarus, sed splendore liberalium doctrinarum minus quam nobilem \
+    decuerat institutus, quo administrante seditiones sunt concitatae graves ob inopiam \
+    vini: huius avidis usibus vulgus intentum ad motus asperos excitatur et crebros.')
+
+text_large = _(u'Quam ob rem vita quidem talis fuit vel fortuna vel gloria, ut nihil posset \
+    accedere, moriendi autem sensum celeritas abstulit; quo de genere mortis difficile \
+    dictu est; quid homines suspicentur, videtis; hoc vere tamen licet dicere, P. Scipioni \
+    ex multis diebus, quos in vita celeberrimos laetissimosque viderit, illum diem clarissimum \
+    fuisse, cum senatu dimisso domum reductus ad vesperum est a patribus conscriptis, populo \
+    Romano, sociis et Latinis, pridie quam excessit e vita, ut ex tam alto dignitatis gradu \
+    ad superos videatur deos potius quam ad inferos pervenisse.')
+
+TEAM = [
+    {
+        'username': 'jeff',
+        'email': 'jfroche@affinitic.be',
+        'image': 'jeff.jpg',
+        'description': text_small,
+        'groupname': 'manager',
+        'services': [u'webhosting', u'cicd_devops'],
+        'fullname': 'Jean-François Roche',
+        'function': _(u'Directeur technique - Gérant'),
+        'phone': '+32 (0)497 155 900',
+        'cv': text_large,
+    },
+    {
+        'username': 'martin',
+        'email': 'martin@affinitic.be',
+        'image': 'martin.jpg',
+        'description': text_small,
+        'groupname': 'manager',
+        'services': [u'webhosting', u'cicd_devops'],
+        'fullname': 'Martin Peeters',
+        'function': _(u'Software Architect - Gérant'),
+        'phone': '+ 32 (0)483 46 08 40',
+        'cv': text_large,
+    },
+    {
+        'username': 'laurent',
+        'email': 'laurent@affinitic.be',
+        'image': 'laurent.jpg',
+        'description': text_small,
+        'groupname': 'manager',
+        'services': [u'webhosting', u'coaching'],
+        'fullname': 'Laurent Lasudry',
+        'function': _(u'Analyste développeur - Chef de projets - Gérant'),
+        'phone': '+32 (0)476 733 664',
+        'cv': text_large,
+    },
+    {
+        'username': 'aurore',
+        'email': 'aurore@affinitic.be',
+        'image': 'aurore.jpg',
+        'description': text_small,
+        'groupname': 'employees',
+        'services': [u'design', u'development'],
+        'fullname': 'Aurore Mariscal',
+        'function': _(u'Développeur - Graphiste'),
+        'phone': '',
+        'cv': text_large,
+    },
+    {
+        'username': 'valentin',
+        'email': 'valentin@affinitic.be',
+        'image': 'valentin.jpg',
+        'description': text_small,
+        'groupname': 'employees',
+        'services': [u'development'],
+        'fullname': 'Valentin Piret',
+        'function': _(u'Analyste développeur'),
+        'phone': '',
+        'cv': text_large,
+    },
+    {
+        'username': 'nicolas',
+        'email': 'nicolas@affinitic.be',
+        'image': 'nicolas.jpg',
+        'description': text_small,
+        'groupname': 'employees',
+        'services': [u'development'],
+        'fullname': 'Nicolas Demonte',
+        'function': _(u'Analyste développeur'),
+        'phone': '',
+        'cv': text_large,
+    },
+]

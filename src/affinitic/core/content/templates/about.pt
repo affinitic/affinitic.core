@@ -57,52 +57,22 @@
     <div class="article" tal:define="team view/team;" tal:condition="team">
         <h1>Notre équipe</h1>
         <div class="content">
-            <div id="carousel-thumb" class="carousel slide carousel-thumbnails member-about" data-ride="carousel">
-                <div class="carousel-header">
-                    <div class="carousel-inner">
-                        <tal:member tal:repeat="member team" tal:condition="team">
-                        <tal:index define="index repeat/member/index;">
-                        <div tal:attributes="class python:'carousel-item active' if index==0 else 'carousel-item';">
-                            <a href="#" tal:attributes="href string:${portal_url}/@@member_view?member=${member/username}">
-                                <div class="image">
-                                    <div class="image-background member" tal:condition="not:member/portrait"></div>
-                                    <div tal:attributes="class string:image-background member;
-                                    style string:background-image:url(${member/portrait})"
-                                         tal:condition="member/portrait"></div>
-                                </div>
-                                <div class="text">
-                                    <div  class="name" tal:content="member/fullname" tal:condition="member/fullname"></div>
-                                    <div class="function" tal:content="member/function" tal:condition="member/function"></div>
-                                </div>
-                            </a>
-                        </div>
-                        </tal:index>
-                        </tal:member>
+            <div class="content-team">
+                <tal:member tal:repeat="member team" tal:condition="team">
+                <tal:index define="index repeat/member/index;
+                member_data member/getObject">
+                <a href="" tal:attributes="href member/getURL;
+                name member/id;
+                aria-label member/Title;">
+                    <div class="image">
+                        <div class="image-background" tal:condition="not:member_data/article_image"></div>
+                        <div class="image-background"
+                             tal:attributes="style string:background-image:url(${member/getURL}/@@images/article_image)"
+                             tal:condition="member_data/article_image"></div>
                     </div>
-                    <tal:multiple tal:condition="python: len(team) > 1">
-                    <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                    </tal:multiple>
-                </div>
-                <tal:multiple tal:condition="python: len(team) > 1">
-                <ol class="carousel-indicators">
-                    <tal:member tal:repeat="member team" tal:condition="team">
-                    <tal:index define="index repeat/member/index;">
-                    <li data-target="#carousel-thumb" tal:attributes="data-slide-to index">
-                        <div class="image-background small circle" tal:condition="not:member/portrait"></div>
-                        <div tal:attributes="class string:image-background small circle;
-                        style string:background-image:url(${member/portrait})" tal:condition="member/portrait"></div>
-                    </li>
-                    </tal:index>
-                    </tal:member>
-                </ol>
-                </tal:multiple>
+                </a>
+                </tal:index>
+                </tal:member>
             </div>
         </div>
     </div>

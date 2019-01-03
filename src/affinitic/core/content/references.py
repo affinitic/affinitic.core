@@ -4,6 +4,7 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from affinitic.core.content.services import vocabularyServices
 from affinitic.core.utils import image_format
+from plone import api
 from plone import schema
 from plone.app.textfield import RichText
 from plone.app.z3cform.widget import AjaxSelectFieldWidget
@@ -12,7 +13,6 @@ from plone.dexterity.content import Container
 from plone.supermodel import model
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope.interface import implements
-from plone import api
 
 
 class IReferencesList(model.Schema):

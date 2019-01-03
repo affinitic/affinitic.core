@@ -1,0 +1,75 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master">
+    <head></head>
+
+    <metal:main fill-slot="main">
+        <div class="article">
+            <h1 tal:content="context/title"></h1>
+            <div class="content">
+                <div class="article-image"
+                     tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/article_image/large)">
+                </div>
+                <div class="article-content">
+                    <h2 tal:content="context/description"></h2>
+                    <div tal:content="structure context/text/output" tal:condition="context/text"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="article">
+            <div class="content" tal:define="team view/members;">
+                <div id="carousel-thumb" class="carousel slide carousel-thumbnails member-about" data-ride="carousel">
+                    <div class="carousel-header">
+                        <div class="carousel-inner">
+                            <tal:member tal:repeat="member team" tal:condition="team">
+                            <tal:index define="index repeat/member/index;
+                                               member_data member/getObject">
+                            <div tal:attributes="class python:'carousel-item active' if index==0 else 'carousel-item';">
+                                <a href="#" tal:attributes="href string:member/getURL">
+                                    <div class="image">
+                                        <div class="image-background member" tal:condition="not:member/article_image"></div>
+                                        <div tal:attributes="class string:image-background member;
+                                        style string:background-image:url(${member/getURL}/@@images/article_image)"
+                                             tal:condition="member/article_image"></div>
+                                    </div>
+                                    <div class="text">
+                                        <div  class="name" tal:content="member/Title" tal:condition="member/Title"></div>
+                                        <div class="function" tal:content="member_data/member_function" tal:condition="member_data/member_function"></div>
+                                    </div>
+                                </a>
+                            </div>
+                            </tal:index>
+                            </tal:member>
+                        </div>
+                        <tal:multiple tal:condition="python: len(team) > 1">
+                        <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        </tal:multiple>
+                    </div>
+                    <tal:multiple tal:condition="python: len(team) > 1">
+                    <ol class="carousel-indicators">
+                        <tal:member tal:repeat="member team" tal:condition="team">
+                        <tal:index define="index repeat/member/index;">
+                        <li data-target="#carousel-thumb" tal:attributes="data-slide-to index">
+                            <div class="image-background small circle" tal:condition="not:member/article_image"></div>
+                            <div tal:attributes="class string:image-background small circle;
+                            style string:background-image:url(${member/getURL}/@@images/article_image)" tal:condition="member/article_image"></div>
+                        </li>
+                        </tal:index>
+                        </tal:member>
+                    </ol>
+                    </tal:multiple>
+                </div>
+            </div>
+        </div>
+    </metal:main>
+</html>

@@ -7,30 +7,55 @@
     <head></head>
     <body>
         <metal:main fill-slot="main">
-        <div class="article">
-            <div class="content" tal:define="member view/member">
+        <div class="article" tal:define="member view/member">
+            <div class="content">
                 <div class="content-flex">
                     <div class="content">
-                        <img class="article-image vw-10 circle" alt="Image contact"
-                             src="defaultUser.png"
-                             alt=""
-                             border="0"
-                             width="75"
-                             height="100"
-                             tal:attributes="src member/portrait" />
+                        <tal:member tal:define="image python: view.image(context);">
+                        <tal:image tal:condition="python: image['icon_ext'] and image['icon_data']">
+                        <tal:svg tal:condition="python: image['icon_ext'] == '.svg'">
+                        <div class="article-image vw-10" tal:content="structure image/icon_data"></div>
+                        </tal:svg>
+
+                        <tal:bitmap tal:condition="python: image['icon_ext'] != '.svg'">
+                        <div class="article-image vw-10 circle"
+                             tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/article_image/mini)">
+                        </div>
+                        </tal:bitmap>
+                        </tal:image>
+                        </tal:member>
                         <div class="article-content">
-                            <h2 tal:content="member/fullname">Name</h2>
-                            <div tal:content="member/cv">Description</div>
+                            <h2 tal:content="context/title"></h2>
+                            <div tal:content="member/member_function"></div>
+                            <tal:description tal:condition="context/description">
+                            <br>
+                            <div tal:content="context/description"></div>
+                            </tal:description>
+                            <tal:cv tal:condition="member/member_cv">
+                            <br>
+                            <div tal:content="structure member/member_cv/output"></div>
+                            </tal:cv>
                         </div>
                     </div>
                 </div>
                 <div class="article-column">
-                    <h2>Fonction</h2>
-                    <div tal:content="member/function"></div>
+                    <h2>Compétences</h2>
+                    <tal:services tal:define="services view/services">
+                    <tal:service tal:repeat="service services">
+                        <div tal:content="service/title">Compétences</div>
+                    </tal:service>
+                    </tal:services>
                     <br>
                     <h2>Contact</h2>
-                    <div tal:content="member/phone">phone</div>
-                    <div tal:content="member/email">email</div>
+                    <div tal:content="member/member_email">Email</div>
+                    <div tal:content="member/member_phone">Phone</div>
+                    <div class="social">
+                        <div class="gitlab" tal:content="member/member_gitlab">Gitlab</div>
+                        <div class="github" tal:content="member/member_github">Github</div>
+                        <div class="linkedin" tal:content="member/member_linkedin">Linkedin</div>
+                        <div class="twitter" tal:content="member/member_twitter">Twitter</div>
+                        <div class="facebook" tal:content="member/member_facebook">Facebook</div>
+                    </div>
                 </div>
             </div>
         </div>

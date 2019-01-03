@@ -88,16 +88,4 @@ class TeamTile(Tile):
     """ A tile for mosaic representing a contact card """
 
     def team(self):
-        self.team = []
-        users = api.user.get_users()
-        pm = getToolByName(self.context, 'portal_membership')
-        for user in users:
-            data = get_user_data(pm, user)
-            if data:
-                self.team.append(data)
-
-        return self.team
-
-    def portal_url(self):
-        portal_url = api.portal.get().absolute_url()
-        return portal_url
+        return api.content.find(portal_type='Member')

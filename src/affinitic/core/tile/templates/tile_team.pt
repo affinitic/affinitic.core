@@ -5,21 +5,20 @@
       i18n:domain="plone">
     <head></head>
     <body>
-        <div class="article" tal:define="team view/team;
-                                         portal_url view/portal_url" tal:condition="team">
+        <div class="article" tal:define="team view/team;" tal:condition="team">
             <h1>Notre équipe</h1>
             <div class="content">
-                <div class="tile-team">
+                <div class="content-team">
                 <tal:member tal:repeat="member team" tal:condition="team">
-                <tal:index define="index repeat/member/index;">
-                <a href="#" tal:attributes="href string:${portal_url}/@@member_view?member=${member/username};
-                                            name member/username;
-                                            aria-label member/username">
+                <tal:index define="index repeat/member/index;
+                                   member_data member/getObject;">
+                <a href="#" tal:attributes="href member/getURL;
+                                            name member/Title;
+                                            aria-label member/Title;">
                     <div class="image">
-                        <div class="image-background" tal:condition="not:member/portrait"></div>
-                        <div tal:attributes="class string:image-background member;
-                        style string:background-image:url(${member/portrait})"
-                             tal:condition="member/portrait"></div>
+                        <div class="image-background" tal:condition="not:member_data/article_image"></div>
+                        <div class="image-background" tal:attributes="style string:background-image:url(${member/getURL}/@@images/article_image)"
+                             tal:condition="member_data/article_image"></div>
                     </div>
                 </a>
                 </tal:index>
