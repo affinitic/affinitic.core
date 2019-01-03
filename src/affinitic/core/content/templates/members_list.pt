@@ -28,7 +28,7 @@
                             <tal:index define="index repeat/member/index;
                                                member_data member/getObject">
                             <div tal:attributes="class python:'carousel-item active' if index==0 else 'carousel-item';">
-                                <a href="#" tal:attributes="href string:member/getURL">
+                                <a href="#" tal:attributes="href member/getURL">
                                     <div class="image">
                                         <div class="image-background member" tal:condition="not:member/article_image"></div>
                                         <div tal:attributes="class string:image-background member;
