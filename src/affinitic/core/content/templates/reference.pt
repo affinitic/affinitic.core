@@ -44,9 +44,11 @@
                 <div class="article-column">
                     <tal:services tal:condition="context/reference_service">
                     <h2>Services</h2>
-                    <tal:repeat repeat="service context/reference_service">
-                    <div tal:content="service"></div>
+                    <tal:services tal:define="services view/services">
+                    <tal:repeat repeat="service services">
+                    <div tal:content="service/title"></div>
                     </tal:repeat>
+                    </tal:services>
                     <br>
                     </tal:services>
                     <tal:technology tal:condition="context/reference_technology">

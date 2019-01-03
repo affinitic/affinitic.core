@@ -95,7 +95,7 @@ def vocabularyServices(context):
             service_data = service.getObject()
             service_title = service_data.title
             service_id = service_data.id
-            terms.append(SimpleVocabulary.createTerm(service_title, service_id, service_title))
+            terms.append(SimpleVocabulary.createTerm(service_id, service_id, service_title))
 
     return SimpleVocabulary(terms)
 

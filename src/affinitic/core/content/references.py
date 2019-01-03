@@ -169,3 +169,8 @@ class ReferenceView(BrowserView):
     def image(self, item):
         data_image = image_format(item)
         return data_image
+
+    def services(self):
+        services = api.content.find(portal_type='Service')
+        results = [service.getObject() for service in services if service.id in self.context.reference_service]
+        return results
