@@ -12,7 +12,7 @@
             <div class="content"
                  tal:define="
                  contact view/contact;
-                 link python: view.link(contact);
+                 link python: view.link();
                  image python: view.image(contact)">
                 <div class="content-flex">
                     <div class="content">
@@ -22,7 +22,7 @@
                         </tal:svg>
                         <tal:bitmap tal:condition="python: image['icon_ext'] != '.svg'">
                         <div class="article-image vw-10 contain"
-                             tal:attributes="style string:background-image:url(${contact/absolute_url}/@@images/contact_image/mini">
+                             tal:attributes="style string:background-image:url(${contact/absolute_url}/@@images/contact_image/mini)">
                         </div>
                         </tal:bitmap>
                         </tal:image>

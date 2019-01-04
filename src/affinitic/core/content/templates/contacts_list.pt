@@ -22,7 +22,7 @@
                     </tal:svg>
                     <tal:bitmap tal:condition="python: image['icon_ext'] != '.svg'">
                     <div class="article-image vw-10 contain"
-                         tal:attributes="style string:background-image:url(${item/absolute_url}/@@images/contact_image/mini">
+                         tal:attributes="style string:background-image:url(${item/absolute_url}/@@images/contact_image/mini)">
                     </div>
                     </tal:bitmap>
                     </tal:image>
