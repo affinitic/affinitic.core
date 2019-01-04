@@ -11,7 +11,7 @@
             <h1 tal:content="context/title"></h1>
             <div class="content">
                 <div class="article-image"
-                     tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/article_image/large)">
+                     tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/article_image/preview)">
                 </div>
                 <div class="article-content">
                     <h2 tal:content="context/description"></h2>
@@ -32,7 +32,7 @@
                         <div class="article-thumbs-link">
                             <a href="#" tal:attributes="href reference/getURL;" class="article-thumbs-shadow">
                                 <div class="article-thumbs-image"
-                                     tal:attributes="style string:background-image:url(${reference/getURL}/@@images/article_image">
+                                     tal:attributes="style string:background-image:url(${reference/getURL}/@@images/article_image)">
                                 </div>
                                 <div class="article-thumbs-text"
                                      tal:content="reference/Title"></div>
@@ -43,7 +43,7 @@
                         <div class="article-thumbs-link">
                             <a href="#" tal:attributes="href reference/getURL;" class="article-thumbs-shadow">
                                 <div class="article-thumbs-image"
-                                     tal:attributes="style string:background-image:url(${image/getURL}/@@images/image/preview">
+                                     tal:attributes="style string:background-image:url(${image/getURL}/@@images/image/preview)">
                                 </div>
                                 <div class="article-thumbs-text"
                                      tal:content="reference/Title"></div>
