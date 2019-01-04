@@ -6,31 +6,31 @@
     <head></head>
 
     <metal:main fill-slot="main">
-        <div class="article">
-            <h1 tal:content="context/title"></h1>
-            <div class="content">
-                <div class="article-image"
-                     tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/article_image/large)">
-                </div>
-                <div class="article-content">
-                    <h2 tal:content="context/description"></h2>
-                    <div tal:content="structure context/text/output" tal:condition="context/text"></div>
-                </div>
+    <div class="article">
+        <h1 tal:content="context/title"></h1>
+        <div class="content">
+            <div class="article-image"
+                 tal:attributes="style string:background-image:url(${context/absolute_url}/@@images/article_image/large)">
+            </div>
+            <div class="article-content">
+                <h2 tal:content="context/description"></h2>
+                <div tal:content="structure context/text/output" tal:condition="context/text"></div>
             </div>
         </div>
+    </div>
 
-        <div class="article">
-            <h1>Nos domaines d'expertise</h1>
-            <div class="content">
-                <div class="article-galery services">
-                    <tal:services tal:define="services view/services;">
-                    <tal:repeat repeat="service services">
-                    <a href="#" tal:attributes="href service/getURL" class="article-columns-5">
-
+    <div class="article">
+        <h1>Nos domaines d'expertise</h1>
+        <div class="content">
+            <div class="article-galery services">
+                <tal:services tal:define="services view/services;">
+                <tal:repeat repeat="service services">
+                <a href="#" tal:attributes="href service/getURL" class="article-columns-5">
+                    <div class="article-content-icon">
                         <tal:reference tal:define="image python: view.image(service);">
                         <tal:image tal:condition="python: image['icon_ext'] and image['icon_data']">
                         <tal:svg tal:condition="python: image['icon_ext'] == '.svg'">
-                        <div class="article-icon circle"
+                        <div class="article-icon"
                              tal:attributes="style string:background-image:url(${service/getURL}/@@images/article_image"></div>
                         </tal:svg>
 
@@ -41,13 +41,14 @@
                         </tal:bitmap>
                         </tal:image>
                         </tal:reference>
-                        <h4 class="border-bottom" tal:content="service/Title"></h4>
-                        <div tal:content="service/Description"></div>
-                    </a>
-                    </tal:repeat>
-                    </tal:services>
-                </div>
+                    </div>
+                    <h4 class="border-bottom" tal:content="service/Title"></h4>
+                    <div tal:content="service/Description"></div>
+                </a>
+                </tal:repeat>
+                </tal:services>
             </div>
         </div>
+    </div>
     </metal:main>
 </html>
