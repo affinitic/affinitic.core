@@ -29,22 +29,26 @@
                     <tal:repeat repeat="reference references">
                     <tal:reference tal:condition="reference">
                     <div class="article-thumbs" tal:define="image python:view.gallery(reference);" tal:condition="not:image">
-                        <a href="#" tal:attributes="href reference/getURL;" class="article-thumbs-link">
-                            <div class="article-thumbs-image"
-                                 tal:attributes="style string:background-image:url(${reference/getURL}/@@images/article_image/preview">
-                            </div>
-                            <div class="article-thumbs-text"
-                                 tal:content="reference/Title"></div>
-                        </a>
+                        <div class="article-thumbs-link">
+                            <a href="#" tal:attributes="href reference/getURL;" class="article-thumbs-shadow">
+                                <div class="article-thumbs-image"
+                                     tal:attributes="style string:background-image:url(${reference/getURL}/@@images/article_image">
+                                </div>
+                                <div class="article-thumbs-text"
+                                     tal:content="reference/Title"></div>
+                            </a>
+                        </div>
                     </div>
                     <div class="article-thumbs" tal:define="image python:view.gallery(reference);" tal:condition="image">
-                        <a href="#" tal:attributes="href reference/getURL;" class="article-thumbs-link">
-                            <div class="article-thumbs-image"
-                                 tal:attributes="style string:background-image:url(${image/getURL}/@@images/image/preview">
-                            </div>
-                            <div class="article-thumbs-text"
-                                 tal:content="reference/Title"></div>
-                        </a>
+                        <div class="article-thumbs-link">
+                            <a href="#" tal:attributes="href reference/getURL;" class="article-thumbs-shadow">
+                                <div class="article-thumbs-image"
+                                     tal:attributes="style string:background-image:url(${image/getURL}/@@images/image/preview">
+                                </div>
+                                <div class="article-thumbs-text"
+                                     tal:content="reference/Title"></div>
+                            </a>
+                        </div>
                     </div>
                     </tal:reference>
                     </tal:repeat>

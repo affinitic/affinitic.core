@@ -67,7 +67,7 @@ class ProjectsTile(Tile):
                     results.append(item)
                 else:
                     item = {'url': brain.absolute_url(),
-                            'image': "%s/@@images/article_image/preview" % brain.absolute_url(),
+                            'image': "%s/@@images/article_image" % brain.absolute_url(),
                             'title': brain.Title}
                     results.append(item)
         return results

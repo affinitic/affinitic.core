@@ -15,16 +15,18 @@
                     <tal:last tal:define="projects python: projects_all[:5]">
                     <tal:repeat tal:repeat="project projects">
                     <tal:define tal:define="url project/url;
-                                            title project/title;
-                                            image project/image">
-                    <div class="article-thumbs" tal:condition="project">
-                        <a href="#" tal:attributes="href url;" class="article-thumbs-link">
-                            <div class="article-thumbs-image"
-                                 tal:attributes="style string:background-image:url(${image})">
-                            </div>
-                            <div class="article-thumbs-text"
-                                 tal:content="title"></div>
-                        </a>
+                    title project/title;
+                    image project/image">
+                    <div class="article-thumbs column-5" tal:condition="project">
+                        <div class="article-thumbs-link">
+                            <a href="#" tal:attributes="href url;" class="article-thumbs-shadow">
+                                <div class="article-thumbs-image"
+                                     tal:attributes="style string:background-image:url(${image})">
+                                </div>
+                                <div class="article-thumbs-text"
+                                     tal:content="title"></div>
+                            </a>
+                        </div>
                     </div>
                     </tal:define>
                     </tal:repeat>
