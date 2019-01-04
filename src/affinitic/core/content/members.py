@@ -12,6 +12,7 @@ from plone.dexterity.content import Container
 from plone.supermodel import model
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope.interface import implements
+from affinitic.core.content.social_fields import ISocialFields
 
 
 class IMembersList(model.Schema):
@@ -45,7 +46,7 @@ class MembersListView(BrowserView):
         return image_format(item.getObject())
 
 
-class IMember(model.Schema):
+class IMember(model.Schema, ISocialFields):
     """IMember"""
 
     member_function = schema.TextLine(
@@ -77,36 +78,6 @@ class IMember(model.Schema):
         title=_(u"CV"),
         description=_(u"CV complet"),
         required=False)
-
-    member_twitter = schema.TextLine(
-        title=_(u'Username Twitter'),
-        required=False,
-        default=None,
-    )
-
-    member_facebook = schema.TextLine(
-        title=_(u'Username Facebook'),
-        required=False,
-        default=None,
-    )
-
-    member_linkedin = schema.TextLine(
-        title=_(u'Username Linkedin'),
-        required=False,
-        default=None,
-    )
-
-    member_github = schema.TextLine(
-        title=_(u'Username Github'),
-        required=False,
-        default=None,
-    )
-
-    member_gitlab = schema.TextLine(
-        title=_(u'Username Gitlab'),
-        required=False,
-        default=None,
-    )
 
 
 class Member(Container):

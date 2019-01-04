@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from affinitic.core.content.social_fields import ISocialFields
 from plone.dexterity.content import Container
 from plone.supermodel import model
 from zope.interface import implements
@@ -55,7 +56,7 @@ class ContactsListView(BrowserView):
         return data_image
 
 
-class IContact(model.Schema):
+class IContact(model.Schema, ISocialFields):
     """IContact"""
 
     contact_image = NamedImage(
@@ -180,79 +181,6 @@ class IContact(model.Schema):
         default=None,
     )
 
-    model.fieldset(
-        'socialnetworks',
-        label=_(u'Social networks'),
-        fields=[
-            'twitter',
-            'facebook',
-            'linkedin',
-            'github',
-            'pinterest',
-            'googleplus',
-            'instagram',
-            'reddit',
-            'youtube',
-            'vimeo',
-            'whatsapp',
-        ]
-    )
-
-    twitter = schema.TextLine(
-        title=_(u'Twitter'),
-        required=False,
-        default=u'')
-
-    facebook = schema.TextLine(
-        title=_(u'Facebook'),
-        required=False,
-        default=u'')
-
-    linkedin = schema.TextLine(
-        title=_(u'Linkedin'),
-        required=False,
-        default=u'')
-
-    github = schema.TextLine(
-        title=_(u'Github'),
-        required=False,
-        default=u'')
-
-    pinterest = schema.TextLine(
-        title=_(u'Pinterest'),
-        required=False,
-        default=u'')
-
-    googleplus = schema.TextLine(
-        title=_(u'Google+'),
-        required=False,
-        default=u'')
-
-    instagram = schema.TextLine(
-        title=_(u'Instagram'),
-        required=False,
-        default=u'')
-
-    reddit = schema.TextLine(
-        title=_(u'Reddit'),
-        required=False,
-        default=u'')
-
-    youtube = schema.TextLine(
-        title=_(u'Youtube'),
-        required=False,
-        default=u'')
-
-    vimeo = schema.TextLine(
-        title=_(u'Vimeo'),
-        required=False,
-        default=u'')
-
-    whatsapp = schema.TextLine(
-        title=_(u'Whatsapp'),
-        required=False,
-        default=u'')
-
 
 class Contact(Container):
     implements(IContact)
@@ -272,12 +200,12 @@ class ContactView(BrowserView):
     def contact(self):
         return self.context
 
-    def link(self, item):
-        if getattr(item, 'contact_link', False):
-            link = getattr(item, 'contact_website', False)
+    def link(self):
+        if getattr(self.context, 'contact_link', False):
+            link = getattr(self.context, 'contact_website', False)
             if link:
                 return link
-            return item.absolute_url()
+            return self.context.absolute_url()
         return False
 
     def image(self, item):

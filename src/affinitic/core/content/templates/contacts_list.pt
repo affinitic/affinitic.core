@@ -9,7 +9,6 @@
     <metal:block fill-slot="content-core">
     <tal:contacts tal:define="contacts view/contacts;">
     <tal:repeat repeat="contact contacts">
-
     <div class="article">
         <div class="content"
              tal:define="link python: view.link(contact);
@@ -32,7 +31,7 @@
                         <div tal:content="contact/Description">Description</div>
                         <div>
                             <span tal:content="item/contact_address" tal:condition="item/contact_address"></span>
-                            <span tal:content="item/contact_number" tal:condition="item/contact_number"></span>
+                            <span tal:content="item/contact_number" tal:condition="item/contact_number"></span>,
                         </div>
                         <div>
                             <span tal:content="item/contact_code" tal:condition="item/contact_code"></span>
@@ -52,18 +51,43 @@
             </div>
             <div class="article-column">
                 <h2>Réseaux sociaux</h2>
-                <div class="social_network">
-                    <div class="twitter" tal:content="item/twitter" tal:condition="item/twitter"></div>
-                    <div class="facebook" tal:content="item/facebook" tal:condition="item/facebook"></div>
-                    <div class="linkedin" tal:content="item/linkedin" tal:condition="item/linkedin"></div>
-                    <div class="github" tal:content="item/github" tal:condition="item/github"></div>
-                    <div class="pinterest" tal:content="item/pinterest" tal:condition="item/pinterest"></div>
-                    <div class="googleplus" tal:content="item/googleplus" tal:condition="item/googleplus"></div>
-                    <div class="instagram" tal:content="item/instagram" tal:condition="item/instagram"></div>
-                    <div class="reddit" tal:content="item/reddit" tal:condition="item/reddit"></div>
-                    <div class="youtube" tal:content="item/youtube" tal:condition="item/youtube"></div>
-                    <div class="vimeo" tal:content="item/vimeo" tal:condition="item/vimeo"></div>
-                    <div class="whatsapp" tal:content="item/whatsapp" tal:condition="item/whatsapp"></div>
+                <div class="glyphicon-social">
+                    <a href="" tal:condition="item/github" target="_blank" rel="noreferrer"
+                                                                           class="glyphicon-fab-github"
+                                                                           tal:attributes="href string:https://github.com/${item/github}"><div></div></a>
+                    <a href="" tal:condition="item/gitlab" target="_blank" rel="noreferrer"
+                                                                           class="glyphicon-fab-gitlab"
+                                                                           tal:attributes="href string:https://gitlab.com/${item/gitlab}"><div></div></a>
+                    <a href="" tal:condition="item/linkedin" target="_blank" rel="noreferrer"
+                                                                             class="glyphicon-fab-linkedin"
+                                                                             tal:attributes="href string:https://www.linkedin.com/in/${item/linkedin}"><div></div></a>
+                    <a href="" tal:condition="item/twitter" target="_blank" rel="noreferrer"
+                                                                            class="glyphicon-fab-twitter"
+                                                                            tal:attributes="href string:https://twitter.com/${item/twitter}"><div></div></a>
+                    <a href="" tal:condition="item/facebook" target="_blank" rel="noreferrer"
+                                                                             class="glyphicon-fab-facebook"
+                                                                             tal:attributes="href string:https://www.facebook.com/${item/facebook}"><div></div></a>
+                    <a href="" tal:condition="item/pinterest" target="_blank" rel="noreferrer"
+                                                                                class="glyphicon-fab-pinterest"
+                                                                                tal:attributes="href string:https://www.pinterest.fr/${item/pinterest}"><div></div></a>
+                    <a href="" tal:condition="item/googleplus" target="_blank" rel="noreferrer"
+                                                                                 class="glyphicon-fab-googleplus"
+                                                                                 tal:attributes="href string:https://plus.google.com/u/0/${item/googleplus}"><div></div></a>
+                    <a href="" tal:condition="item/instagram" target="_blank" rel="noreferrer"
+                                                                                class="glyphicon-fab-instagram"
+                                                                                tal:attributes="href string:https://www.instagram.com/${item/instagram}"><div></div></a>
+                    <a href="" tal:condition="item/reddit" target="_blank" rel="noreferrer"
+                                                                             class="glyphicon-fab-reddit"
+                                                                             tal:attributes="href string:https://www.reddit.com/r/${item/reddit}"><div></div></a>
+                    <a href="" tal:condition="item/vimeo" target="_blank" rel="noreferrer"
+                                                                            class="glyphicon-fab-vimeo"
+                                                                            tal:attributes="href string:https://vimeo.com/${item/vimeo}"><div></div></a>
+                    <a href="" tal:condition="item/whatsapp" target="_blank" rel="noreferrer"
+                                                                               class="glyphicon-fab-whatsapp"
+                                                                               tal:attributes="href string:https://wa.me/${item/whatsapp}"><div></div></a>
+                    <a href="" tal:condition="item/youtube" target="_blank" rel="noreferrer"
+                                                                              class="glyphicon-fab-youtube"
+                                                                              tal:attributes="href string:https://www.youtube.com/channel/${item/youtube}"><div></div></a>
                 </div>
             </div>
         </div>

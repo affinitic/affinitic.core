@@ -42,19 +42,50 @@
                     <h2>Compétences</h2>
                     <tal:services tal:define="services view/services">
                     <tal:service tal:repeat="service services">
-                        <div tal:content="service/title">Compétences</div>
+                    <div tal:content="service/title">Compétences</div>
                     </tal:service>
                     </tal:services>
                     <br>
                     <h2>Contact</h2>
                     <div tal:content="member/member_email">Email</div>
                     <div tal:content="member/member_phone">Phone</div>
-                    <div class="social">
-                        <div class="gitlab" tal:content="member/member_gitlab">Gitlab</div>
-                        <div class="github" tal:content="member/member_github">Github</div>
-                        <div class="linkedin" tal:content="member/member_linkedin">Linkedin</div>
-                        <div class="twitter" tal:content="member/member_twitter">Twitter</div>
-                        <div class="facebook" tal:content="member/member_facebook">Facebook</div>
+                    <div class="glyphicon-social">
+                        <a href="" tal:condition="member/github" target="_blank" rel="noreferrer"
+                                                                               class="glyphicon-fab-github"
+                                                                               tal:attributes="href string:https://github.com/${member/github}"><div></div></a>
+                        <a href="" tal:condition="member/gitlab" target="_blank" rel="noreferrer"
+                                                                               class="glyphicon-fab-gitlab"
+                                                                               tal:attributes="href string:https://gitlab.com/${member/gitlab}"><div></div></a>
+                        <a href="" tal:condition="member/linkedin" target="_blank" rel="noreferrer"
+                                                                                 class="glyphicon-fab-linkedin"
+                                                                                 tal:attributes="href string:https://www.linkedin.com/in/${member/linkedin}"><div></div></a>
+                        <a href="" tal:condition="member/twitter" target="_blank" rel="noreferrer"
+                                                                                class="glyphicon-fab-twitter"
+                                                                                tal:attributes="href string:https://twitter.com/${member/twitter}"><div></div></a>
+                        <a href="" tal:condition="member/facebook" target="_blank" rel="noreferrer"
+                                                                                 class="glyphicon-fab-facebook"
+                                                                                 tal:attributes="href string:https://www.facebook.com/${member/facebook}"><div></div></a>
+                        <a href="" tal:condition="member/pinterest" target="_blank" rel="noreferrer"
+                                                                                  class="glyphicon-fab-pinterest"
+                                                                                  tal:attributes="href string:https://www.pinterest.fr/${member/pinterest}"><div></div></a>
+                        <a href="" tal:condition="member/googleplus" target="_blank" rel="noreferrer"
+                                                                                   class="glyphicon-fab-googleplus"
+                                                                                   tal:attributes="href string:https://plus.google.com/u/0/${member/googleplus}"><div></div></a>
+                        <a href="" tal:condition="member/instagram" target="_blank" rel="noreferrer"
+                                                                                  class="glyphicon-fab-instagram"
+                                                                                  tal:attributes="href string:https://www.instagram.com/${member/instagram}"><div></div></a>
+                        <a href="" tal:condition="member/reddit" target="_blank" rel="noreferrer"
+                                                                               class="glyphicon-fab-reddit"
+                                                                               tal:attributes="href string:https://www.reddit.com/r/${member/reddit}"><div></div></a>
+                        <a href="" tal:condition="member/vimeo" target="_blank" rel="noreferrer"
+                                                                              class="glyphicon-fab-vimeo"
+                                                                              tal:attributes="href string:https://vimeo.com/${member/vimeo}"><div></div></a>
+                        <a href="" tal:condition="member/whatsapp" target="_blank" rel="noreferrer"
+                                                                                 class="glyphicon-fab-whatsapp"
+                                                                                 tal:attributes="href string:https://wa.me/${member/whatsapp}"><div></div></a>
+                        <a href="" tal:condition="member/youtube" target="_blank" rel="noreferrer"
+                                                                                class="glyphicon-fab-youtube"
+                                                                                tal:attributes="href string:https://www.youtube.com/channel/${member/youtube}"><div></div></a>
                     </div>
                 </div>
             </div>
