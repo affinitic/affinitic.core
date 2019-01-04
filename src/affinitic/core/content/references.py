@@ -70,7 +70,7 @@ class ReferencesListView(BrowserView):
                 service_data["number"] = 0
                 for reference in references:
                     list_services = getattr(reference.getObject(), 'reference_service', None)
-                    if service.Title in list_services:
+                    if service.id in list_services:
                         service_data["number"] += 1
                 if service_data["number"]:
                     results.append(service_data)
