@@ -22,7 +22,7 @@
 
         <div class="article">
             <h1>Nos réalisations</h1>
-            <div class="content">
+            <div class="content galery">
                 <div class="article-galery"
                      tal:define="references view/references;"
                      tal:condition="references">
