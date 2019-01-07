@@ -43,7 +43,7 @@
                 <div tal:content="document/description"></div>
             </div>
             <div class="article-image"
-                 tal:attributes="style string:background-image:url(${document/absolute_url}/@@images/article_image/large)">
+                 tal:attributes="style string:background-image:url(${document/absolute_url}/@@images/article_image/preview)">
             </div>
         </div>
         <div class="content">
