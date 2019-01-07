@@ -17,7 +17,7 @@
                                             aria-label member/Title;">
                     <div class="image">
                         <div class="image-background" tal:condition="not:member_data/article_image"></div>
-                        <div class="image-background" tal:attributes="style string:background-image:url(${member/getURL}/@@images/article_image)"
+                        <div class="image-background" tal:attributes="style string:background-image:url(${member/getURL}/@@images/article_image/mini)"
                              tal:condition="member_data/article_image"></div>
                     </div>
                 </a>

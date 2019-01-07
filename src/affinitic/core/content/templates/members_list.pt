@@ -32,7 +32,7 @@
                                     <div class="image">
                                         <div class="image-background member" tal:condition="not:member/article_image"></div>
                                         <div tal:attributes="class string:image-background member;
-                                        style string:background-image:url(${member/getURL}/@@images/article_image)"
+                                        style string:background-image:url(${member/getURL}/@@images/article_image/preview)"
                                              tal:condition="member/article_image"></div>
                                     </div>
                                     <div class="text">
@@ -62,7 +62,7 @@
                         <li data-target="#carousel-thumb" tal:attributes="data-slide-to index">
                             <div class="image-background small circle" tal:condition="not:member/article_image"></div>
                             <div tal:attributes="class string:image-background small circle;
-                            style string:background-image:url(${member/getURL}/@@images/article_image)" tal:condition="member/article_image"></div>
+                            style string:background-image:url(${member/getURL}/@@images/article_image/mini)" tal:condition="member/article_image"></div>
                         </li>
                         </tal:index>
                         </tal:member>
