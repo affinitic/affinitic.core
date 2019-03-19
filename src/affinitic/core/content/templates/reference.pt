@@ -66,6 +66,18 @@
             <h1>Galerie</h1>
             <div class="content">
                 <div id="carousel-thumb" class="carousel slide carousel-thumbnails member-about" data-ride="carousel">
+                    <tal:multiple tal:condition="python: len(gallery) > 1">
+                    <ol class="carousel-indicators">
+                        <tal:image tal:repeat="image gallery">
+                        <tal:index define="index repeat/image/index;" tal:condition="image">
+                        <li data-target="#carousel-thumb" tal:attributes="data-slide-to index">
+                            <div tal:attributes="class string:image-background small;
+                            style string:background-image:url(${image/absolute_url}/@@images/image/mini)"></div>
+                        </li>
+                        </tal:index>
+                        </tal:image>
+                    </ol>
+                    </tal:multiple>
                     <div class="carousel-header">
                         <div class="carousel-inner">
                             <tal:image tal:repeat="image gallery">
@@ -95,18 +107,6 @@
                         </a>
                         </tal:multiple>
                     </div>
-                    <tal:multiple tal:condition="python: len(gallery) > 1">
-                    <ol class="carousel-indicators">
-                        <tal:image tal:repeat="image gallery">
-                        <tal:index define="index repeat/image/index;" tal:condition="image">
-                        <li data-target="#carousel-thumb" tal:attributes="data-slide-to index">
-                            <div tal:attributes="class string:image-background small;
-                            style string:background-image:url(${image/absolute_url}/@@images/image/mini)"></div>
-                        </li>
-                        </tal:index>
-                        </tal:image>
-                    </ol>
-                    </tal:multiple>
                 </div>
             </div>
         </div>
